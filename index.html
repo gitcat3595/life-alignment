@@ -232,7 +232,10 @@
         .question-text {
             font-size: 30px;
             font-weight: 700;
-            color: #1a1a1a;
+            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 50px;
             line-height: 1.4;
             text-align: center;
@@ -360,10 +363,11 @@
         }
 
         .result-header h2 {
-            font-size: 26px;
+            font-size: 28px;
             color: #333;
             margin-bottom: 10px;
             font-weight: 700;
+            font-family: 'RocknRoll One', sans-serif;
         }
 
         .result-header p {
@@ -374,17 +378,13 @@
         .radar-chart-container {
             background: white;
             border-radius: 16px;
-            padding: 40px 30px;
+            padding: 0;
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .radar-chart-container h3 {
-            text-align: center;
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #333;
-            font-weight: 700;
+            display: none;
         }
 
         #radarChart {
@@ -396,27 +396,25 @@
         }
 
         .result-card {
-            background: white;
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(126, 106, 168, 0.08) 0%, rgba(91, 143, 217, 0.08) 100%);
+            border-radius: 16px;
             padding: 25px;
             margin-bottom: 20px;
-            border-left: 4px solid;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(126, 106, 168, 0.15);
         }
-
-        .result-card.health { border-left-color: #7E6BA8; }
-        .result-card.relationships { border-left-color: #5B8FD9; }
-        .result-card.ambition { border-left-color: #8B9DC3; }
-        .result-card.purpose { border-left-color: #9FB8AD; }
-        .result-card.finance { border-left-color: #B4A5C5; }
 
         .result-card h3 {
             font-size: 20px;
-            color: #333;
+            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-weight: 700;
         }
 
         .result-score {
@@ -426,12 +424,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: transparent;
         }
 
         .result-bar {
             width: 100%;
             height: 12px;
-            background: #e0e0e0;
+            background: rgba(126, 106, 168, 0.2);
             border-radius: 10px;
             overflow: hidden;
             margin: 10px 0;
@@ -445,33 +444,36 @@
         }
 
         .result-description {
-            color: #555;
+            color: #666;
             line-height: 1.7;
             margin-top: 10px;
             font-size: 15px;
         }
 
         .journaling-section {
-            background: #f8f9fa;
-            border-radius: 12px;
+            background: white;
             padding: 25px;
             margin: 30px 0 20px;
-            border: 2px solid #e8ecef;
+        }
+
+        .journaling-section h3 {
+            font-family: 'RocknRoll One', sans-serif;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
         }
 
         .journaling-section p {
             color: #555;
             line-height: 1.8;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 16px;
         }
 
         .journaling-prompt {
             background: white;
-            border-left: 4px solid #7E6BA8;
-            padding: 15px 20px;
-            margin: 10px 0;
-            border-radius: 8px;
+            padding: 8px 0;
+            margin: 5px 0;
             color: #333;
             font-size: 15px;
             line-height: 1.7;
@@ -578,7 +580,7 @@
             <div class="start-screen" id="startScreen">
                 <p>心理学と認知行動療法を取り入れた診断で、<br>5つの領域の「今」と「理想」のギャップを測定します。</p>
 
-                <div class="completion-time">たった5分で完了！</div>
+<div class="completion-time" style="font-size: 28px;">たった5分で完了！</div>
 
                 <div class="info-box">
                     <h3>診断内容</h3>
@@ -628,20 +630,25 @@
             <!-- Result Screen -->
             <div class="result-screen" id="resultScreen">
                 <div class="result-header">
-                    <h2>診断結果</h2>
+                    <h2>ライフアライメント診断結果</h2>
                     <p>あなたの理想と現実のアライメント状態</p>
                 </div>
 
                 <div class="radar-chart-container">
-                    <h3>5領域のバランス</h3>
+                    <h3 style="font-family: 'RocknRoll One', sans-serif;">ライフアセスメント診断結果</h3>
                     <canvas id="radarChart" width="400" height="400"></canvas>
                 </div>
 
                 <div id="resultCards"></div>
 
                 <div class="journaling-section">
-                    <h3>ジャーナリングのおすすめ</h3>
-                    <p>この診断結果をもとに、ノートに書き出してみませんか？<br>赤ペンジャーナリングで、自分と対話するように考えてみましょう。</p>
+                    <h3>さらに深めるなら</h3>
+                    <p>アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。赤ペンジャーナリングで、自分と対話してみるのもよいかもしれません。</p>
+                    <p style="margin-top: 15px; font-size: 15px;">
+                        <a href="https://redpenjournaling.com/" target="_blank" style="color: #7E6BA8; text-decoration: underline; font-weight: 700;">赤ペンジャーナリング サイト</a><br>
+                        <a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: #7E6BA8; text-decoration: underline; margin-top: 5px; display: inline-block; font-weight: 700;">赤ペンジャーナリング note</a>
+                    </p>
+                    <p style="font-weight: 600; margin-bottom: 10px; margin-top: 20px;">考えるヒント</p>
                     <div class="journaling-prompt">
                         ● 今回の診断で、一番ギャップを感じた領域は何でしたか？それはなぜだと思いますか？
                     </div>
@@ -655,7 +662,7 @@
 
                 <button class="share-button" onclick="shareToX()">𝕏 結果をXでシェア</button>
 
-                <p class="notice-text">今回は簡易版ですが、全15０問の詳細版も用意しています。ぜひ楽しみにしていてください。</p>
+                <p class="notice-text">今回は簡易版ですが、全150問と詳しい解説をつけた詳細版も用意しています。ぜひ楽しみにしていてください。</p>
 
                 <button class="button" onclick="location.reload()">もう一度診断する</button>
             </div>
@@ -667,33 +674,33 @@
         const questions = [
             // 健康（4問）
             {category: "健康", question: "朝、目覚ましが鳴ったら", optionA: "スッキリ起きられる", optionB: "あと5分...が止まらない"},
-            {category: "健康", question: "駅の階段、どうしてる", optionA: "階段で行く派", optionB: "エスカレーター一択"},
+            {category: "健康", question: "駅の階段、どうしている", optionA: "階段で行く派", optionB: "エスカレーター一択"},
             {category: "健康", question: "体力的に", optionA: "まだまだいける", optionB: "すぐバテる"},
-            {category: "健康", question: "健康面、理想と比べると", optionA: "かなり近い", optionB: "結構ギャップある"},
+            {category: "健康", question: "健康面、理想と比べると", optionA: "かなり近い", optionB: "結構ギャップがある"},
             
             // 人間関係（4問）
-            {category: "人間関係", question: "家に帰る時", optionA: "楽しみ！", optionB: "ちょっと憂鬱"},
+            {category: "人間関係", question: "家に帰る時", optionA: "楽しみ", optionB: "ちょっと憂鬱"},
             {category: "人間関係", question: "困った時、相談できる人", optionA: "すぐ顔が浮かぶ", optionB: "思いつかない"},
             {category: "人間関係", question: "人と会った後", optionA: "楽しかった", optionB: "どっと疲れた"},
             {category: "人間関係", question: "人間関係のトラブル", optionA: "ほぼない", optionB: "けっこうある"},
             
             // 野心・目標達成（4問）
-            {category: "野心", question: "今年の目標", optionA: "バッチリ決めてる", optionB: "特にない"},
+            {category: "野心", question: "今年の目標", optionA: "バッチリ決めている", optionB: "特にない"},
             {category: "野心", question: "最近、達成感味わった？", optionA: "つい最近", optionB: "思い出せない"},
-            {category: "野心", question: "理想のキャリア", optionA: "近づいてる", optionB: "遠い"},
-            {category: "野心", question: "将来考えると", optionA: "ワクワク", optionB: "不安"},
+            {category: "野心", question: "理想のキャリア", optionA: "近づいている", optionB: "まだ遠い"},
+            {category: "野心", question: "将来考えると", optionA: "ワクワクする", optionB: "不安になる"},
             
             // 使命・意義（4問）
             {category: "使命", question: "朝起きる理由", optionA: "ある", optionB: "ない"},
-            {category: "使命", question: "自分の仕事", optionA: "誰かの役に立ってる", optionB: "意味あるのか不明"},
-            {category: "使命", question: "人生の目的", optionA: "明確", optionB: "見つかってない"},
-            {category: "使命", question: "仕事と価値観", optionA: "合ってる", optionB: "ズレてる"},
+            {category: "使命", question: "自分の仕事", optionA: "誰かの役に立っている", optionB: "意味あるのか不明"},
+            {category: "使命", question: "人生の目的", optionA: "自分なりに明確", optionB: "見つかってない"},
+            {category: "使命", question: "仕事と価値観", optionA: "合っている", optionB: "ズレている"},
             
             // 財務・お金（4問）
-            {category: "財務", question: "給料日前", optionA: "余裕", optionB: "カツカツ"},
-            {category: "財務", question: "お金の心配", optionA: "してない", optionB: "いつもしてる"},
-            {category: "財務", question: "欲しいもの", optionA: "買える", optionB: "我慢"},
-            {category: "財務", question: "お金のストレス", optionA: "ほぼない", optionB: "めっちゃある"}
+            {category: "財務", question: "給料日前", optionA: "余裕がある", optionB: "カツカツ"},
+            {category: "財務", question: "お金の心配", optionA: "していない", optionB: "いつもしている"},
+            {category: "財務", question: "欲しいもの", optionA: "迷わず買える", optionB: "我慢する"},
+            {category: "財務", question: "お金のストレス", optionA: "ほぼない", optionB: "かなりある"}
         ];
 
         // 質問をシャッフルして混ぜる
@@ -840,7 +847,7 @@
             const ctx = canvas.getContext('2d');
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
-            const radius = 150;
+            const radius = 120;
 
             // キャンバスをクリア
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -898,23 +905,34 @@
             ctx.stroke();
 
             // ラベルを描画
-            ctx.fillStyle = '#333';
-            ctx.font = '13px "RocknRoll One", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#7E6BA8';
+            ctx.font = '18px "RocknRoll One", sans-serif';
             
             categories.forEach((cat, i) => {
                 const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
-                const labelRadius = radius + 45;
+                const labelRadius = radius + 10;
                 const x = centerX + Math.cos(angle) * labelRadius;
                 const y = centerY + Math.sin(angle) * labelRadius;
                 
-                // 複数行対応
-                const lines = cat.label.split('\n');
-                lines.forEach((line, lineIndex) => {
-                    const lineY = y + (lineIndex - (lines.length - 1) / 2) * 16;
-                    ctx.fillText(line, x, lineY);
-                });
+                // 位置に応じてアライメントを調整
+                if (i === 0) { // 上（健康）
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                } else if (i === 1) { // 右上（お金）
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                } else if (i === 2) { // 右下（目標）
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                } else if (i === 3) { // 左下（使命）
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'middle';
+                } else if (i === 4) { // 左上（人間関係）
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'middle';
+                }
+                
+                ctx.fillText(cat.label, x, y);
             });
         }
 
@@ -923,8 +941,8 @@
             const categoryMap = {
                 '健康': { class: 'health', name: '健康' },
                 '人間関係': { class: 'relationships', name: '人間関係' },
-                '野心': { class: 'ambition', name: '目標達成' },
-                '使命': { class: 'purpose', name: '人生の意味' },
+                '野心': { class: 'ambition', name: '目標' },
+                '使命': { class: 'purpose', name: '使命' },
                 '財務': { class: 'finance', name: 'お金' }
             };
 
@@ -956,11 +974,11 @@
             if (percentage >= 80) {
                 return 'だいぶ一致してそう。';
             } else if (percentage >= 60) {
-                return 'よい感じ。さらによくなる可能性も。';
+                return 'よい感じ。少し見直すことでさらによくなる可能性も。';
             } else if (percentage >= 40) {
                 return '小さな一歩が大きな変化へ。';
             } else {
-                return 'ギャップがけっこうあるかも。少し意識してみても。';
+                return 'ギャップがけっこうあるかも。少しそのギャップを意識してみても。';
             }
         }
 
