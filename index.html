@@ -858,7 +858,7 @@
                 { name: '財務', label: 'お金' },
                 { name: '野心', label: '目標' },
                 { name: '使命', label: '使命' },
-                { name: '人間関係', label: '人間関係' }
+                { name: '人間関係', label: '人間\n関係' }
             ];
 
             // 背景の円を描画（グレーの同心円）
@@ -932,7 +932,17 @@
                     ctx.textBaseline = 'middle';
                 }
                 
-                ctx.fillText(cat.label, x, y);
+         // 改行対応
+if (cat.label.includes('\n')) {
+    const lines = cat.label.split('\n');
+    lines.forEach((line, lineIndex) => {
+        const lineY = y + (lineIndex - (lines.length - 1) / 2) * 20;
+        ctx.fillText(line, x, lineY);
+    });
+} else {
+    ctx.fillText(cat.label, x, y);
+}
+
             });
         }
 
