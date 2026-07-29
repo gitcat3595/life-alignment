@@ -6,7 +6,7 @@
     <title>ライフアライメント診断 | Life Alignment Assessment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,9 +14,24 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #f2f7fb;
+            --surface: #ffffff;
+            --ink: #263142;
+            --text: #3f4856;
+            --muted: #6d7480;
+            --line: #d6e3ef;
+            --accent: #0071e3;
+            --accent-dark: #005bb5;
+            --accent-soft: #dcebf7;
+            --accent-light: #f3f8fc;
+            --shadow: 0 18px 48px rgba(38, 49, 66, 0.08);
+            --shadow-soft: 0 8px 24px rgba(38, 49, 66, 0.07);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-            background: #f5f7fa;
+            font-family: 'LINE Seed JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            background: var(--bg);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -25,53 +40,61 @@
         }
 
         .container {
-            background: white;
-            border-radius: 0;
-            box-shadow: none;
-            max-width: 480px;
+            background: var(--surface);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            max-width: 500px;
             width: 100%;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.86);
         }
 
         .header {
-            background: linear-gradient(135deg, #7E6BA8 0%, #5B8FD9 100%);
-            color: white;
-            padding: 60px 30px 50px 30px;
+            background: linear-gradient(180deg, #fbfdff 0%, #eef7fd 100%);
+            color: var(--ink);
+            padding: 56px 32px 44px 32px;
             text-align: center;
-            border-bottom: none;
+            border-bottom: 1px solid rgba(214, 227, 239, 0.72);
         }
 
         .header h1 {
-            font-size: 30px;
+            font-size: 31px;
             margin-bottom: 12px;
-            font-weight: 700;
-            color: white;
-            font-family: 'RocknRoll One', sans-serif;
-            line-height: 1.4;
+            font-weight: 800;
+            color: var(--ink);
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
+            line-height: 1.32;
+            letter-spacing: 0;
+        }
+
+        .title-accent {
+            color: var(--accent);
         }
 
         .header p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            font-family: 'RocknRoll One', sans-serif;
+            color: var(--muted);
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
+            font-weight: 500;
+            line-height: 1.7;
         }
 
         .progress-container {
             padding: 20px 30px;
-            background: #fafbfc;
+            background: rgba(250, 252, 254, 0.94);
         }
 
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background: #e8ecef;
+            height: 4px;
+            background: #e4ecf4;
             border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             transition: width 0.4s ease;
             border-radius: 10px;
         }
@@ -79,13 +102,13 @@
         .progress-text {
             margin-top: 10px;
             text-align: center;
-            color: #888;
-            font-size: 13px;
+            color: var(--muted);
+            font-size: 12px;
             font-weight: 500;
         }
 
         .content {
-            padding: 40px 25px;
+            padding: 38px 28px 46px;
         }
 
         .start-screen {
@@ -107,10 +130,10 @@
         .completion-time {
             text-align: center;
             font-size: 18px;
-            color: #5B8FD9;
-            font-weight: 700;
+            color: var(--accent);
+            font-weight: 800;
             margin-bottom: 25px;
-            font-family: 'RocknRoll One', sans-serif;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
         }
 
         .completion-time:before {
@@ -120,25 +143,28 @@
 
         .start-screen p {
             font-size: 16px;
-            color: #666;
+            color: var(--text);
             line-height: 1.8;
             margin-bottom: 30px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .info-box {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(248, 251, 254, 0.96);
+            border-radius: 18px;
+            padding: 22px;
             margin: 20px 0;
             text-align: left;
+            border: 1px solid var(--line);
+            box-shadow: 0 1px 2px rgba(38, 49, 66, 0.03);
         }
 
         .info-box h3 {
-            font-size: 22px;
+            font-size: 20px;
             margin-bottom: 23px;
-            color: #7E6BA8;
-            font-family: 'RocknRoll One', sans-serif;
+            color: var(--accent);
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
+            font-weight: 800;
         }
 
         .info-box ul {
@@ -148,7 +174,7 @@
 
         .info-box li {
             padding: 12px 0;
-            color: #555;
+            color: var(--text);
             display: flex;
             flex-direction: column;
             line-height: 1.7;
@@ -164,43 +190,48 @@
 
         .category-name {
             font-weight: 700;
-            color: #333;
+            color: var(--ink);
             margin-bottom: 6px;
         }
 
         .category-desc {
-            color: #666;
+            color: var(--muted);
             padding-left: 0;
         }
 
         .button {
-            background: linear-gradient(135deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             color: white;
             border: none;
-            border-radius: 60px;
-            padding: 20px 32px;
-            font-size: 18px;
+            border-radius: 14px;
+            padding: 14px 22px;
+            min-height: 48px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
             margin: 20px auto;
-            box-shadow: 0 6px 25px rgba(126, 106, 168, 0.4);
+            box-shadow: 0 8px 18px rgba(0, 113, 227, 0.18);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             width: fit-content;
             white-space: nowrap;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
         }
 
         .button:after {
-            content: '▶';
-            font-size: 18px;
+            content: '›';
+            font-size: 22px;
+            line-height: 1;
+            margin-top: -1px;
         }
 
         .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(126, 106, 168, 0.4);
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(0, 113, 227, 0.22);
         }
 
         .button:disabled {
@@ -218,28 +249,28 @@
         }
 
         .question-number {
-            font-size: 34px;
+            font-size: 24px;
             font-weight: 700;
-            background: linear-gradient(135deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             text-align: center;
-            font-family: 'RocknRoll One', sans-serif;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
         }
 
         .question-text {
-            font-size: 30px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 50px;
+            margin-bottom: 42px;
             line-height: 1.4;
             text-align: center;
-            font-family: 'RocknRoll One', sans-serif;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
         }
 
         .choice-container {
@@ -248,40 +279,42 @@
 
         .choice-cards {
             display: flex;
-            gap: 20px;
+            gap: 14px;
             margin-bottom: 20px;
         }
 
         .choice-item {
-            border-radius: 16px;
-            padding: 30px 25px;
+            border-radius: 18px;
+            padding: 24px 22px;
             flex: 1;
+            border: 1px solid var(--line);
+            box-shadow: 0 1px 2px rgba(38, 49, 66, 0.03);
         }
 
         .choice-item.choice-a {
-            background: linear-gradient(135deg, #E8E4F3 0%, #D6CFEB 100%);
+            background: #f4f7fb;
         }
 
         .choice-item.choice-b {
-            background: linear-gradient(135deg, #D4E4F7 0%, #C5D9F2 100%);
+            background: #eef3f8;
         }
 
         .choice-label {
             font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 32px;
+            margin-bottom: 12px;
+            font-size: 24px;
         }
 
         .choice-item.choice-a .choice-label {
-            color: #7E6BA8;
+            color: var(--accent);
         }
 
         .choice-item.choice-b .choice-label {
-            color: #5B8FD9;
+            color: var(--accent);
         }
 
         .choice-text {
-            color: #4a4a4a;
+            color: var(--text);
             line-height: 1.7;
             font-size: 16px;
             font-weight: 500;
@@ -293,7 +326,7 @@
 
         .slider-label {
             font-size: 14px;
-            color: #999;
+            color: var(--muted);
             margin-bottom: 25px;
             text-align: center;
             font-weight: 400;
@@ -313,43 +346,44 @@
         }
 
         .slider-end-label.label-a {
-            color: #7E6BA8;
+            color: var(--accent);
         }
 
         .slider-end-label.label-b {
-            color: #5B8FD9;
+            color: var(--accent);
         }
 
         .slider {
             flex: 1;
-            height: 60px;
+            height: 50px;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
-            padding: 8px;
-            background: #f5f5f5;
-            border-radius: 30px;
+            gap: 8px;
+            padding: 6px;
+            background: #eef3f8;
+            border-radius: 14px;
+            border: 1px solid var(--line);
         }
 
         .slider-option {
             flex: 1;
             height: 100%;
-            border-radius: 24px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
             background: rgba(255, 255, 255, 0.5);
-            border: 2px solid #e0e0e0;
+            border: 1px solid rgba(214, 227, 239, 0.9);
         }
 
         .slider-option:hover {
-            background: rgba(126, 106, 168, 0.1);
+            background: rgba(50, 74, 109, 0.1);
             transform: scale(1.05);
         }
 
         .slider-option.selected {
-            background: linear-gradient(135deg, #7E6BA8 0%, #5B8FD9 100%);
-            box-shadow: 0 4px 12px rgba(126, 106, 168, 0.4);
-            transform: scale(1.1);
+            background: var(--accent);
+            box-shadow: 0 5px 12px rgba(0, 113, 227, 0.24);
+            transform: scale(1.04);
             border-color: transparent;
         }
 
@@ -363,24 +397,25 @@
         }
 
         .result-header h2 {
-            font-size: 28px;
-            color: #333;
+            font-size: 26px;
+            color: var(--ink);
             margin-bottom: 10px;
-            font-weight: 700;
-            font-family: 'RocknRoll One', sans-serif;
+            font-weight: 800;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
         }
 
         .result-header p {
             font-size: 15px;
-            color: #666;
+            color: var(--muted);
         }
 
         .radar-chart-container {
             background: white;
-            border-radius: 16px;
-            padding: 0;
+            border-radius: 20px;
+            padding: 4px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--line);
         }
 
         .radar-chart-container h3 {
@@ -396,17 +431,17 @@
         }
 
         .result-card {
-            background: linear-gradient(135deg, rgba(126, 106, 168, 0.08) 0%, rgba(91, 143, 217, 0.08) 100%);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(126, 106, 168, 0.15);
+            background: #fbfdff;
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 2px rgba(38, 49, 66, 0.03);
+            border: 1px solid var(--line);
         }
 
         .result-card h3 {
             font-size: 20px;
-            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -420,7 +455,7 @@
         .result-score {
             font-size: 24px;
             font-weight: 700;
-            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -430,7 +465,7 @@
         .result-bar {
             width: 100%;
             height: 12px;
-            background: rgba(126, 106, 168, 0.2);
+            background: #dce4ef;
             border-radius: 10px;
             overflow: hidden;
             margin: 10px 0;
@@ -438,13 +473,13 @@
 
         .result-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #7E6BA8 0%, #5B8FD9 100%);
+            background: var(--accent);
             border-radius: 10px;
             transition: width 1s ease;
         }
 
         .result-description {
-            color: #666;
+            color: var(--muted);
             line-height: 1.7;
             margin-top: 10px;
             font-size: 15px;
@@ -452,45 +487,48 @@
 
         .journaling-section {
             background: white;
-            padding: 25px;
+            padding: 24px 0;
             margin: 30px 0 20px;
         }
 
         .journaling-section h3 {
-            font-family: 'RocknRoll One', sans-serif;
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
             font-size: 22px;
-            color: #333;
+            color: var(--ink);
             margin-bottom: 15px;
         }
 
         .journaling-section p {
-            color: #555;
+            color: var(--text);
             line-height: 1.8;
             margin-bottom: 20px;
             font-size: 16px;
         }
 
         .journaling-prompt {
-            background: white;
-            padding: 8px 0;
-            margin: 5px 0;
-            color: #333;
+            background: #fbfdff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 13px 15px;
+            margin: 8px 0;
+            color: var(--text);
             font-size: 15px;
             line-height: 1.7;
         }
 
         .share-button {
-            background: #000000;
+            background: var(--ink);
             color: white;
             border: none;
-            border-radius: 60px;
-            padding: 17px 50px;
-            font-size: 24px;
+            border-radius: 14px;
+            padding: 14px 28px;
+            min-height: 48px;
+            font-size: 17px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
             margin: 25px auto;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 18px rgba(38, 49, 66, 0.16);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -499,24 +537,71 @@
         }
 
         .share-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            background: #1a1a1a;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(38, 49, 66, 0.2);
+            background: #344155;
         }
 
         .notice-text {
             text-align: center;
-            color: #666;
+            color: var(--muted);
             font-size: 15px;
             line-height: 1.8;
             margin: 25px 0 15px;
             padding: 0 20px;
         }
 
-        .overall-result {
-            background: linear-gradient(135deg, #7E6BA8 0%, #5B8FD9 100%);
+        .mailing-list {
+            background: #fbfdff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px;
+            margin: 24px 0 18px;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(38, 49, 66, 0.03);
+        }
+
+        .mailing-list h3 {
+            color: var(--ink);
+            font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .mailing-list p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .mail-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 18px;
+            background: var(--accent);
             color: white;
-            border-radius: 12px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(0, 113, 227, 0.18);
+            transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+        }
+
+        .mail-button:hover {
+            background: var(--accent-dark);
+            box-shadow: 0 10px 22px rgba(0, 113, 227, 0.22);
+            transform: translateY(-1px);
+        }
+
+        .overall-result {
+            background: var(--accent);
+            color: white;
+            border-radius: 18px;
             padding: 30px;
             text-align: center;
             margin-bottom: 30px;
@@ -564,7 +649,7 @@
 <body>
     <div class="container">
         <div class="header" id="mainHeader">
-            <h1>「今」と「理想」の<br>ギャップは<br>どれくらい？</h1>
+            <h1><span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？</h1>
             <p>ライフアライメント診断</p>
         </div>
 
@@ -578,9 +663,9 @@
         <div class="content">
             <!-- Start Screen -->
             <div class="start-screen" id="startScreen">
-                <p>心理学と認知行動療法を取り入れた診断で、<br>5つの領域の「今」と「理想」のギャップを測定します。</p>
+                <p>5つの領域から、今の自分のバランスを見てみる<br>かんたんなセルフチェックです。</p>
 
-<div class="completion-time" style="font-size: 28px;">たった5分で完了！</div>
+                <div class="completion-time">たった5分で完了！</div>
 
                 <div class="info-box">
                     <h3>診断内容</h3>
@@ -635,7 +720,7 @@
                 </div>
 
                 <div class="radar-chart-container">
-                    <h3 style="font-family: 'RocknRoll One', sans-serif;">ライフアセスメント診断結果</h3>
+                    <h3 style="font-family: 'LINE Seed JP', 'Noto Sans JP', sans-serif;">ライフアセスメント診断結果</h3>
                     <canvas id="radarChart" width="400" height="400"></canvas>
                 </div>
 
@@ -643,26 +728,22 @@
 
                 <div class="journaling-section">
                     <h3>さらに深めるなら</h3>
-                    <p>アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。赤ペンジャーナリングで、自分と対話してみるのもよいかもしれません。</p>
-                    <p style="margin-top: 15px; font-size: 15px;">
-                        <a href="https://redpenjournaling.com/" target="_blank" style="color: #7E6BA8; text-decoration: underline; font-weight: 700;">赤ペンジャーナリング サイト</a><br>
-                        <a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: #7E6BA8; text-decoration: underline; margin-top: 5px; display: inline-block; font-weight: 700;">赤ペンジャーナリング note</a>
-                    </p>
+                    <p>アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。<a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">赤ペンジャーナリング</a>で、自分と対話してみるのもよいかもしれません。</p>
                     <p style="font-weight: 600; margin-bottom: 10px; margin-top: 20px;">考えるヒント</p>
                     <div class="journaling-prompt">
-                        ● 今回の診断で、一番ギャップを感じた領域は何でしたか？それはなぜだと思いますか？
+                        ● 来月注力したいのはどの領域？
                     </div>
                     <div class="journaling-prompt">
-                        ● 理想に近づけた領域は？その秘訣は何だと思いますか？
-                    </div>
-                    <div class="journaling-prompt">
-                        ● 明日から、どれか1つの領域で小さな一歩を踏み出すとしたら、何をしますか？
+                        ● 一番ギャップがある領域に対して小さな一歩を踏み出すなら？
                     </div>
                 </div>
 
                 <button class="share-button" onclick="shareToX()">𝕏 結果をXでシェア</button>
 
-                <p class="notice-text">今回は簡易版ですが、全150問と詳しい解説をつけた詳細版も用意しています。ぜひ楽しみにしていてください。</p>
+                <div class="mailing-list">
+                    <p>公開のお知らせを受け取りたい方はこちら。</p>
+                    <a class="mail-button" href="mailto:?subject=ライフアライメント診断 詳細版のお知らせ希望&body=ライフアライメント診断の詳細版のお知らせを希望します。">登録する</a>
+                </div>
 
                 <button class="button" onclick="location.reload()">もう一度診断する</button>
             </div>
@@ -845,12 +926,21 @@
         function drawRadarChart(percentages) {
             const canvas = document.getElementById('radarChart');
             const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = 120;
+            const displaySize = Math.min(canvas.parentElement.clientWidth - 8, 420);
+            const dpr = window.devicePixelRatio || 1;
+
+            canvas.style.width = `${displaySize}px`;
+            canvas.style.height = `${displaySize}px`;
+            canvas.width = Math.round(displaySize * dpr);
+            canvas.height = Math.round(displaySize * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const centerX = displaySize / 2;
+            const centerY = displaySize / 2;
+            const radius = displaySize * 0.3;
 
             // キャンバスをクリア
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, displaySize, displaySize);
 
             // カテゴリの順序（時計回り、12時スタート）
             const categories = [
@@ -898,19 +988,19 @@
                 }
             });
             ctx.closePath();
-            ctx.fillStyle = 'rgba(126, 106, 168, 0.2)';
+            ctx.fillStyle = 'rgba(0, 113, 227, 0.16)';
             ctx.fill();
-            ctx.strokeStyle = '#7E6BA8';
+            ctx.strokeStyle = '#0071e3';
             ctx.lineWidth = 2;
             ctx.stroke();
 
             // ラベルを描画
-            ctx.fillStyle = '#7E6BA8';
-            ctx.font = '18px "RocknRoll One", sans-serif';
+            ctx.fillStyle = '#0071e3';
+            ctx.font = '700 18px "LINE Seed JP", "Noto Sans JP", sans-serif';
             
             categories.forEach((cat, i) => {
                 const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
-                const labelRadius = radius + 10;
+                const labelRadius = radius + 18;
                 const x = centerX + Math.cos(angle) * labelRadius;
                 const y = centerY + Math.sin(angle) * labelRadius;
                 
@@ -982,13 +1072,13 @@ if (cat.label.includes('\n')) {
 
         function getDescription(percentage) {
             if (percentage >= 80) {
-                return 'だいぶ一致してそう。';
+                return '今の状態と理想がかなり近い領域です。自然に続けられていることや、自分に合っているやり方がありそうです。ここは、今の自分の強みとして受け取ってみて。';
             } else if (percentage >= 60) {
-                return 'よい感じ。少し見直すことでさらによくなる可能性も。';
+                return 'おおむね整っている領域です。大きなズレは少なそうですが、少しだけ気になる部分もあるかもしれません。もう一段心地よくするためのヒントにしてみて。';
             } else if (percentage >= 40) {
-                return '小さな一歩が大きな変化へ。';
+                return '今の自分と理想の間に、少しギャップが見えている領域です。すぐに変えようとしなくても、何が引っかかっているのかを見てみるとよさそうです。次に整えたい場所を探すつもりで眺めてみて。';
             } else {
-                return 'ギャップがけっこうあるかも。少しそのギャップを意識してみても。';
+                return '今は少し距離を感じやすい領域かもしれません。気になり続けていることや、本当は大事にしたいことが隠れている可能性もあります。まずは、今の自分の声を聞くきっかけにしてみて。';
             }
         }
 
