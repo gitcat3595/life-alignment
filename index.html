@@ -6,7 +6,7 @@
     <title>ライフアライメント診断 | Life Alignment Assessment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -43,6 +43,15 @@
             padding: 28px 18px;
             position: relative;
             overflow-x: hidden;
+        }
+
+        html[lang="en"] body,
+        html[lang="en"] h1,
+        html[lang="en"] h2,
+        html[lang="en"] h3,
+        html[lang="en"] button,
+        html[lang="en"] input {
+            font-family: 'DM Sans', 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         body::before,
@@ -1033,9 +1042,18 @@
         }
 
         .time-ring-main {
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.08em;
             font-size: clamp(30px, 7vw, 40px);
             font-weight: 600;
             letter-spacing: 0;
+        }
+
+        .time-ring-main .time-unit {
+            font-size: 0.62em;
+            font-weight: 600;
         }
 
         .time-ring-sub {
@@ -1507,7 +1525,7 @@
                             <span class="time-ring-icon">
                                 <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round;"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
                             </span>
-                            <div class="time-ring-main" id="timeMain">約1 分</div>
+                            <div class="time-ring-main" id="timeMain">約<span>1</span><span class="time-unit">分</span></div>
                             <div class="time-ring-sub" id="timeSub">全20問（各領域4問ずつ）</div>
                         </div>
                     </div>
@@ -1601,7 +1619,7 @@
                 completionTime: 'たった1 分で完了！',
                 categoryHeading: '診断内容',
                 timeHeading: '所要時間',
-                timeMain: '約1 分',
+                timeMain: '約<span>1</span><span class="time-unit">分</span>',
                 timeSub: '全20問（各領域4問ずつ）',
                 timeList1: '直感で答えるだけのかんたん設計',
                 timeList2: '選択式で迷わず回答できます',
@@ -1756,26 +1774,26 @@
                 {id: 'finance-4', category: '財務', question: 'お金のストレス', optionA: 'ほぼない', optionB: 'かなりある'}
             ],
             en: [
-                {id: 'health-1', category: '健康', question: 'When your alarm goes off in the morning', optionA: 'I can get up clearly', optionB: 'I keep wanting five more minutes'},
-                {id: 'health-2', category: '健康', question: 'At the station stairs', optionA: 'I usually take the stairs', optionB: 'I always choose the escalator'},
-                {id: 'health-3', category: '健康', question: 'Physically, these days', optionA: 'I still have energy', optionB: 'I get tired quickly'},
-                {id: 'health-4', category: '健康', question: 'Compared with your ideal health', optionA: 'Pretty close', optionB: 'There is a clear gap'},
-                {id: 'relationship-1', category: '人間関係', question: 'When you are heading home', optionA: 'I look forward to it', optionB: 'I feel a little heavy'},
-                {id: 'relationship-2', category: '人間関係', question: 'When you need someone to talk to', optionA: 'Someone comes to mind', optionB: 'No one comes to mind'},
-                {id: 'relationship-3', category: '人間関係', question: 'After meeting people', optionA: 'I feel glad I went', optionB: 'I feel drained'},
-                {id: 'relationship-4', category: '人間関係', question: 'Relationship friction', optionA: 'Rarely happens', optionB: 'Happens fairly often'},
-                {id: 'ambition-1', category: '野心', question: 'Your goals this year', optionA: 'I can see progress', optionB: 'Still far away'},
-                {id: 'ambition-2', category: '野心', question: 'A recent sense of achievement', optionA: 'Very recently', optionB: 'Hard to remember'},
-                {id: 'ambition-3', category: '野心', question: 'Your ideal career or path', optionA: 'I am moving closer', optionB: 'It still feels far'},
-                {id: 'ambition-4', category: '野心', question: 'When you think about the future', optionA: 'I feel excited', optionB: 'I feel anxious'},
-                {id: 'purpose-1', category: '使命', question: 'Your reason to get up in the morning', optionA: 'I have one', optionB: 'Not really'},
-                {id: 'purpose-2', category: '使命', question: 'Your work or role', optionA: 'It helps someone', optionB: 'I am not sure it matters'},
-                {id: 'purpose-3', category: '使命', question: 'Your sense of life direction', optionA: 'Clear in my own way', optionB: 'Still unclear'},
-                {id: 'purpose-4', category: '使命', question: 'Your work and values', optionA: 'They fit', optionB: 'They feel misaligned'},
-                {id: 'finance-1', category: '財務', question: 'Right before payday', optionA: 'I still feel okay', optionB: 'It feels tight'},
-                {id: 'finance-2', category: '財務', question: 'Money worries', optionA: 'Not much', optionB: 'Often on my mind'},
-                {id: 'finance-3', category: '財務', question: 'When you want something', optionA: 'I can choose freely', optionB: 'I usually hold back'},
-                {id: 'finance-4', category: '財務', question: 'Money-related stress', optionA: 'Almost none', optionB: 'Quite a lot'}
+                {id: 'health-1', category: '健康', question: 'Most mornings, I wake up feeling', optionA: 'Clear and ready', optionB: 'Heavy or still tired'},
+                {id: 'health-2', category: '健康', question: 'When I have a choice to move my body', optionA: 'I usually take it', optionB: 'I usually avoid it'},
+                {id: 'health-3', category: '健康', question: 'My energy through the day feels', optionA: 'Steady enough', optionB: 'Easily drained'},
+                {id: 'health-4', category: '健康', question: 'Compared with the health I want', optionA: 'I feel close', optionB: 'I feel a gap'},
+                {id: 'relationship-1', category: '人間関係', question: 'The people closest to me usually feel', optionA: 'Nourishing', optionB: 'Complicated'},
+                {id: 'relationship-2', category: '人間関係', question: 'When I need support', optionA: 'I know who to ask', optionB: 'I tend to handle it alone'},
+                {id: 'relationship-3', category: '人間関係', question: 'After spending time with people', optionA: 'I feel lighter', optionB: 'I feel drained'},
+                {id: 'relationship-4', category: '人間関係', question: 'In my relationships lately', optionA: 'Things feel mostly calm', optionB: 'There is recurring friction'},
+                {id: 'ambition-1', category: '野心', question: 'My current goals feel', optionA: 'Active and reachable', optionB: 'Distant or vague'},
+                {id: 'ambition-2', category: '野心', question: 'A recent win or sense of progress feels', optionA: 'Easy to name', optionB: 'Hard to remember'},
+                {id: 'ambition-3', category: '野心', question: 'My career or personal path feels', optionA: 'Like it is moving forward', optionB: 'Like it is on hold'},
+                {id: 'ambition-4', category: '野心', question: 'When I imagine my future', optionA: 'I feel curious or excited', optionB: 'I feel tense or unsure'},
+                {id: 'purpose-1', category: '使命', question: 'What I am responsible for feels', optionA: 'Clear enough', optionB: 'Unclear or scattered'},
+                {id: 'purpose-2', category: '使命', question: 'The work I do day to day feels', optionA: 'Useful to someone', optionB: 'Hard to connect to meaning'},
+                {id: 'purpose-3', category: '使命', question: 'My sense of direction in life feels', optionA: 'Clear in my own way', optionB: 'Still taking shape'},
+                {id: 'purpose-4', category: '使命', question: 'My daily choices and values feel', optionA: 'Mostly aligned', optionB: 'Somewhat out of sync'},
+                {id: 'finance-1', category: '財務', question: 'At the end of the month, money feels', optionA: 'Manageable', optionB: 'Tight'},
+                {id: 'finance-2', category: '財務', question: 'Money is something I think about', optionA: 'With relative calm', optionB: 'With frequent worry'},
+                {id: 'finance-3', category: '財務', question: 'When I want or need something', optionA: 'I feel some choice', optionB: 'I mostly hold back'},
+                {id: 'finance-4', category: '財務', question: 'My financial life currently feels', optionA: 'Mostly stable', optionB: 'Stressful'}
             ]
         };
 
@@ -1859,7 +1877,7 @@
             setText('categoryFinanceName', copy.categories.finance.name);
             setText('categoryFinanceDesc', copy.categories.finance.desc);
             setText('timeHeading', copy.timeHeading);
-            setText('timeMain', copy.timeMain);
+            setHtml('timeMain', copy.timeMain);
             setText('timeSub', copy.timeSub);
             setText('timeList1', copy.timeList1);
             setText('timeList2', copy.timeList2);
