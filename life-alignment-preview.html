@@ -1907,7 +1907,7 @@
 
         const SIGNUP_ENDPOINT = '';
         const SIGNUP_NOTIFY_EMAIL = 'nnsh774@gmail.com';
-        const GA_MEASUREMENT_ID = '';
+        const GA_MEASUREMENT_ID = 'G-1X88F6RQLZ';
 
         function initAnalytics() {
             if (!GA_MEASUREMENT_ID) return;
@@ -1916,14 +1916,15 @@
             window.gtag = function gtag() {
                 window.dataLayer.push(arguments);
             };
-            window.gtag('js', new Date());
-            window.gtag('config', GA_MEASUREMENT_ID, {
-                page_title: document.title,
-                page_location: window.location.href
-            });
-
             const script = document.createElement('script');
             script.async = true;
+            script.onload = () => {
+                window.gtag('js', new Date());
+                window.gtag('config', GA_MEASUREMENT_ID, {
+                    page_title: document.title,
+                    page_location: window.location.href
+                });
+            };
             script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
             document.head.appendChild(script);
         }
