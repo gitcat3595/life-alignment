@@ -965,7 +965,7 @@
         .preview-concept .category-card li {
             position: relative;
             display: grid;
-            grid-template-columns: 52px 1fr 18px;
+            grid-template-columns: 52px 1fr;
             align-items: center;
             column-gap: 16px;
             border-bottom: 1px solid var(--line);
@@ -973,12 +973,7 @@
         }
 
         .preview-concept .category-card li::after {
-            content: '›';
-            grid-column: 3;
-            grid-row: 1 / span 2;
-            color: var(--muted);
-            font-size: 24px;
-            justify-self: end;
+            content: none;
         }
 
         .category-icon {
