@@ -1361,7 +1361,7 @@
             <div class="hero-action">
                 <button class="button" onclick="startTest()">診断をはじめる</button>
                 <div class="diagnosis-counter" id="diagnosisCounter">
-                    <strong><span id="diagnosisCounterNumber">---</span>人</strong>が診断しました
+                    <strong><span id="diagnosisCounterNumber">0</span>人</strong>が診断しました
                     <span id="diagnosisCounterTime"></span>
                 </div>
                 <p style="font-size: 13px; margin-top: 14px;">入力内容は保存されません</p>
@@ -1564,6 +1564,7 @@
             document.getElementById('questionScreen').style.display = 'block';
             document.getElementById('progressContainer').style.display = 'block';
             document.getElementById('mainHeader').style.display = 'none';
+            trackEvent('diagnosis_start');
             showQuestion();
         }
 
@@ -1688,6 +1689,15 @@
 
             // 結果カード表示
             displayResultCards(percentages);
+
+            trackEvent('diagnosis_complete', {
+                overall_score: overallPercentage,
+                health_score: percentages['健康'],
+                relationship_score: percentages['人間関係'],
+                ambition_score: percentages['野心'],
+                purpose_score: percentages['使命'],
+                finance_score: percentages['財務']
+            });
         }
 
         function drawRadarChart(percentages) {
@@ -1897,6 +1907,31 @@
 
         const SIGNUP_ENDPOINT = '';
         const SIGNUP_NOTIFY_EMAIL = 'nnsh774@gmail.com';
+        const GA_MEASUREMENT_ID = '';
+
+        function initAnalytics() {
+            if (!GA_MEASUREMENT_ID) return;
+
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function gtag() {
+                window.dataLayer.push(arguments);
+            };
+            window.gtag('js', new Date());
+            window.gtag('config', GA_MEASUREMENT_ID, {
+                page_title: document.title,
+                page_location: window.location.href
+            });
+
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+            document.head.appendChild(script);
+        }
+
+        function trackEvent(name, parameters = {}) {
+            if (typeof window.gtag !== 'function') return;
+            window.gtag('event', name, parameters);
+        }
 
         function updateDiagnosisCounter() {
             const numberEl = document.getElementById('diagnosisCounterNumber');
@@ -1905,15 +1940,11 @@
 
             const now = new Date();
             const jstNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
-            const slot = Math.floor(jstNow.getTime() / (30 * 60 * 1000));
-            const seedSlot = Math.floor(new Date('2026-07-30T00:00:00+09:00').getTime() / (30 * 60 * 1000));
-            const elapsedSlots = Math.max(0, slot - seedSlot);
-            const count = 428 + elapsedSlots * 5 + ((slot * 7) % 4);
             const roundedMinutes = Math.floor(jstNow.getMinutes() / 30) * 30;
             const displayTime = new Date(jstNow);
             displayTime.setMinutes(roundedMinutes, 0, 0);
 
-            numberEl.textContent = count.toLocaleString('ja-JP');
+            numberEl.textContent = '0';
             timeEl.textContent = `${displayTime.toLocaleTimeString('ja-JP', {
                 hour: '2-digit',
                 minute: '2-digit',
@@ -1921,6 +1952,7 @@
             })} JST 更新`;
         }
 
+        initAnalytics();
         updateDiagnosisCounter();
         setInterval(updateDiagnosisCounter, 60 * 1000);
 
