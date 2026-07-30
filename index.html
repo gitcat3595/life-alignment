@@ -768,6 +768,7 @@
             justify-content: space-between;
             position: relative;
             z-index: 1;
+            margin-bottom: 34px;
         }
 
         .brand-mark {
@@ -791,9 +792,38 @@
         }
 
         .menu-dots {
+            display: none;
             color: var(--ink);
             font-size: 24px;
             line-height: 1;
+        }
+
+        .language-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .language-toggle button {
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 36px;
+            padding: 7px 9px;
+        }
+
+        .language-toggle button.is-active {
+            background: var(--accent-soft);
+            color: var(--accent-deep);
         }
 
         .hero-copy {
@@ -867,6 +897,12 @@
         .diagnosis-counter strong {
             color: var(--accent-dark);
             font-weight: 700;
+        }
+
+        .hero-note {
+            font-size: 13px;
+            margin-top: 14px;
+            color: var(--muted);
         }
 
         .preview-concept .content {
@@ -974,22 +1010,14 @@
         }
 
         .time-ring {
-            width: min(250px, 68vw);
-            aspect-ratio: 1;
-            margin: 8px auto 28px;
-            border-radius: 50%;
             display: grid;
-            place-items: center;
-            background: conic-gradient(from 20deg, var(--mint) 0%, var(--accent) 78%, var(--accent-soft) 78%, var(--accent-soft) 100%);
-            position: relative;
-        }
-
-        .time-ring::before {
-            content: '';
-            position: absolute;
-            inset: 15px;
-            border-radius: inherit;
-            background: var(--surface);
+            gap: 8px;
+            justify-items: center;
+            margin: 10px auto 24px;
+            padding: 24px 18px;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(242, 251, 249, 0.94), rgba(221, 247, 242, 0.56));
+            border: 1px solid var(--line);
         }
 
         .time-ring-content {
@@ -999,13 +1027,13 @@
 
         .time-ring-icon {
             display: block;
-            color: var(--ink);
+            color: var(--accent-dark);
             font-size: 27px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .time-ring-main {
-            font-size: clamp(34px, 7vw, 44px);
+            font-size: clamp(30px, 7vw, 40px);
             font-weight: 600;
             letter-spacing: 0;
         }
@@ -1077,21 +1105,43 @@
 
         .overall-ring {
             --score: 0;
+            --circumference: 301.59;
             width: 118px;
             height: 118px;
             border-radius: 50%;
             display: grid;
             place-items: center;
-            background: conic-gradient(var(--accent) calc(var(--score) * 1%), var(--accent-soft) 0);
+            background: #ffffff;
             position: relative;
         }
 
         .overall-ring::before {
-            content: '';
+            content: none;
+        }
+
+        .overall-ring svg {
             position: absolute;
-            inset: 12px;
-            border-radius: 50%;
-            background: #ffffff;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .overall-ring-track,
+        .overall-ring-progress {
+            fill: none;
+            stroke-width: 10;
+        }
+
+        .overall-ring-track {
+            stroke: var(--accent-soft);
+        }
+
+        .overall-ring-progress {
+            stroke: var(--accent);
+            stroke-linecap: round;
+            stroke-dasharray: var(--circumference);
+            stroke-dashoffset: var(--offset);
         }
 
         .overall-ring-content {
@@ -1273,12 +1323,13 @@
 
         .email-row button {
             min-height: 38px;
-            border: none;
+            border: 1.5px solid var(--accent);
             border-radius: 999px;
-            background: var(--gradient-brand);
-            color: #ffffff;
-            padding: 0 18px;
+            background: var(--surface);
+            color: var(--accent-dark);
+            padding: 0 16px;
             font-weight: 700;
+            font-size: 13px;
             font-family: inherit;
         }
 
@@ -1288,6 +1339,18 @@
             color: var(--accent-dark);
             font-size: 12px;
             font-weight: 600;
+        }
+
+        .site-footer {
+            padding: 20px 24px 26px;
+            color: var(--muted);
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: center;
+            border-top: 1px solid rgba(220, 234, 232, 0.7);
+            background: rgba(255, 255, 255, 0.72);
         }
 
         @media (max-width: 760px) {
@@ -1312,6 +1375,22 @@
 
             .deep-actions {
                 grid-template-columns: 1fr;
+            }
+
+            .deep-action-card {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+                gap: 12px;
+                padding: 20px 18px;
+            }
+
+            .deep-action-card > div:last-child {
+                width: 100%;
+            }
+
+            .deep-action-card h4 {
+                margin-bottom: 8px;
             }
 
             .email-row {
@@ -1347,23 +1426,22 @@
         <div class="header" id="mainHeader">
             <div class="brand-row">
                 <div class="brand-mark">LIFE ALIGNMENT</div>
-                <div class="menu-dots">☰</div>
+                <div class="language-toggle" aria-label="Language">
+                    <button type="button" data-lang-button="ja" onclick="setLanguage('ja')">JA</button>
+                    <button type="button" data-lang-button="en" onclick="setLanguage('en')">EN</button>
+                </div>
             </div>
             <div class="hero-copy">
                 <div class="hero-pill">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 13V9"/><path d="M12 13l3 2"/><path d="M9 3h6"/></svg>
-                    自分のバランスを5分で可視化
+                    <span id="heroPillText">自分のバランスを1 分で可視化</span>
                 </div>
-                <h1><span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？</h1>
-                <p>5つの領域から、今の自分のバランスを見てみる<br>かんたんなセルフチェックです。</p>
+                <h1 id="heroTitle"><span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？</h1>
+                <p id="heroLead">5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。</p>
             </div>
             <div class="hero-action">
-                <button class="button" onclick="startTest()">診断をはじめる</button>
-                <div class="diagnosis-counter" id="diagnosisCounter">
-                    <strong><span id="diagnosisCounterNumber">0</span>人</strong>が診断しました
-                    <span id="diagnosisCounterTime"></span>
-                </div>
-                <p style="font-size: 13px; margin-top: 14px;">入力内容は保存されません</p>
+                <button class="button" id="heroStartButton" onclick="startTest()">診断をはじめる</button>
+                <p class="hero-note" id="heroNote">入力内容は保存されません</p>
             </div>
         </div>
 
@@ -1377,71 +1455,71 @@
         <div class="content">
             <!-- Start Screen -->
             <div class="start-screen" id="startScreen">
-                <p>5つの領域から、今の自分のバランスを見てみる<br>かんたんなセルフチェックです。</p>
+                <p id="startLead">5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。</p>
 
-                <div class="completion-time">たった5分で完了！</div>
+                <div class="completion-time" id="completionTime">たった1 分で完了！</div>
 
                 <div class="info-box category-card">
-                    <h3>診断内容</h3>
+                    <h3 id="categoryHeading">診断内容</h3>
                     <ul>
                         <li>
                             <div class="category-icon">
                                 <svg viewBox="0 0 24 24"><path d="M20.4 5.6c-1.6-1.5-4.1-1.4-5.6.2L12 8.8 9.2 5.8C7.7 4.2 5.2 4.1 3.6 5.6 2 7.1 1.9 9.7 3.4 11.3L12 20l8.6-8.7c1.5-1.6 1.4-4.2-.2-5.7z"/></svg>
                             </div>
-                            <div class="category-name">健康（HEALTH）</div>
-                            <div class="category-desc">身体的、メンタル的なウェルビーイング</div>
+                            <div class="category-name" id="categoryHealthName">健康（HEALTH）</div>
+                            <div class="category-desc" id="categoryHealthDesc">身体的、メンタル的なウェルビーイング</div>
                         </li>
                         <li>
                             <div class="category-icon">
                                 <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3.5 19c.8-3 2.6-4.5 5-4.5s4.2 1.5 5 4.5"/><path d="M13.5 16c.8-1.5 2-2.2 3.7-2.2 1.9 0 3.2 1 3.8 3"/></svg>
                             </div>
-                            <div class="category-name">人間関係（RELATIONSHIP）</div>
-                            <div class="category-desc">パートナー、家族、友人、仕事やコミュニティーなどのつながり</div>
+                            <div class="category-name" id="categoryRelationshipName">人間関係（RELATIONSHIP）</div>
+                            <div class="category-desc" id="categoryRelationshipDesc">パートナー、家族、友人、仕事やコミュニティーなどのつながり</div>
                         </li>
                         <li>
                             <div class="category-icon">
                                 <svg viewBox="0 0 24 24"><path d="M6 20V4"/><path d="M6 5h10l-1.5 4L16 13H6"/></svg>
                             </div>
-                            <div class="category-name">目標（AMBITION）</div>
-                            <div class="category-desc">自己実現ややりたいこと</div>
+                            <div class="category-name" id="categoryAmbitionName">目標（AMBITION）</div>
+                            <div class="category-desc" id="categoryAmbitionDesc">自己実現ややりたいこと</div>
                         </li>
                         <li>
                             <div class="category-icon">
                                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M15.5 8.5l-2.2 5.1-4.8 1.9 2.2-5.1 4.8-1.9z"/></svg>
                             </div>
-                            <div class="category-name">使命（PURPOSE）</div>
-                            <div class="category-desc">負っている義務ややるべきこと</div>
+                            <div class="category-name" id="categoryPurposeName">使命（PURPOSE）</div>
+                            <div class="category-desc" id="categoryPurposeDesc">負っている義務ややるべきこと</div>
                         </li>
                         <li>
                             <div class="category-icon">
                                 <svg viewBox="0 0 24 24"><path d="M4 7.5h14.5A2.5 2.5 0 0 1 21 10v8H6.5A2.5 2.5 0 0 1 4 15.5v-8z"/><path d="M4 7.5V6a2 2 0 0 1 2-2h12"/><path d="M16 13h5"/></svg>
                             </div>
-                            <div class="category-name">お金（FINANCE）</div>
-                            <div class="category-desc">経済的な安定や自由</div>
+                            <div class="category-name" id="categoryFinanceName">お金（FINANCE）</div>
+                            <div class="category-desc" id="categoryFinanceDesc">経済的な安定や自由</div>
                         </li>
                     </ul>
                 </div>
 
                 <div class="info-box time-card">
-                    <h3>所要時間</h3>
+                    <h3 id="timeHeading">所要時間</h3>
                     <div class="time-ring">
                         <div class="time-ring-content">
                             <span class="time-ring-icon">
                                 <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round;"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
                             </span>
-                            <div class="time-ring-main">3〜5分</div>
-                            <div class="time-ring-sub">全20問（各領域4問ずつ）</div>
+                            <div class="time-ring-main" id="timeMain">約1 分</div>
+                            <div class="time-ring-sub" id="timeSub">全20問（各領域4問ずつ）</div>
                         </div>
                     </div>
                     <div class="time-list">
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>直感で答えるだけのかんたん設計</div>
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>選択式で迷わず回答できます</div>
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>途中保存なしでサクッと完了</div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList1">直感で答えるだけのかんたん設計</span></div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList2">選択式で迷わず回答できます</span></div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList3">途中保存なしでサクッと完了</span></div>
                     </div>
-                    <button class="button" onclick="startTest()">診断をはじめる</button>
+                    <button class="button" id="timeStartButton" onclick="startTest()">診断をはじめる</button>
                 </div>
 
-                <button class="button" onclick="startTest()">診断してみる</button>
+                <button class="button" id="startButton" onclick="startTest()">診断してみる</button>
             </div>
 
             <!-- Question Screen -->
@@ -1454,12 +1532,12 @@
             <!-- Result Screen -->
             <div class="result-screen" id="resultScreen">
                 <div class="result-header">
-                    <h2>ライフアライメント診断結果</h2>
-                    <p>あなたの理想と現実のアライメント状態</p>
+                    <h2 id="resultTitle">ライフアライメント<br>診断結果</h2>
+                    <p id="resultLead">あなたの理想と現実のアライメント状態</p>
                 </div>
 
                 <div class="radar-chart-container">
-                    <h3 style="font-family: 'Noto Sans JP', 'Inter', sans-serif;">ライフアセスメント診断結果</h3>
+                    <h3 id="radarTitle" style="font-family: 'Noto Sans JP', 'Inter', sans-serif;">ライフアセスメント診断結果</h3>
                     <canvas id="radarChart" width="400" height="400"></canvas>
                 </div>
 
@@ -1468,13 +1546,13 @@
                 <div id="resultCards"></div>
 
                 <div class="journaling-section">
-                    <h3>さらに深めるなら</h3>
-                    <p>アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。<a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">赤ペンジャーナリング</a>で、自分と対話してみるのもよいかもしれません。</p>
-                    <p style="font-weight: 600; margin-bottom: 10px; margin-top: 20px;">考えるヒント</p>
+                    <h3 id="deepenTitle">さらに深めるなら</h3>
+                    <p id="deepenLead">アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。<a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">赤ペンジャーナリング</a>で、自分と対話してみるのもよいかもしれません。</p>
+                    <p id="promptHeading" style="font-weight: 600; margin-bottom: 10px; margin-top: 20px;">考えるヒント</p>
                     <div class="journaling-prompt">
-                        <div>● 5つの領域の全体バランスはどう？</div>
-                        <div>● 来月注力したいのはどの領域？</div>
-                        <div>● なにか小さなアクションをするなら？</div>
+                        <div id="prompt1">・5つの領域の全体バランスはどう？</div>
+                        <div id="prompt2">・来月注力したいのはどの領域？</div>
+                        <div id="prompt3">・なにか小さなアクションをするなら？</div>
                     </div>
                     <div class="deep-actions">
                         <div class="deep-action-card">
@@ -1482,9 +1560,9 @@
                                 <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M5 12v7h14v-7"/></svg>
                             </div>
                             <div>
-                                <h4>結果をシェアする</h4>
-                                <p>X（旧Twitter）でシェアして、気づきを周りと共有しよう</p>
-                                <button class="button-outline" onclick="shareToX()">Xでシェアする</button>
+                                <h4 id="shareTitle">結果をシェアする</h4>
+                                <p id="shareLead">X（旧Twitter）でシェアして、気づきを周りと共有しよう</p>
+                                <button class="button-outline" id="shareButton" onclick="shareToX()">Xでシェアする</button>
                             </div>
                         </div>
                         <div class="deep-action-card">
@@ -1492,11 +1570,11 @@
                                 <svg viewBox="0 0 24 24"><path d="M4 8l8 5 8-5"/><rect x="4" y="6" width="16" height="12" rx="2"/></svg>
                             </div>
                             <div>
-                                <h4>お知らせを受け取る</h4>
-                                <p>詳細診断やアップデートがリリースされたらお知らせします</p>
+                                <h4 id="signupTitle">お知らせを受け取る</h4>
+                                <p id="signupLead">詳細診断やアップデートがリリースされたらお知らせします</p>
                                 <form class="email-row" onsubmit="handleSignup(event)">
-                                    <input type="email" name="email" autocomplete="email" placeholder="メールアドレスを入力" required>
-                                    <button type="submit">登録する</button>
+                                    <input type="email" id="emailInput" name="email" autocomplete="email" placeholder="メールアドレスを入力" required>
+                                    <button type="submit" id="signupButton">登録する</button>
                                 </form>
                                 <div class="signup-status" aria-live="polite"></div>
                             </div>
@@ -1504,46 +1582,203 @@
                     </div>
                 </div>
 
-                <button class="button" onclick="location.reload()">もう一度診断する</button>
+                <button class="button" id="retryButton" onclick="location.reload()">もう一度診断する</button>
             </div>
         </div>
+        <footer class="site-footer">© 2026 LIFE ALIGNMENT. All rights reserved.</footer>
     </div>
 
     <script>
-        // 質問データ（20問：各カテゴリ4問ずつ）
-        const questions = [
-            // 健康（4問）
-            {category: "健康", question: "朝、目覚ましが鳴ったら", optionA: "スッキリ起きられる", optionB: "あと5分...が止まらない"},
-            {category: "健康", question: "駅の階段、どうしている", optionA: "階段で行く派", optionB: "エスカレーター一択"},
-            {category: "健康", question: "体力的に", optionA: "まだまだいける", optionB: "すぐバテる"},
-            {category: "健康", question: "健康面、理想と比べると", optionA: "かなり近い", optionB: "結構ギャップがある"},
-            
-            // 人間関係（4問）
-            {category: "人間関係", question: "家に帰る時", optionA: "楽しみ", optionB: "ちょっと憂鬱"},
-            {category: "人間関係", question: "困った時、相談できる人", optionA: "すぐ顔が浮かぶ", optionB: "思いつかない"},
-            {category: "人間関係", question: "人と会った後", optionA: "楽しかった", optionB: "どっと疲れた"},
-            {category: "人間関係", question: "人間関係のトラブル", optionA: "ほぼない", optionB: "けっこうある"},
-            
-            // 野心・目標達成（4問）
-            {category: "野心", question: "今年の目標", optionA: "達成できそう", optionB: "まだまだ"},
-            {category: "野心", question: "最近、達成感味わった？", optionA: "つい最近", optionB: "思い出せない"},
-            {category: "野心", question: "理想のキャリア", optionA: "近づいている", optionB: "まだ遠い"},
-            {category: "野心", question: "将来を考えると", optionA: "ワクワクする", optionB: "不安になる"},
-            
-            // 使命・意義（4問）
-            {category: "使命", question: "朝起きる理由", optionA: "ある", optionB: "ない"},
-            {category: "使命", question: "自分の仕事", optionA: "誰かの役に立っている", optionB: "意味あるのか不明"},
-            {category: "使命", question: "人生の目的", optionA: "自分なりに明確", optionB: "見つかってない"},
-            {category: "使命", question: "仕事と価値観", optionA: "合っている", optionB: "ズレている"},
-            
-            // 財務・お金（4問）
-            {category: "財務", question: "給料日前", optionA: "余裕がある", optionB: "カツカツ"},
-            {category: "財務", question: "お金の心配", optionA: "していない", optionB: "いつもしている"},
-            {category: "財務", question: "欲しいもの", optionA: "迷わず買える", optionB: "我慢する"},
-            {category: "財務", question: "お金のストレス", optionA: "ほぼない", optionB: "かなりある"}
-        ];
+        const I18N = {
+            ja: {
+                pageTitle: 'ライフアライメント診断 | Life Alignment Assessment',
+                heroPillText: '自分のバランスを1 分で可視化',
+                heroTitle: '<span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？',
+                heroLead: '5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。',
+                heroStartButton: '診断をはじめる',
+                heroNote: '入力内容は保存されません',
+                startLead: '5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。',
+                completionTime: 'たった1 分で完了！',
+                categoryHeading: '診断内容',
+                timeHeading: '所要時間',
+                timeMain: '約1 分',
+                timeSub: '全20問（各領域4問ずつ）',
+                timeList1: '直感で答えるだけのかんたん設計',
+                timeList2: '選択式で迷わず回答できます',
+                timeList3: '途中保存なしでサクッと完了',
+                timeStartButton: '診断をはじめる',
+                startButton: '診断してみる',
+                nextButton: '次へ',
+                progress: (current, total) => `質問 ${current} / ${total}`,
+                sliderLabel: 'あなたの今に最も近いものを選んでください',
+                resultTitle: 'ライフアライメント<br>診断結果',
+                resultLead: 'あなたの理想と現実のアライメント状態',
+                radarTitle: 'ライフアセスメント診断結果',
+                scoreLabel: '総合スコア',
+                deepenTitle: 'さらに深めるなら',
+                deepenLead: 'アライメント診断の結果はどうでしたか？この診断結果をもとに、ノートに書き出してさらに考えを深めてみても。<a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">赤ペンジャーナリング</a>で、自分と対話してみるのもよいかもしれません。',
+                promptHeading: '考えるヒント',
+                prompt1: '・5つの領域の全体バランスはどう？',
+                prompt2: '・来月注力したいのはどの領域？',
+                prompt3: '・なにか小さなアクションをするなら？',
+                shareTitle: '結果をシェアする',
+                shareLead: 'X（旧Twitter）でシェアして、気づきを周りと共有しよう',
+                shareButton: 'Xでシェアする',
+                signupTitle: 'お知らせを受け取る',
+                signupLead: '詳細診断やアップデートがリリースされたらお知らせします',
+                emailPlaceholder: 'メールアドレスを入力',
+                signupButton: '登録する',
+                retryButton: 'もう一度診断する',
+                signupSending: '登録しています...',
+                signupPending: '登録先の設定後に送信されます。',
+                signupThanks: '登録ありがとうございます。',
+                signupError: '送信できませんでした。少し時間をおいて再度お試しください。',
+                shareText: '「今」と「理想」のギャップを診断してみた！\n\nライフアライメント診断で、自分の5つの領域をチェック。',
+                categories: {
+                    health: { name: '健康（HEALTH）', resultName: '健康', radar: '健康', desc: '身体的、メンタル的なウェルビーイング' },
+                    relationship: { name: '人間関係（RELATIONSHIP）', resultName: '人間関係', radar: '人間\n関係', desc: 'パートナー、家族、友人、仕事やコミュニティーなどのつながり', resultDesc: '家族、友人、パートナーシップなど' },
+                    ambition: { name: '目標（AMBITION）', resultName: '目標', radar: '目標', desc: '自己実現ややりたいこと' },
+                    purpose: { name: '使命（PURPOSE）', resultName: '使命', radar: '使命', desc: '負っている義務ややるべきこと' },
+                    finance: { name: 'お金（FINANCE）', resultName: 'お金', radar: 'お金', desc: '経済的な安定や自由' }
+                },
+                overallTitles: [
+                    [80, 'バランスはかなり良好です'],
+                    [60, 'バランスはまずまず良好です'],
+                    [40, '整えたい領域が見えてきています'],
+                    [0, '今の自分を見直すタイミングかもしれません']
+                ],
+                overallDescriptions: [
+                    [80, '今の自分に合っている選択や習慣が多そうです。よい状態を保つために、うまくいっている理由を言葉にしてみても。'],
+                    [60, '強みを伸ばしながら、ギャップのある領域を少しずつ整えていきましょう。'],
+                    [40, '全部を一度に変えなくても大丈夫です。来月注力したい領域を一つ選ぶところから始めてみても。'],
+                    [0, '気になっていることの奥に、本当は大事にしたいものがあるかもしれません。まずは小さなアクションを一つ考えてみましょう。']
+                ],
+                descriptions: [
+                    [80, '今の状態と理想がかなり近い領域です。自然に続けられていることや、自分に合っているやり方がありそうです。ここは、今の自分の強みとして受け取ってみて。'],
+                    [60, 'おおむね整っている領域です。大きなズレは少なそうですが、少しだけ気になる部分もあるかもしれません。もう一段心地よくするためのヒントにしてみて。'],
+                    [40, '今の自分と理想の間に、少しギャップが見えている領域です。すぐに変えようとしなくても、何が引っかかっているのかを見てみるとよさそうです。次に整えたい場所を探すつもりで眺めてみて。'],
+                    [0, '今は少し距離を感じやすい領域かもしれません。気になり続けていることや、本当は大事にしたいことが隠れている可能性もあります。まずは、今の自分の声を聞くきっかけにしてみて。']
+                ]
+            },
+            en: {
+                pageTitle: 'Life Alignment Assessment',
+                heroPillText: 'See your balance in 1 minute',
+                heroTitle: 'How aligned are<br>your <span class="title-accent">now</span> and<br>your <span class="title-accent">ideal</span>?',
+                heroLead: 'A simple self-check across five areas of life to see where your balance is today.',
+                heroStartButton: 'Start now',
+                heroNote: 'Your answers are not saved',
+                startLead: 'A simple self-check across five areas of life to see where your balance is today.',
+                completionTime: 'Done in just 1 minute',
+                categoryHeading: 'What It Covers',
+                timeHeading: 'Time Needed',
+                timeMain: 'About 1 min',
+                timeSub: '20 questions, 4 per area',
+                timeList1: 'Designed for quick, intuitive answers',
+                timeList2: 'Simple choices, no overthinking needed',
+                timeList3: 'Finish in one sitting, no saved drafts',
+                timeStartButton: 'Start now',
+                startButton: 'Start now',
+                nextButton: 'Next',
+                progress: (current, total) => `Question ${current} / ${total}`,
+                sliderLabel: 'Choose what feels closest to your current state',
+                resultTitle: 'Life Alignment<br>Results',
+                resultLead: 'Your current alignment between now and ideal',
+                radarTitle: 'Life Alignment Results',
+                scoreLabel: 'Overall score',
+                deepenTitle: 'To Go a Little Deeper',
+                deepenLead: 'How did your result feel? You might write it out in a notebook and use it as a starting point for reflection. If you read Japanese, <a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">Red Pen Journaling</a> may also help you continue the conversation with yourself.',
+                promptHeading: 'Reflection Prompts',
+                prompt1: '・How does your overall balance feel?',
+                prompt2: '・Which area do you want to focus on next month?',
+                prompt3: '・What is one small action you could take?',
+                shareTitle: 'Share Your Result',
+                shareLead: 'Share on X and let your insight travel a little further.',
+                shareButton: 'Share on X',
+                signupTitle: 'Get Updates',
+                signupLead: 'Receive updates when deeper assessments or resources are released.',
+                emailPlaceholder: 'Enter your email',
+                signupButton: 'Sign up',
+                retryButton: 'Take it again',
+                signupSending: 'Submitting...',
+                signupPending: 'This will send after the signup destination is configured.',
+                signupThanks: 'Thank you for signing up.',
+                signupError: 'Could not send. Please try again in a little while.',
+                shareText: 'I checked the gap between my now and my ideal.\n\nTry the Life Alignment Assessment across five areas of life.',
+                categories: {
+                    health: { name: 'Health', resultName: 'Health', radar: 'Health', desc: 'Physical and mental well-being' },
+                    relationship: { name: 'Relationships', resultName: 'Relationships', radar: 'Relation\nships', desc: 'Connection with partners, family, friends, work, and community', resultDesc: 'Family, friends, partnerships, and community' },
+                    ambition: { name: 'Ambition', resultName: 'Ambition', radar: 'Ambition', desc: 'Self-realization and what you want to pursue' },
+                    purpose: { name: 'Purpose', resultName: 'Purpose', radar: 'Purpose', desc: 'Responsibilities, obligations, and what you feel called to do' },
+                    finance: { name: 'Finance', resultName: 'Finance', radar: 'Finance', desc: 'Financial stability, ease, and freedom' }
+                },
+                overallTitles: [
+                    [80, 'Your balance looks quite strong'],
+                    [60, 'Your balance looks fairly steady'],
+                    [40, 'Some areas may be asking for attention'],
+                    [0, 'This may be a good moment to check in']
+                ],
+                overallDescriptions: [
+                    [80, 'Many of your choices and habits seem to fit the life you want. You might look at what is working and name why it supports you.'],
+                    [60, 'There are solid areas to build on, with a few gaps you can gently adjust over time.'],
+                    [40, 'You do not need to change everything at once. Try choosing one area to focus on next month.'],
+                    [0, 'The areas that feel uneasy may be pointing toward something you care about. Start by naming one small action that feels possible.']
+                ],
+                descriptions: [
+                    [80, 'This area seems closely aligned with your ideal. There may be routines, choices, or relationships here that already support you well. Treat it as one of your current strengths.'],
+                    [60, 'This area looks generally steady. There may still be one or two small things that would make it feel better. Use this as a gentle hint for refinement.'],
+                    [40, 'There may be a visible gap between where things are now and where you would like them to be. You do not need to fix it all right away; just notice what feels unresolved.'],
+                    [0, 'This area may feel a little distant from your ideal right now. Something important may be underneath that feeling. Use this as a quiet prompt to listen to yourself.']
+                ]
+            }
+        };
 
-        // 質問をシャッフルして混ぜる
+        const QUESTION_BANK = {
+            ja: [
+                {id: 'health-1', category: '健康', question: '朝、目覚ましが鳴ったら', optionA: 'スッキリ起きられる', optionB: 'あと5分...が止まらない'},
+                {id: 'health-2', category: '健康', question: '駅の階段、どうしている', optionA: '階段で行く派', optionB: 'エスカレーター一択'},
+                {id: 'health-3', category: '健康', question: '体力的に', optionA: 'まだまだいける', optionB: 'すぐバテる'},
+                {id: 'health-4', category: '健康', question: '健康面、理想と比べると', optionA: 'かなり近い', optionB: '結構ギャップがある'},
+                {id: 'relationship-1', category: '人間関係', question: '家に帰る時', optionA: '楽しみ', optionB: 'ちょっと憂鬱'},
+                {id: 'relationship-2', category: '人間関係', question: '困った時、相談できる人', optionA: 'すぐ顔が浮かぶ', optionB: '思いつかない'},
+                {id: 'relationship-3', category: '人間関係', question: '人と会った後', optionA: '楽しい気分', optionB: 'どっと疲れる'},
+                {id: 'relationship-4', category: '人間関係', question: '人間関係のトラブル', optionA: 'ほぼない', optionB: 'けっこうある'},
+                {id: 'ambition-1', category: '野心', question: '今年の目標', optionA: '達成できそう', optionB: 'まだまだ'},
+                {id: 'ambition-2', category: '野心', question: '最近、達成感味わった？', optionA: 'つい最近', optionB: '思い出せない'},
+                {id: 'ambition-3', category: '野心', question: '理想のキャリア', optionA: '近づいている', optionB: 'まだ遠い'},
+                {id: 'ambition-4', category: '野心', question: '将来を考えると', optionA: 'ワクワクする', optionB: '不安になる'},
+                {id: 'purpose-1', category: '使命', question: '朝起きる理由', optionA: 'ある', optionB: 'ない'},
+                {id: 'purpose-2', category: '使命', question: '自分の仕事', optionA: '誰かの役に立っている', optionB: '意味あるのか不明'},
+                {id: 'purpose-3', category: '使命', question: '人生の目的', optionA: '自分なりに明確', optionB: '見つかっていない'},
+                {id: 'purpose-4', category: '使命', question: '仕事と価値観', optionA: '合っている', optionB: 'ズレている'},
+                {id: 'finance-1', category: '財務', question: '給料日前', optionA: '余裕がある', optionB: 'カツカツ'},
+                {id: 'finance-2', category: '財務', question: 'お金の心配', optionA: 'していない', optionB: 'いつもしている'},
+                {id: 'finance-3', category: '財務', question: '欲しいもの', optionA: '迷わず買える', optionB: '我慢する'},
+                {id: 'finance-4', category: '財務', question: 'お金のストレス', optionA: 'ほぼない', optionB: 'かなりある'}
+            ],
+            en: [
+                {id: 'health-1', category: '健康', question: 'When your alarm goes off in the morning', optionA: 'I can get up clearly', optionB: 'I keep wanting five more minutes'},
+                {id: 'health-2', category: '健康', question: 'At the station stairs', optionA: 'I usually take the stairs', optionB: 'I always choose the escalator'},
+                {id: 'health-3', category: '健康', question: 'Physically, these days', optionA: 'I still have energy', optionB: 'I get tired quickly'},
+                {id: 'health-4', category: '健康', question: 'Compared with your ideal health', optionA: 'Pretty close', optionB: 'There is a clear gap'},
+                {id: 'relationship-1', category: '人間関係', question: 'When you are heading home', optionA: 'I look forward to it', optionB: 'I feel a little heavy'},
+                {id: 'relationship-2', category: '人間関係', question: 'When you need someone to talk to', optionA: 'Someone comes to mind', optionB: 'No one comes to mind'},
+                {id: 'relationship-3', category: '人間関係', question: 'After meeting people', optionA: 'I feel glad I went', optionB: 'I feel drained'},
+                {id: 'relationship-4', category: '人間関係', question: 'Relationship friction', optionA: 'Rarely happens', optionB: 'Happens fairly often'},
+                {id: 'ambition-1', category: '野心', question: 'Your goals this year', optionA: 'I can see progress', optionB: 'Still far away'},
+                {id: 'ambition-2', category: '野心', question: 'A recent sense of achievement', optionA: 'Very recently', optionB: 'Hard to remember'},
+                {id: 'ambition-3', category: '野心', question: 'Your ideal career or path', optionA: 'I am moving closer', optionB: 'It still feels far'},
+                {id: 'ambition-4', category: '野心', question: 'When you think about the future', optionA: 'I feel excited', optionB: 'I feel anxious'},
+                {id: 'purpose-1', category: '使命', question: 'Your reason to get up in the morning', optionA: 'I have one', optionB: 'Not really'},
+                {id: 'purpose-2', category: '使命', question: 'Your work or role', optionA: 'It helps someone', optionB: 'I am not sure it matters'},
+                {id: 'purpose-3', category: '使命', question: 'Your sense of life direction', optionA: 'Clear in my own way', optionB: 'Still unclear'},
+                {id: 'purpose-4', category: '使命', question: 'Your work and values', optionA: 'They fit', optionB: 'They feel misaligned'},
+                {id: 'finance-1', category: '財務', question: 'Right before payday', optionA: 'I still feel okay', optionB: 'It feels tight'},
+                {id: 'finance-2', category: '財務', question: 'Money worries', optionA: 'Not much', optionB: 'Often on my mind'},
+                {id: 'finance-3', category: '財務', question: 'When you want something', optionA: 'I can choose freely', optionB: 'I usually hold back'},
+                {id: 'finance-4', category: '財務', question: 'Money-related stress', optionA: 'Almost none', optionB: 'Quite a lot'}
+            ]
+        };
+
         function shuffleArray(array) {
             const newArray = [...array];
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -1553,10 +1788,115 @@
             return newArray;
         }
 
-        const shuffledQuestions = shuffleArray(questions);
+        function detectInitialLanguage() {
+            const savedLanguage = localStorage.getItem('lifeAlignmentLanguage');
+            if (savedLanguage === 'ja' || savedLanguage === 'en') return savedLanguage;
 
+            const browserLanguages = navigator.languages && navigator.languages.length
+                ? navigator.languages
+                : [navigator.language || ''];
+            return browserLanguages.some(lang => lang.toLowerCase().startsWith('ja')) ? 'ja' : 'en';
+        }
+
+        let currentLanguage = detectInitialLanguage();
+        let shuffledQuestionIds = shuffleArray(QUESTION_BANK.ja.map(question => question.id));
         let currentQuestionIndex = 0;
         let answers = [];
+        let latestPercentages = null;
+        let latestOverallPercentage = null;
+
+        function t() {
+            return I18N[currentLanguage];
+        }
+
+        function setText(id, value) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+        }
+
+        function setHtml(id, value) {
+            const element = document.getElementById(id);
+            if (element) element.innerHTML = value;
+        }
+
+        function getQuestionById(id) {
+            return QUESTION_BANK[currentLanguage].find(question => question.id === id);
+        }
+
+        function setLanguage(language) {
+            currentLanguage = language;
+            localStorage.setItem('lifeAlignmentLanguage', language);
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const copy = t();
+            document.documentElement.lang = currentLanguage;
+            document.title = copy.pageTitle;
+
+            document.querySelectorAll('[data-lang-button]').forEach(button => {
+                const isActive = button.dataset.langButton === currentLanguage;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+
+            setText('heroPillText', copy.heroPillText);
+            setHtml('heroTitle', copy.heroTitle);
+            setText('heroLead', copy.heroLead);
+            setText('heroStartButton', copy.heroStartButton);
+            setText('heroNote', copy.heroNote);
+            setText('startLead', copy.startLead);
+            setText('completionTime', copy.completionTime);
+            setText('categoryHeading', copy.categoryHeading);
+            setText('categoryHealthName', copy.categories.health.name);
+            setText('categoryHealthDesc', copy.categories.health.desc);
+            setText('categoryRelationshipName', copy.categories.relationship.name);
+            setText('categoryRelationshipDesc', copy.categories.relationship.desc);
+            setText('categoryAmbitionName', copy.categories.ambition.name);
+            setText('categoryAmbitionDesc', copy.categories.ambition.desc);
+            setText('categoryPurposeName', copy.categories.purpose.name);
+            setText('categoryPurposeDesc', copy.categories.purpose.desc);
+            setText('categoryFinanceName', copy.categories.finance.name);
+            setText('categoryFinanceDesc', copy.categories.finance.desc);
+            setText('timeHeading', copy.timeHeading);
+            setText('timeMain', copy.timeMain);
+            setText('timeSub', copy.timeSub);
+            setText('timeList1', copy.timeList1);
+            setText('timeList2', copy.timeList2);
+            setText('timeList3', copy.timeList3);
+            setText('timeStartButton', copy.timeStartButton);
+            setText('startButton', copy.startButton);
+            setText('nextButton', copy.nextButton);
+            setHtml('resultTitle', copy.resultTitle);
+            setText('resultLead', copy.resultLead);
+            setText('radarTitle', copy.radarTitle);
+            setText('deepenTitle', copy.deepenTitle);
+            setHtml('deepenLead', copy.deepenLead);
+            setText('promptHeading', copy.promptHeading);
+            setText('prompt1', copy.prompt1);
+            setText('prompt2', copy.prompt2);
+            setText('prompt3', copy.prompt3);
+            setText('shareTitle', copy.shareTitle);
+            setText('shareLead', copy.shareLead);
+            setText('shareButton', copy.shareButton);
+            setText('signupTitle', copy.signupTitle);
+            setText('signupLead', copy.signupLead);
+            setText('signupButton', copy.signupButton);
+            setText('retryButton', copy.retryButton);
+
+            const emailInput = document.getElementById('emailInput');
+            if (emailInput) emailInput.placeholder = copy.emailPlaceholder;
+
+            if (document.getElementById('questionScreen').style.display === 'block') {
+                showQuestion();
+            }
+
+            if (latestPercentages) {
+                drawRadarChart(latestPercentages);
+                displayOverallSummary(latestOverallPercentage);
+                displayResultCards(latestPercentages);
+            }
+        }
 
         function startTest() {
             document.getElementById('startScreen').style.display = 'none';
@@ -1568,7 +1908,8 @@
         }
 
         function showQuestion() {
-            const question = shuffledQuestions[currentQuestionIndex];
+            const question = getQuestionById(shuffledQuestionIds[currentQuestionIndex]);
+            const copy = t();
 
             document.getElementById('questionNumber').textContent = `Q${currentQuestionIndex + 1}`;
             document.getElementById('questionText').textContent = question.question;
@@ -1590,7 +1931,7 @@
 
             const sliderHtml = `
                 <div class="slider-container">
-                    <div class="slider-label">あなたの今に最も近いものを選んでください</div>
+                    <div class="slider-label">${copy.sliderLabel}</div>
                     <div class="slider-wrapper">
                         <div class="slider-end-label label-a">A</div>
                         <div class="slider">
@@ -1618,10 +1959,9 @@
             const container = document.querySelector('.choice-container');
             container.insertAdjacentHTML('afterend', sliderHtml);
 
-            // プログレスバー更新
-            const progress = ((currentQuestionIndex) / shuffledQuestions.length) * 100;
+            const progress = ((currentQuestionIndex) / shuffledQuestionIds.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `質問 ${currentQuestionIndex + 1} / ${shuffledQuestions.length}`;
+            document.getElementById('progressText').textContent = copy.progress(currentQuestionIndex + 1, shuffledQuestionIds.length);
 
             document.getElementById('nextButton').disabled = true;
         }
@@ -1634,7 +1974,7 @@
             options[selectedIndex].classList.add('selected');
 
             answers[currentQuestionIndex] = {
-                category: shuffledQuestions[currentQuestionIndex].category,
+                category: getQuestionById(shuffledQuestionIds[currentQuestionIndex]).category,
                 score: score
             };
             document.getElementById('nextButton').disabled = false;
@@ -1643,7 +1983,7 @@
         function nextQuestion() {
             currentQuestionIndex++;
 
-            if (currentQuestionIndex >= shuffledQuestions.length) {
+            if (currentQuestionIndex >= shuffledQuestionIds.length) {
                 showResults();
             } else {
                 showQuestion();
@@ -1680,13 +2020,13 @@
                 Object.values(categoryScores).reduce((sum, cat) => sum + cat.total, 0) /
                 Object.values(categoryScores).reduce((sum, cat) => sum + cat.max, 0) * 100
             );
+            latestPercentages = percentages;
+            latestOverallPercentage = overallPercentage;
 
-            // レーダーチャート描画
             drawRadarChart(percentages);
 
             displayOverallSummary(overallPercentage);
 
-            // 結果カード表示
             displayResultCards(percentages);
 
             trackEvent('diagnosis_complete', {
@@ -1700,6 +2040,7 @@
         }
 
         function drawRadarChart(percentages) {
+            const copy = t();
             const canvas = document.getElementById('radarChart');
             const ctx = canvas.getContext('2d');
             const displaySize = Math.min(canvas.parentElement.clientWidth - 8, 440);
@@ -1720,11 +2061,11 @@
 
             // カテゴリの順序（時計回り、12時スタート）
             const categories = [
-                { name: '健康', label: '健康' },
-                { name: '財務', label: 'お金' },
-                { name: '野心', label: '目標' },
-                { name: '使命', label: '使命' },
-                { name: '人間関係', label: '人間関係' }
+                { name: '健康', label: copy.categories.health.radar },
+                { name: '財務', label: copy.categories.finance.radar },
+                { name: '野心', label: copy.categories.ambition.radar },
+                { name: '使命', label: copy.categories.purpose.radar },
+                { name: '人間関係', label: copy.categories.relationship.radar }
             ];
 
             function pointFor(index, pointRadius) {
@@ -1822,13 +2163,21 @@
                     labelY = base.y - 16;
                 }
 
+                function drawLabel(label, x, y) {
+                    const lines = label.split('\n');
+                    lines.forEach((line, index) => {
+                        ctx.fillText(line, x, y + (index * 16));
+                    });
+                    return y + (lines.length * 16);
+                }
+
                 ctx.fillStyle = '#1C3843';
                 ctx.font = '650 14px "Noto Sans JP", "Inter", sans-serif';
-                ctx.fillText(cat.label, labelX, labelY);
+                const percentY = drawLabel(cat.label, labelX, labelY) + 2;
 
                 ctx.fillStyle = '#138E8A';
                 ctx.font = '700 13px "Inter", "Noto Sans JP", sans-serif';
-                ctx.fillText(`${percentages[cat.name]}%`, labelX, labelY + 18);
+                ctx.fillText(`${percentages[cat.name]}%`, labelX, percentY);
 
             });
         }
@@ -1836,11 +2185,17 @@
         function displayOverallSummary(overallPercentage) {
             const summaryDiv = document.getElementById('overallSummary');
             if (!summaryDiv) return;
+            const ringCircumference = 301.59;
+            const ringOffset = ringCircumference - (ringCircumference * overallPercentage / 100);
 
             summaryDiv.innerHTML = `
-                <div class="overall-ring" style="--score: ${overallPercentage}">
+                <div class="overall-ring" style="--score: ${overallPercentage}; --offset: ${ringOffset}">
+                    <svg viewBox="0 0 118 118" aria-hidden="true">
+                        <circle class="overall-ring-track" cx="59" cy="59" r="48"></circle>
+                        <circle class="overall-ring-progress" cx="59" cy="59" r="48"></circle>
+                    </svg>
                     <div class="overall-ring-content">
-                        <span>総合スコア</span>
+                        <span>${t().scoreLabel}</span>
                         ${overallPercentage}%
                     </div>
                 </div>
@@ -1852,27 +2207,22 @@
         }
 
         function getOverallTitle(percentage) {
-            if (percentage >= 80) return 'バランスはかなり良好です';
-            if (percentage >= 60) return 'バランスはまずまず良好です';
-            if (percentage >= 40) return '整えたい領域が見えてきています';
-            return '今の自分を見直すタイミングかもしれません';
+            return t().overallTitles.find(([threshold]) => percentage >= threshold)[1];
         }
 
         function getOverallDescription(percentage) {
-            if (percentage >= 80) return '今の自分に合っている選択や習慣が多そうです。よい状態を保つために、うまくいっている理由を言葉にしてみても。';
-            if (percentage >= 60) return '強みを伸ばしながら、ギャップのある領域を少しずつ整えていきましょう。';
-            if (percentage >= 40) return '全部を一度に変えなくても大丈夫です。来月注力したい領域を一つ選ぶところから始めてみても。';
-            return '気になっていることの奥に、本当は大事にしたいものがあるかもしれません。まずは小さなアクションを一つ考えてみましょう。';
+            return t().overallDescriptions.find(([threshold]) => percentage >= threshold)[1];
         }
 
         function displayResultCards(percentages) {
             const resultCardsDiv = document.getElementById('resultCards');
+            const copy = t();
             const categoryMap = {
-                '健康': { class: 'health', name: '健康', desc: '身体的、メンタル的なウェルビーイング' },
-                '人間関係': { class: 'relationships', name: '人間関係', desc: '家族、友人、パートナーシップなど' },
-                '野心': { class: 'ambition', name: '目標', desc: '自己実現ややりたいこと' },
-                '使命': { class: 'purpose', name: '使命', desc: '負っている義務ややるべきこと' },
-                '財務': { class: 'finance', name: 'お金', desc: '経済的な安定や自由' }
+                '健康': { class: 'health', name: copy.categories.health.resultName, desc: copy.categories.health.desc },
+                '人間関係': { class: 'relationships', name: copy.categories.relationship.resultName, desc: copy.categories.relationship.resultDesc || copy.categories.relationship.desc },
+                '野心': { class: 'ambition', name: copy.categories.ambition.resultName, desc: copy.categories.ambition.desc },
+                '使命': { class: 'purpose', name: copy.categories.purpose.resultName, desc: copy.categories.purpose.desc },
+                '財務': { class: 'finance', name: copy.categories.finance.resultName, desc: copy.categories.finance.desc }
             };
 
             let html = '';
@@ -1903,18 +2253,10 @@
         }
 
         function getDescription(percentage) {
-            if (percentage >= 80) {
-                return '今の状態と理想がかなり近い領域です。自然に続けられていることや、自分に合っているやり方がありそうです。ここは、今の自分の強みとして受け取ってみて。';
-            } else if (percentage >= 60) {
-                return 'おおむね整っている領域です。大きなズレは少なそうですが、少しだけ気になる部分もあるかもしれません。もう一段心地よくするためのヒントにしてみて。';
-            } else if (percentage >= 40) {
-                return '今の自分と理想の間に、少しギャップが見えている領域です。すぐに変えようとしなくても、何が引っかかっているのかを見てみるとよさそうです。次に整えたい場所を探すつもりで眺めてみて。';
-            } else {
-                return '今は少し距離を感じやすい領域かもしれません。気になり続けていることや、本当は大事にしたいことが隠れている可能性もあります。まずは、今の自分の声を聞くきっかけにしてみて。';
-            }
+            return t().descriptions.find(([threshold]) => percentage >= threshold)[1];
         }
 
-        const SIGNUP_ENDPOINT = '';
+        const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0E4ngvbWz-K7jbN5yLtVYLZpS1kKnKTxbXQfM_EGi5-iMa6xuZVBAEV5F73ACnZgx/exec';
         const SIGNUP_NOTIFY_EMAIL = 'nnsh774@gmail.com';
         const GA_MEASUREMENT_ID = 'G-1X88F6RQLZ';
 
@@ -1943,28 +2285,8 @@
             window.gtag('event', name, parameters);
         }
 
-        function updateDiagnosisCounter() {
-            const numberEl = document.getElementById('diagnosisCounterNumber');
-            const timeEl = document.getElementById('diagnosisCounterTime');
-            if (!numberEl || !timeEl) return;
-
-            const now = new Date();
-            const jstNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
-            const roundedMinutes = Math.floor(jstNow.getMinutes() / 30) * 30;
-            const displayTime = new Date(jstNow);
-            displayTime.setMinutes(roundedMinutes, 0, 0);
-
-            numberEl.textContent = '0';
-            timeEl.textContent = `${displayTime.toLocaleTimeString('ja-JP', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-            })} JST 更新`;
-        }
-
+        applyLanguage();
         initAnalytics();
-        updateDiagnosisCounter();
-        setInterval(updateDiagnosisCounter, 60 * 1000);
 
         async function handleSignup(event) {
             event.preventDefault();
@@ -1974,11 +2296,11 @@
             const email = new FormData(form).get('email');
 
             submitButton.disabled = true;
-            status.textContent = '登録しています...';
+            status.textContent = t().signupSending;
             localStorage.setItem('lifeAlignmentSignupEmail', email);
 
             if (!SIGNUP_ENDPOINT) {
-                status.textContent = '登録先の設定後に送信されます。';
+                status.textContent = t().signupPending;
                 submitButton.disabled = false;
                 return;
             }
@@ -1995,17 +2317,17 @@
                         submittedAt: new Date().toISOString()
                     })
                 });
-                status.textContent = '登録ありがとうございます。';
+                status.textContent = t().signupThanks;
                 form.reset();
             } catch (error) {
-                status.textContent = '送信できませんでした。少し時間をおいて再度お試しください。';
+                status.textContent = t().signupError;
             } finally {
                 submitButton.disabled = false;
             }
         }
 
         function shareToX() {
-            const text = '「今」と「理想」のギャップを診断してみた！\n\nライフアライメント診断で、自分の5つの領域をチェック。';
+            const text = t().shareText;
             const url = window.location.href;
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
             window.open(twitterUrl, '_blank');
