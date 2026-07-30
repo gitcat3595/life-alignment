@@ -1628,7 +1628,7 @@
                 progress: (current, total) => `質問 ${current} / ${total}`,
                 sliderLabel: 'あなたの今に最も近いものを選んでください',
                 resultTitle: 'ライフアライメント<br>診断結果',
-                resultLead: 'あなたの理想と現実のアライメント状態',
+                resultLead: 'あなたの理想と現状との一致度合い',
                 radarTitle: 'ライフアセスメント診断結果',
                 scoreLabel: '総合スコア',
                 deepenTitle: 'さらに深めるなら',
@@ -1698,7 +1698,7 @@
                 progress: (current, total) => `Question ${current} / ${total}`,
                 sliderLabel: 'Choose what feels closest to your current state',
                 resultTitle: 'Life Alignment<br>Results',
-                resultLead: 'Your current alignment between now and ideal',
+                resultLead: 'How closely your current life matches your ideal',
                 radarTitle: 'Life Alignment Results',
                 scoreLabel: 'Overall score',
                 deepenTitle: 'To Go a Little Deeper',
@@ -2147,52 +2147,70 @@
 
             // ラベルとパーセントを描画
             categories.forEach((cat, i) => {
-                const labelRadius = radius + 16;
+                const isEnglish = currentLanguage === 'en';
+                const labelRadius = radius + (isEnglish && (i === 1 || i === 4) ? 6 : 16);
                 const base = pointFor(i, labelRadius);
                 let labelX = base.x;
                 let labelY = base.y;
+                let labelAlign = 'center';
                 
                 // 位置に応じてアライメントを調整
                 if (i === 0) { // 上（健康）
-                    ctx.textAlign = 'center';
+                    labelAlign = 'center';
                     ctx.textBaseline = 'bottom';
                     labelY = base.y - 4;
                 } else if (i === 1) { // 右上（お金）
-                    ctx.textAlign = 'left';
+                    labelAlign = 'left';
                     ctx.textBaseline = 'top';
-                    labelX = base.x + 8;
+                    labelX = base.x + (isEnglish ? 4 : 8);
                     labelY = base.y - 16;
                 } else if (i === 2) { // 右下（目標）
-                    ctx.textAlign = 'left';
+                    labelAlign = 'left';
                     ctx.textBaseline = 'top';
                     labelX = base.x + 8;
                     labelY = base.y - 2;
                 } else if (i === 3) { // 左下（使命）
-                    ctx.textAlign = 'right';
+                    labelAlign = 'right';
                     ctx.textBaseline = 'top';
                     labelX = base.x - 8;
                     labelY = base.y - 2;
                 } else if (i === 4) { // 左上（人間関係）
-                    ctx.textAlign = 'right';
+                    labelAlign = 'right';
                     ctx.textBaseline = 'top';
-                    labelX = base.x - 8;
+                    labelX = base.x - (isEnglish ? 4 : 8);
                     labelY = base.y - 16;
                 }
 
                 function drawLabel(label, x, y) {
                     const lines = label.split('\n');
+                    const lineHeight = isEnglish ? 14 : 16;
                     lines.forEach((line, index) => {
-                        ctx.fillText(line, x, y + (index * 16));
+                        ctx.fillText(line, x, y + (index * lineHeight));
                     });
-                    return y + (lines.length * 16);
+                    return y + (lines.length * lineHeight);
                 }
 
                 ctx.fillStyle = '#1C3843';
-                ctx.font = '650 14px "Noto Sans JP", "Inter", sans-serif';
+                ctx.font = isEnglish
+                    ? '600 12px "DM Sans", "Inter", sans-serif'
+                    : '650 14px "Noto Sans JP", "Inter", sans-serif';
+                const labelLines = cat.label.split('\n');
+                const maxLabelWidth = Math.max(...labelLines.map(line => ctx.measureText(line).width));
+                const canvasPadding = 6;
+                if (labelAlign === 'left') {
+                    labelX = Math.min(labelX, displaySize - maxLabelWidth - canvasPadding);
+                } else if (labelAlign === 'right') {
+                    labelX = Math.max(labelX, maxLabelWidth + canvasPadding);
+                } else {
+                    labelX = Math.min(Math.max(labelX, maxLabelWidth / 2 + canvasPadding), displaySize - maxLabelWidth / 2 - canvasPadding);
+                }
+                ctx.textAlign = labelAlign;
                 const percentY = drawLabel(cat.label, labelX, labelY) + 2;
 
                 ctx.fillStyle = '#138E8A';
-                ctx.font = '700 13px "Inter", "Noto Sans JP", sans-serif';
+                ctx.font = isEnglish
+                    ? '700 12px "DM Sans", "Inter", sans-serif'
+                    : '700 13px "Inter", "Noto Sans JP", sans-serif';
                 ctx.fillText(`${percentages[cat.name]}%`, labelX, percentY);
 
             });
