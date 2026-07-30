@@ -277,6 +277,7 @@
             font-weight: 600;
             color: var(--ink);
             margin-bottom: 6px;
+            overflow-wrap: anywhere;
         }
 
         .category-desc {
@@ -1207,6 +1208,8 @@
         .result-title-block {
             display: grid;
             gap: 3px;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .result-area-desc {
@@ -1677,15 +1680,15 @@
                 pageTitle: 'Life Alignment Assessment',
                 heroPillText: 'See your life balance in 1 minute',
                 heroTitle: 'How aligned are<br>your <span class="title-accent">now</span> and<br>your <span class="title-accent">ideal</span>?',
-                heroLead: 'A quick self-check to see your life balance today.',
+                heroLead: 'A quick self-check across five life domains.',
                 heroStartButton: 'Start now',
                 heroNote: 'Your answers are not saved',
-                startLead: 'A quick self-check to see your life balance today.',
+                startLead: 'A quick self-check across five life domains.',
                 completionTime: 'Done in just 1 minute',
-                categoryHeading: 'What It Covers',
+                categoryHeading: '5 Domains of Life',
                 timeHeading: 'Time Needed',
-                timeMain: 'About 1 min',
-                timeSub: '20 questions, 4 per area',
+                timeMain: '1 minute',
+                timeSub: '20 questions, 4 per domain',
                 timeList1: 'Designed for quick, intuitive answers',
                 timeList2: 'Simple choices, no overthinking needed',
                 timeList3: 'Finish in one sitting, no saved drafts',
@@ -1702,7 +1705,7 @@
                 deepenLead: 'How did your result feel? You might write it out in a notebook and use it as a starting point for reflection. If you read Japanese, <a href="https://note.com/kelly_note/m/m2cf113b038a0" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 700;">Red Pen Journaling</a> may also help you continue the conversation with yourself.',
                 promptHeading: 'Reflection Prompts',
                 prompt1: '・How does your overall balance feel?',
-                prompt2: '・Which area do you want to focus on next month?',
+                prompt2: '・Which domain do you want to focus on next month?',
                 prompt3: '・What is one small action you could take?',
                 shareTitle: 'Share Your Result',
                 shareLead: 'Share on X and let your insight travel a little further.',
@@ -1719,7 +1722,7 @@
                 shareText: 'I checked the gap between my now and my ideal.\n\nTry the Life Alignment Assessment and see your life balance in 1 minute.',
                 categories: {
                     health: { name: 'Health', resultName: 'Health', radar: 'Health', desc: 'Physical and mental well-being' },
-                    relationship: { name: 'Relationships', resultName: 'Relationships', radar: 'Relation\nships', desc: 'Connection with partners, family, friends, work, and community', resultDesc: 'Family, friends, partnerships, and community' },
+                    relationship: { name: 'Relationships', resultName: 'Relationships', radar: 'Relation\n-ships', desc: 'Connection with partners, family, friends, work, and community', resultDesc: 'Family, friends, partnerships, and community' },
                     ambition: { name: 'Ambition', resultName: 'Ambition', radar: 'Ambition', desc: 'Self-realization and what you want to pursue' },
                     purpose: { name: 'Purpose', resultName: 'Purpose', radar: 'Purpose', desc: 'Responsibilities, obligations, and what you feel called to do' },
                     finance: { name: 'Finance', resultName: 'Finance', radar: 'Finance', desc: 'Financial stability, ease, and freedom' }
@@ -1727,20 +1730,20 @@
                 overallTitles: [
                     [80, 'Your balance looks quite strong'],
                     [60, 'Your balance looks fairly steady'],
-                    [40, 'Some areas may be asking for attention'],
+                    [40, 'Some domains may be asking for attention'],
                     [0, 'This may be a good moment to check in']
                 ],
                 overallDescriptions: [
                     [80, 'Many of your choices and habits seem to fit the life you want. You might look at what is working and name why it supports you.'],
-                    [60, 'There are solid areas to build on, with a few gaps you can gently adjust over time.'],
-                    [40, 'You do not need to change everything at once. Try choosing one area to focus on next month.'],
-                    [0, 'The areas that feel uneasy may be pointing toward something you care about. Start by naming one small action that feels possible.']
+                    [60, 'There are solid domains to build on, with a few gaps you can gently adjust over time.'],
+                    [40, 'You do not need to change everything at once. Try choosing one domain to focus on next month.'],
+                    [0, 'The domains that feel uneasy may be pointing toward something you care about. Start by naming one small action that feels possible.']
                 ],
                 descriptions: [
-                    [80, 'This area seems closely aligned with your ideal. There may be routines, choices, or relationships here that already support you well. Treat it as one of your current strengths.'],
-                    [60, 'This area looks generally steady. There may still be one or two small things that would make it feel better. Use this as a gentle hint for refinement.'],
+                    [80, 'This domain seems closely aligned with your ideal. There may be routines, choices, or relationships here that already support you well. Treat it as one of your current strengths.'],
+                    [60, 'This domain looks generally steady. There may still be one or two small things that would make it feel better. Use this as a gentle hint for refinement.'],
                     [40, 'There may be a visible gap between where things are now and where you would like them to be. You do not need to fix it all right away; just notice what feels unresolved.'],
-                    [0, 'This area may feel a little distant from your ideal right now. Something important may be underneath that feeling. Use this as a quiet prompt to listen to yourself.']
+                    [0, 'This domain may feel a little distant from your ideal right now. Something important may be underneath that feeling. Use this as a quiet prompt to listen to yourself.']
                 ]
             }
         };
