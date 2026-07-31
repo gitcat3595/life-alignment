@@ -489,6 +489,125 @@
             background: var(--accent);
         }
 
+        .paid-question-meta {
+            text-align: center;
+            color: var(--accent-dark);
+            font-size: 13px;
+            font-weight: 700;
+            margin: -24px 0 26px;
+        }
+
+        .paid-rating-panel {
+            display: grid;
+            gap: 18px;
+            margin: 0 0 34px;
+        }
+
+        .paid-rating-row {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--surface);
+            padding: 16px;
+        }
+
+        .paid-rating-label {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .paid-rating-help {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .paid-rating-options {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .paid-rating-option {
+            min-height: 42px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            color: var(--muted);
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .paid-rating-option.selected {
+            background: var(--gradient-brand);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .subscore-section {
+            margin-top: 24px;
+        }
+
+        .subscore-section h3 {
+            color: var(--ink);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .subscore-card {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface);
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .subscore-card .result-bar {
+            height: 7px;
+            background: var(--accent-soft);
+        }
+
+        .subscore-card .result-bar-fill {
+            background: #61D5C5;
+            opacity: 0.82;
+        }
+
+        .subscore-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .monthly-theme-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--accent-light);
+            padding: 20px;
+            margin: 0 0 18px;
+        }
+
+        .monthly-theme-card h3 {
+            color: var(--ink);
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .monthly-theme-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
         .result-screen {
             display: none;
         }
@@ -1006,6 +1125,49 @@
             border-bottom: none;
         }
 
+        .paid-assessment-card {
+            grid-column: 1 / -1;
+        }
+
+        .paid-assessment-card .paid-copy {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        .paid-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .paid-feature {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--accent-light);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .paid-feature strong {
+            display: block;
+            color: var(--accent-dark);
+            font-size: 18px;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .paid-feature span {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
         .time-card {
             text-align: center;
         }
@@ -1246,7 +1408,7 @@
 
         .deep-actions {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 18px;
             margin-top: 24px;
             text-align: left;
@@ -1375,6 +1537,10 @@
             }
 
             .preview-concept .start-screen {
+                grid-template-columns: 1fr;
+            }
+
+            .paid-feature-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1623,6 +1789,15 @@
                 timeList2: '選択式で迷わず回答できます',
                 timeList3: '途中保存なしでサクッと完了',
                 timeStartButton: '診断をはじめる',
+                paidHeading: '個人向け詳細版',
+                paidLead: '毎月、自分の現在地を見直すための45問アセスメント。5つの領域を15の視点に分けて、A/Bのバー回答から今月の小さな行動につなげます。',
+                paidFeature1Value: '45問',
+                paidFeature1Label: 'A/Bバー回答',
+                paidFeature2Value: '15',
+                paidFeature2Label: 'サブスコア',
+                paidFeature3Value: '¥1,000',
+                paidFeature3Label: 'note/PDF想定',
+                paidStartButton: '詳細版をはじめる',
                 startButton: '診断してみる',
                 nextButton: '次へ',
                 progress: (current, total) => `質問 ${current} / ${total}`,
@@ -1641,9 +1816,12 @@
                 shareLead: 'X（旧Twitter）でシェアして、気づきを周りと共有しよう',
                 shareButton: 'Xでシェアする',
                 signupTitle: 'お知らせを受け取る',
-                signupLead: '詳細診断やアップデートがリリースされたらお知らせします',
+                signupLead: 'アップデートがリリースされたらお知らせします',
                 emailPlaceholder: 'メールアドレスを入力',
                 signupButton: '登録する',
+                pdfTitle: '詳細診断PDF',
+                pdfLead: '45問の個人向け詳細版、5領域の定義、リフレクション問いをPDFで保存できます。',
+                pdfButton: 'PDFをダウンロード',
                 retryButton: 'もう一度診断する',
                 signupSending: '登録しています...',
                 signupPending: '登録先の設定後に送信されます。',
@@ -1693,6 +1871,15 @@
                 timeList2: 'Simple choices, no overthinking needed',
                 timeList3: 'Finish in one sitting, no saved drafts',
                 timeStartButton: 'Start now',
+                paidHeading: 'Personal Detailed Version',
+                paidLead: 'A 45-question monthly assessment using simple A/B slider answers across five life domains and 15 lenses.',
+                paidFeature1Value: '45 Qs',
+                paidFeature1Label: 'A/B slider',
+                paidFeature2Value: '15',
+                paidFeature2Label: 'sub-scores',
+                paidFeature3Value: '¥1,000',
+                paidFeature3Label: 'note/PDF idea',
+                paidStartButton: 'Start detailed version',
                 startButton: 'Start now',
                 nextButton: 'Next',
                 progress: (current, total) => `Question ${current} / ${total}`,
@@ -1711,9 +1898,12 @@
                 shareLead: 'Share on X and let your insight travel a little further.',
                 shareButton: 'Share on X',
                 signupTitle: 'Get Updates',
-                signupLead: 'Receive updates when deeper assessments or resources are released.',
+                signupLead: 'Receive updates when new resources are released.',
                 emailPlaceholder: 'Enter your email',
                 signupButton: 'Sign up',
+                pdfTitle: 'Detailed Assessment PDF',
+                pdfLead: 'Save the 45-question personal version, domain definitions, and reflection prompts as a PDF.',
+                pdfButton: 'Download PDF',
                 retryButton: 'Take it again',
                 signupSending: 'Submitting...',
                 signupPending: 'This will send after the signup destination is configured.',
@@ -1795,6 +1985,103 @@
             ]
         };
 
+        const PAID_QUESTION_BANK = {
+            ja: [
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'健康', subdomain:'体調・エネルギー', question:'最近の気分や体調は', optionA:'安定している', optionB:'波が大きい'},
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'健康', subdomain:'体調・エネルギー', question:'朝起きたとき', optionA:'ある程度エネルギーがある', optionB:'すでに疲れている'},
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'健康', subdomain:'体調・エネルギー', question:'今の生活は心身に', optionA:'合っている感じがする', optionB:'少し無理がある'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'健康', subdomain:'生活リズム・健康習慣', question:'生活リズムは', optionA:'自分に合っている', optionB:'崩れがち'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'健康', subdomain:'生活リズム・健康習慣', question:'健康のためにしていることは', optionA:'何かしらある', optionB:'ほとんどない'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'健康', subdomain:'生活リズム・健康習慣', question:'眠る時間や休む時間を', optionA:'大切にできている', optionB:'後回しにしがち'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'健康', subdomain:'回復・メンタル安定', question:'疲れたとき', optionA:'休むことができる', optionB:'つい無理してしまう'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'健康', subdomain:'回復・メンタル安定', question:'忙しい中でも', optionA:'自分を整える時間がある', optionB:'自分のことは後回し'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'健康', subdomain:'回復・メンタル安定', question:'ストレスを感じたとき', optionA:'自分なりの整え方がある', optionB:'そのまま溜まりがち'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'人間関係', subdomain:'安心できるつながり', question:'安心して話せる人は', optionA:'いる', optionB:'あまり思いつかない'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'人間関係', subdomain:'安心できるつながり', question:'人と会った後は', optionA:'あたたかい気持ちになる', optionB:'どっと疲れる'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'人間関係', subdomain:'安心できるつながり', question:'人との関係の中で', optionA:'自分らしくいられる', optionB:'気を遣いすぎる'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'人間関係', subdomain:'境界線・距離感', question:'大切な人との距離感は', optionA:'ちょうどいい', optionB:'近すぎる/遠すぎる'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'人間関係', subdomain:'境界線・距離感', question:'人との関係で', optionA:'無理せずいられる', optionB:'合わせすぎてしまう'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'人間関係', subdomain:'境界線・距離感', question:'人の期待に対して', optionA:'自分の気持ちも大切にできる', optionB:'応えなきゃと思いすぎる'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'人間関係', subdomain:'助けを求める力', question:'必要なとき', optionA:'誰かの助けを求められる', optionB:'自分で抱えがち'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'人間関係', subdomain:'助けを求める力', question:'しんどいことは', optionA:'誰かと分かち合える', optionB:'一人で処理する'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'人間関係', subdomain:'助けを求める力', question:'困ったとき相談できる場所は', optionA:'ある', optionB:'ほとんどない'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'目標', subdomain:'やりたいこと', question:'今やりたいことは', optionA:'少しずつ見えている', optionB:'かなりぼんやりしている'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'目標', subdomain:'やりたいこと', question:'今月大切にしたいことは', optionA:'ある程度わかっている', optionB:'よくわからない'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'目標', subdomain:'やりたいこと', question:'将来を考えると', optionA:'少し楽しみがある', optionB:'不安が先にくる'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'目標', subdomain:'目標への前進', question:'やりたいことに向けて', optionA:'小さく行動できている', optionB:'考えるだけで止まりがち'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'目標', subdomain:'目標への前進', question:'今月の自分は', optionA:'少し前に進んだ', optionB:'同じところを回っている'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'目標', subdomain:'目標への前進', question:'新しいことを', optionA:'何か試せている', optionB:'まだ試せていない'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'目標', subdomain:'夢・自己実現', question:'自分の成長につながる時間は', optionA:'取れている', optionB:'後回しになっている'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'目標', subdomain:'夢・自己実現', question:'人と比べることは', optionA:'あまり引っ張られない', optionB:'つい比べてしまう'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'目標', subdomain:'夢・自己実現', question:'今の努力は未来に', optionA:'つながっている感じがある', optionB:'つながりが見えにくい'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'使命', subdomain:'義務・責任', question:'今担っている役割は', optionA:'理解できている', optionB:'散らかっている感じがする'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'使命', subdomain:'義務・責任', question:'家族や仕事への責任に', optionA:'自分なりの納得感がある', optionB:'背負わされている感じがある'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'使命', subdomain:'義務・責任', question:'やるべきことを', optionA:'自分で選んでいる感覚がある', optionB:'追われている感じが強い'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'使命', subdomain:'自分の意思', question:'今の生活や仕事は価値観と', optionA:'大きくズレていない', optionB:'ズレを感じる'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'使命', subdomain:'自分の意思', question:'迷ったとき', optionA:'自分なりの判断軸がある', optionB:'人の期待に流されがち'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'使命', subdomain:'自分の意思', question:'自分の本音は', optionA:'見失わずにいられる', optionB:'後回しになりがち'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'使命', subdomain:'世の中への貢献', question:'今やっていることに', optionA:'意味を感じる瞬間がある', optionB:'何のためかわからなくなる'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'使命', subdomain:'世の中への貢献', question:'自分の役割は', optionA:'誰かの役に立っている感じがある', optionB:'役に立っている実感が薄い'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'使命', subdomain:'世の中への貢献', question:'責任や役割との向き合い方は', optionA:'健やかに向き合えている', optionB:'重たく感じる'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'お金', subdomain:'安定（現在の入りと出）', question:'今のお金の状態は', optionA:'ある程度把握できている', optionB:'あまり見えていない'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'お金', subdomain:'安定（現在の入りと出）', question:'収入・支出・貯蓄のバランスは', optionA:'見直せている', optionB:'見ないままになりがち'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'お金', subdomain:'安定（現在の入りと出）', question:'お金のことを', optionA:'避けずに見られる', optionB:'なるべく見たくない'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'お金', subdomain:'安心感（将来への備え）', question:'将来のお金を考えると', optionA:'最低限の安心感がある', optionB:'けっこう不安になる'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'お金', subdomain:'安心感（将来への備え）', question:'日々のお金の使い方に', optionA:'大きな不安は少ない', optionB:'不安が出やすい'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'お金', subdomain:'安心感（将来への備え）', question:'お金の不安は日常の判断を', optionA:'支配しすぎていない', optionB:'かなり左右している'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'お金', subdomain:'自由（使い方とメンタリティ）', question:'必要な学びや体験にお金を使うことを', optionA:'許可できる', optionB:'罪悪感が出やすい'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'お金', subdomain:'自由（使い方とメンタリティ）', question:'お金だけでなく価値観に合う選択も', optionA:'考えられている', optionB:'お金だけで決めがち'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'お金', subdomain:'自由（使い方とメンタリティ）', question:'今月のお金との関係は', optionA:'少し安心感がある', optionB:'振り回されている感じがある'}
+            ],
+            en: [
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'Health', subdomain:'Energy and Physical State', question:'Lately, my mood and physical condition feel', optionA:'Steady enough', optionB:'Very up and down'},
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'Health', subdomain:'Energy and Physical State', question:'When I wake up in the morning', optionA:'I have some energy', optionB:'I already feel tired'},
+                {domainKey:'健康', subdomainKey:'体調・エネルギー', domain:'Health', subdomain:'Energy and Physical State', question:'My current lifestyle feels', optionA:'Supportive for my body and mind', optionB:'A little too much for me'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'Health', subdomain:'Rhythm and Health Habits', question:'My daily rhythm feels', optionA:'Suited to me', optionB:'Often disrupted'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'Health', subdomain:'Rhythm and Health Habits', question:'For my health, I', optionA:'Do something regularly', optionB:'Do very little right now'},
+                {domainKey:'健康', subdomainKey:'生活リズム・健康習慣', domain:'Health', subdomain:'Rhythm and Health Habits', question:'Sleep and rest time are things I', optionA:'Can value and protect', optionB:'Often push aside'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'Health', subdomain:'Recovery and Emotional Steadiness', question:'When I am tired', optionA:'I can rest', optionB:'I push through'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'Health', subdomain:'Recovery and Emotional Steadiness', question:'Even when I am busy', optionA:'I have time to reset', optionB:'I put myself last'},
+                {domainKey:'健康', subdomainKey:'回復・メンタル安定', domain:'Health', subdomain:'Recovery and Emotional Steadiness', question:'When I feel stressed', optionA:'I have a way to regulate', optionB:'It tends to build up'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'Relationships', subdomain:'Supportive Connection', question:'Someone I can talk to safely', optionA:'Comes to mind', optionB:'Is hard to think of'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'Relationships', subdomain:'Supportive Connection', question:'After spending time with people', optionA:'I often feel warm or supported', optionB:'I often feel drained'},
+                {domainKey:'人間関係', subdomainKey:'安心できるつながり', domain:'Relationships', subdomain:'Supportive Connection', question:'In my relationships, I can', optionA:'Be myself', optionB:'Over-adjust myself'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'Relationships', subdomain:'Boundaries and Distance', question:'My distance with important people feels', optionA:'About right', optionB:'Too close or too far'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'Relationships', subdomain:'Boundaries and Distance', question:'In relationships, I can', optionA:'Be there without forcing myself', optionB:'Over-adapt to others'},
+                {domainKey:'人間関係', subdomainKey:'境界線・距離感', domain:'Relationships', subdomain:'Boundaries and Distance', question:'With other people’s expectations', optionA:'I can still honor my feelings', optionB:'I feel I must meet them'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'Relationships', subdomain:'Asking for Help', question:'When I need help', optionA:'I can ask someone', optionB:'I tend to carry it alone'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'Relationships', subdomain:'Asking for Help', question:'When something feels hard', optionA:'I can share it with someone', optionB:'I process it by myself'},
+                {domainKey:'人間関係', subdomainKey:'助けを求める力', domain:'Relationships', subdomain:'Asking for Help', question:'A person or place I can turn to', optionA:'Exists for me', optionB:'Is hard to find'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'Ambition', subdomain:'Clarity of What You Want', question:'What I want to do now feels', optionA:'A little clearer', optionB:'Quite vague'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'Ambition', subdomain:'Clarity of What You Want', question:'What matters to me this month', optionA:'Is somewhat clear', optionB:'Feels unclear'},
+                {domainKey:'野心', subdomainKey:'やりたいこと', domain:'Ambition', subdomain:'Clarity of What You Want', question:'When I think about the future', optionA:'I feel some curiosity', optionB:'Anxiety comes first'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'Ambition', subdomain:'Action and Progress', question:'Toward what I want', optionA:'I am taking small actions', optionB:'I often stop at thinking'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'Ambition', subdomain:'Action and Progress', question:'This month, I feel I', optionA:'Moved forward a little', optionB:'Stayed in the same place'},
+                {domainKey:'野心', subdomainKey:'目標への前進', domain:'Ambition', subdomain:'Action and Progress', question:'Something new is something I', optionA:'Have tried in some way', optionB:'Have not really tried yet'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'Ambition', subdomain:'Growth and Self-realization', question:'Time for my growth is something I', optionA:'Can make room for', optionB:'Keep postponing'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'Ambition', subdomain:'Growth and Self-realization', question:'Comparing myself with others', optionA:'Does not pull me too much', optionB:'Often pulls me in'},
+                {domainKey:'野心', subdomainKey:'夢・自己実現', domain:'Ambition', subdomain:'Growth and Self-realization', question:'My current effort feels', optionA:'Connected to my future', optionB:'Disconnected from where I want to go'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'Purpose', subdomain:'Roles and Responsibilities', question:'The roles I am holding now feel', optionA:'Clear enough', optionB:'Scattered or unclear'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'Purpose', subdomain:'Roles and Responsibilities', question:'My responsibilities to family or work feel', optionA:'Somewhat accepted by me', optionB:'Like something placed on me'},
+                {domainKey:'使命', subdomainKey:'義務・責任', domain:'Purpose', subdomain:'Roles and Responsibilities', question:'What I need to do feels', optionA:'Somewhat chosen by me', optionB:'Like I am only being chased'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'Purpose', subdomain:'Alignment with Values', question:'My life and work feel', optionA:'Not too far from my values', optionB:'Out of sync with my values'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'Purpose', subdomain:'Alignment with Values', question:'When I feel unsure', optionA:'I have my own inner standard', optionB:'I get pulled by others’ expectations'},
+                {domainKey:'使命', subdomainKey:'自分の意思', domain:'Purpose', subdomain:'Alignment with Values', question:'My honest feelings are something I', optionA:'Can keep in sight', optionB:'Often put aside'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'Purpose', subdomain:'Contribution and Meaning', question:'In what I do now', optionA:'There are moments of meaning', optionB:'I sometimes wonder what it is for'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'Purpose', subdomain:'Contribution and Meaning', question:'My role feels', optionA:'Useful to someone or something', optionB:'Hard to connect to contribution'},
+                {domainKey:'使命', subdomainKey:'世の中への貢献', domain:'Purpose', subdomain:'Contribution and Meaning', question:'My relationship with responsibilities feels', optionA:'Relatively healthy', optionB:'Heavy'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'Finances', subdomain:'Clarity and Management', question:'My current money situation is something I', optionA:'Understand somewhat', optionB:'Do not really see clearly'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'Finances', subdomain:'Clarity and Management', question:'Income, spending, and savings are things I', optionA:'Review at least somewhat', optionB:'Tend to avoid reviewing'},
+                {domainKey:'財務', subdomainKey:'安定（現在の入りと出）', domain:'Finances', subdomain:'Clarity and Management', question:'Money is something I can', optionA:'Look at without avoiding', optionB:'Prefer not to look at'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'Finances', subdomain:'Ease and Stability', question:'When I think about future money', optionA:'I have basic security', optionB:'I feel quite anxious'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'Finances', subdomain:'Ease and Stability', question:'My daily spending feels', optionA:'Not too anxiety-provoking', optionB:'Often stressful'},
+                {domainKey:'財務', subdomainKey:'安心感（将来への備え）', domain:'Finances', subdomain:'Ease and Stability', question:'Money anxiety', optionA:'Does not dominate my choices', optionB:'Strongly affects my choices'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'Finances', subdomain:'Freedom of Choice', question:'Spending on learning or experiences I need', optionA:'Feels allowed', optionB:'Often brings guilt'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'Finances', subdomain:'Freedom of Choice', question:'Choices aligned with my values are something I', optionA:'Can consider alongside money', optionB:'Often lose because of money'},
+                {domainKey:'財務', subdomainKey:'自由（使い方とメンタリティ）', domain:'Finances', subdomain:'Freedom of Choice', question:'My relationship with money this month feels', optionA:'Somewhat calm', optionB:'Like it is controlling me'}
+            ]
+        };
+
         function shuffleArray(array) {
             const newArray = [...array];
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -1816,10 +2103,13 @@
 
         let currentLanguage = detectInitialLanguage();
         let shuffledQuestionIds = shuffleArray(QUESTION_BANK.ja.map(question => question.id));
+        let assessmentMode = 'free';
         let currentQuestionIndex = 0;
         let answers = [];
+        let paidAnswers = [];
         let latestPercentages = null;
         let latestOverallPercentage = null;
+        let latestPaidResult = null;
 
         function t() {
             return I18N[currentLanguage];
@@ -1881,6 +2171,15 @@
             setText('timeList2', copy.timeList2);
             setText('timeList3', copy.timeList3);
             setText('timeStartButton', copy.timeStartButton);
+            setText('paidHeading', copy.paidHeading);
+            setText('paidLead', copy.paidLead);
+            setText('paidFeature1Value', copy.paidFeature1Value);
+            setText('paidFeature1Label', copy.paidFeature1Label);
+            setText('paidFeature2Value', copy.paidFeature2Value);
+            setText('paidFeature2Label', copy.paidFeature2Label);
+            setText('paidFeature3Value', copy.paidFeature3Value);
+            setText('paidFeature3Label', copy.paidFeature3Label);
+            setText('paidStartButton', copy.paidStartButton);
             setText('startButton', copy.startButton);
             setText('nextButton', copy.nextButton);
             setHtml('resultTitle', copy.resultTitle);
@@ -1898,6 +2197,9 @@
             setText('signupTitle', copy.signupTitle);
             setText('signupLead', copy.signupLead);
             setText('signupButton', copy.signupButton);
+            setText('pdfTitle', copy.pdfTitle);
+            setText('pdfLead', copy.pdfLead);
+            setText('pdfButton', copy.pdfButton);
             setText('retryButton', copy.retryButton);
 
             const emailInput = document.getElementById('emailInput');
@@ -1907,7 +2209,9 @@
                 showQuestion();
             }
 
-            if (latestPercentages) {
+            if (assessmentMode === 'paid' && latestPaidResult) {
+                showPaidResults();
+            } else if (latestPercentages) {
                 drawRadarChart(latestPercentages);
                 displayOverallSummary(latestOverallPercentage);
                 displayResultCards(latestPercentages);
@@ -1915,6 +2219,11 @@
         }
 
         function startTest() {
+            assessmentMode = 'free';
+            currentQuestionIndex = 0;
+            answers = [];
+            paidAnswers = [];
+            shuffledQuestionIds = shuffleArray(QUESTION_BANK.ja.map(question => question.id));
             document.getElementById('startScreen').style.display = 'none';
             document.getElementById('questionScreen').style.display = 'block';
             document.getElementById('progressContainer').style.display = 'block';
@@ -1923,7 +2232,30 @@
             showQuestion();
         }
 
+        function startPaidAssessment() {
+            assessmentMode = 'paid';
+            currentQuestionIndex = 0;
+            answers = [];
+            paidAnswers = [];
+            latestPaidResult = null;
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('questionScreen').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('mainHeader').style.display = 'none';
+            trackEvent('paid_assessment_start');
+            showQuestion();
+        }
+
+        function getPaidQuestions() {
+            return PAID_QUESTION_BANK[currentLanguage] || PAID_QUESTION_BANK.ja;
+        }
+
         function showQuestion() {
+            if (assessmentMode === 'paid') {
+                showPaidQuestion();
+                return;
+            }
+
             const question = getQuestionById(shuffledQuestionIds[currentQuestionIndex]);
             const copy = t();
 
@@ -1982,6 +2314,64 @@
             document.getElementById('nextButton').disabled = true;
         }
 
+        function removeQuestionControls() {
+            document.querySelectorAll('.choice-container, .slider-container, .paid-question-meta, .paid-rating-panel').forEach(element => {
+                element.remove();
+            });
+        }
+
+        function showPaidQuestion() {
+            const questions = getPaidQuestions();
+            const question = questions[currentQuestionIndex];
+
+            document.getElementById('questionNumber').textContent = `Q${currentQuestionIndex + 1}`;
+            document.getElementById('questionText').textContent = question.question;
+            removeQuestionControls();
+
+            document.getElementById('questionText').insertAdjacentHTML('afterend', `
+                <div class="choice-container">
+                    <div class="choice-cards">
+                        <div class="choice-item choice-a">
+                            <div class="choice-label">A</div>
+                            <div class="choice-text">${question.optionA}</div>
+                        </div>
+                        <div class="choice-item choice-b">
+                            <div class="choice-label">B</div>
+                            <div class="choice-text">${question.optionB}</div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            const sliderHtml = `
+                <div class="slider-container">
+                    <div class="slider-label">${t().sliderLabel}</div>
+                    <div class="slider-wrapper">
+                        <div class="slider-end-label label-a">A</div>
+                        <div class="slider">
+                            <div class="slider-option" onclick="selectPaidOption(5)"></div>
+                            <div class="slider-option" onclick="selectPaidOption(4)"></div>
+                            <div class="slider-option" onclick="selectPaidOption(3)"></div>
+                            <div class="slider-option" onclick="selectPaidOption(2)"></div>
+                            <div class="slider-option" onclick="selectPaidOption(1)"></div>
+                        </div>
+                        <div class="slider-end-label label-b">B</div>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.choice-container').insertAdjacentHTML('afterend', sliderHtml);
+
+            const savedAnswer = paidAnswers[currentQuestionIndex];
+            if (savedAnswer) {
+                const selectedIndex = 5 - savedAnswer.score;
+                document.querySelectorAll('.slider-option')[selectedIndex].classList.add('selected');
+            }
+
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = t().progress(currentQuestionIndex + 1, questions.length);
+            document.getElementById('nextButton').disabled = !savedAnswer;
+        }
+
         function selectOption(score) {
             const options = document.querySelectorAll('.slider-option');
             options.forEach(opt => opt.classList.remove('selected'));
@@ -1996,10 +2386,28 @@
             document.getElementById('nextButton').disabled = false;
         }
 
+        function selectPaidOption(score) {
+            const options = document.querySelectorAll('.slider-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            const selectedIndex = 5 - score;
+            options[selectedIndex].classList.add('selected');
+
+            const question = getPaidQuestions()[currentQuestionIndex];
+            paidAnswers[currentQuestionIndex] = {
+                domainKey: question.domainKey,
+                subdomainKey: question.subdomainKey,
+                score
+            };
+            document.getElementById('nextButton').disabled = false;
+        }
+
         function nextQuestion() {
             currentQuestionIndex++;
 
-            if (currentQuestionIndex >= shuffledQuestionIds.length) {
+            const total = assessmentMode === 'paid' ? getPaidQuestions().length : shuffledQuestionIds.length;
+
+            if (currentQuestionIndex >= total) {
                 showResults();
             } else {
                 showQuestion();
@@ -2010,6 +2418,11 @@
             document.getElementById('questionScreen').style.display = 'none';
             document.getElementById('progressContainer').style.display = 'none';
             document.getElementById('resultScreen').style.display = 'block';
+
+            if (assessmentMode === 'paid') {
+                showPaidResults();
+                return;
+            }
 
             // カテゴリ別スコア計算
             const categoryScores = {
@@ -2286,8 +2699,1077 @@
             resultCardsDiv.innerHTML = html;
         }
 
+        function calculatePaidResults() {
+            const questions = getPaidQuestions();
+            const domains = {};
+            const subdomains = {};
+
+            questions.forEach((question, index) => {
+                const answer = paidAnswers[index];
+                const score = answer.score || 1;
+                const alignment = Math.round((score / 5) * 100);
+                const gap = 5 - score;
+
+                if (!domains[question.domainKey]) {
+                    domains[question.domainKey] = {
+                        label: question.domain,
+                        total: 0,
+                        count: 0,
+                        gap: 0
+                    };
+                }
+
+                if (!subdomains[question.subdomainKey]) {
+                    subdomains[question.subdomainKey] = {
+                        label: question.subdomain,
+                        domainKey: question.domainKey,
+                        total: 0,
+                        count: 0,
+                        gap: 0
+                    };
+                }
+
+                domains[question.domainKey].total += alignment;
+                domains[question.domainKey].count += 1;
+                domains[question.domainKey].gap += gap;
+                subdomains[question.subdomainKey].total += alignment;
+                subdomains[question.subdomainKey].count += 1;
+                subdomains[question.subdomainKey].gap += gap;
+            });
+
+            const percentages = {};
+            Object.keys(domains).forEach(key => {
+                percentages[key] = Math.round(domains[key].total / domains[key].count);
+            });
+
+            const subScores = Object.keys(subdomains).map(key => ({
+                key,
+                label: subdomains[key].label,
+                domainKey: subdomains[key].domainKey,
+                percentage: Math.round(subdomains[key].total / subdomains[key].count),
+                gap: subdomains[key].gap
+            }));
+
+            const overall = Math.round(
+                Object.values(percentages).reduce((sum, value) => sum + value, 0) /
+                Object.keys(percentages).length
+            );
+
+            const focus = [...subScores].sort((a, b) => {
+                if (b.gap !== a.gap) return b.gap - a.gap;
+                return a.percentage - b.percentage;
+            })[0];
+
+            return { percentages, subScores, overall, focus };
+        }
+
+        function showPaidResults() {
+            const result = calculatePaidResults();
+            latestPaidResult = result;
+            latestPercentages = result.percentages;
+            latestOverallPercentage = result.overall;
+
+            drawRadarChart(result.percentages);
+            displayOverallSummary(result.overall);
+            displayPaidResultCards(result);
+
+            trackEvent('paid_assessment_complete', {
+                overall_score: result.overall,
+                focus_subdomain: result.focus ? result.focus.key : ''
+            });
+        }
+
+        function getPaidTheme(subdomainKey) {
+            const jaThemes = {
+                '体調・エネルギー': ['土台を整える', 'まずは気分や体調の波を責めずに、睡眠・食事・休息のような基本の土台を見直してみてください。'],
+                '生活リズム・健康習慣': ['戻れるリズムを作る', '完璧な習慣よりも、崩れたときに戻れる小さなリズムを一つ作ることが今月の支えになりそうです。'],
+                '回復・メンタル安定': ['休む力を取り戻す', '今月は「何を頑張るか」よりも、「どこで回復するか」を先に見てみるとよさそうです。'],
+                '安心できるつながり': ['安心できる場所を増やす', '一人で整えようとしすぎず、少し安心して話せる人や場所を思い出してみてください。'],
+                '境界線・距離感': ['ちょうどよい距離を選ぶ', '近づくことだけが関係を大切にする方法ではありません。少し距離を調整することも選択肢です。'],
+                '助けを求める力': ['一人で抱えない', '全部を話さなくても大丈夫です。一つだけ相談する、少しだけ頼るところから始めてみてください。'],
+                'やりたいこと': ['小さな興味を拾う', '大きな目標を決める前に、少し気になることや、やってみたいことの小さなサインを拾ってみてください。'],
+                '目標への前進': ['一つ試してみる', '結果を出すより、まず一度試すことを今月のアクションにしてみると動きやすくなりそうです。'],
+                '夢・自己実現': ['自分のための時間を戻す', '忙しさの中に、15分でも自分の成長や関心のための時間を戻してみてください。'],
+                '義務・責任': ['背負っているものを見直す', '家族や仕事への責任を一度書き出し、本当に自分が引き受けたいものと軽くできるものを分けてみてください。'],
+                '自分の意思': ['自分の本音を確認する', '人の期待だけで動いていないかを見ながら、本当はどうしたいかを一つだけ言葉にしてみてください。'],
+                '世の中への貢献': ['意味を小さく見つける', '大きな使命を探すより、今やっていることが誰の何に少し役立っているかを見てみてください。'],
+                '安定（現在の入りと出）': ['見える状態にする', '完璧な管理より、まず一つの数字を見ることから始めてみてください。'],
+                '安心感（将来への備え）': ['見通しを増やす', '不安を消すより、収入・支出・予定のうち一つだけ見通しを増やすことが助けになりそうです。'],
+                '自由（使い方とメンタリティ）': ['小さな選択肢を増やす', '大きな自由を目指す前に、自分の価値観に合う小さな選択肢を一つ増やしてみてください。']
+            };
+            const enThemes = {
+                '体調・エネルギー': ['Stabilize the foundation', 'Start with the basics: sleep, food, rest, and the signals your body or mood has been sending.'],
+                '生活リズム・健康習慣': ['Create a rhythm you can return to', 'Instead of a perfect routine, choose one small rhythm that helps you come back to yourself.'],
+                '回復・メンタル安定': ['Recover before you push', 'This month may be less about trying harder and more about identifying where recovery can happen.'],
+                '安心できるつながり': ['Increase safe connection', 'You may not need to handle everything alone. Think of one person or place that feels a little safe.'],
+                '境界線・距離感': ['Choose the right distance', 'Caring does not always mean getting closer. Adjusting distance can also protect the relationship.'],
+                '助けを求める力': ['Do not carry it alone', 'You do not have to explain everything. Start by asking for one small kind of support.'],
+                'やりたいこと': ['Notice small interests', 'Before forcing a big goal, notice small signs of curiosity or desire.'],
+                '目標への前進': ['Try one thing', 'Make this month about testing one small action rather than producing a perfect result.'],
+                '夢・自己実現': ['Bring back time for yourself', 'Even 15 minutes for growth, learning, or curiosity can help you reconnect with yourself.'],
+                '義務・責任': ['Review what you are carrying', 'Write down your family, work, and life responsibilities, then separate what you truly choose from what could be lighter.'],
+                '自分の意思': ['Check your honest values', 'Notice where you may be moving only from others’ expectations, and name one thing you honestly want.'],
+                '世の中への貢献': ['Find meaning in smaller places', 'You do not need a grand purpose. Look for who or what your current actions may be helping.'],
+                '安定（現在の入りと出）': ['Make it visible', 'Instead of perfect control, start by looking at one number clearly.'],
+                '安心感（将来への備え）': ['Increase visibility', 'Rather than trying to erase anxiety, create a little more visibility around income, spending, or plans.'],
+                '自由（使い方とメンタリティ）': ['Add one small option', 'Before aiming for big freedom, add one small choice that better matches your values.']
+            };
+            const theme = (currentLanguage === 'ja' ? jaThemes : enThemes)[subdomainKey];
+            return theme || (currentLanguage === 'ja' ? ['今月のテーマ', 'ギャップのある場所を、次の小さな行動のヒントとして見てみてください。'] : ['Monthly Theme', 'Use the largest gap as a hint for your next small action.']);
+        }
+
+        function displayPaidResultCards(result) {
+            const resultCardsDiv = document.getElementById('resultCards');
+            const copy = t();
+            const categoryMap = {
+                '健康': { class: 'health', name: copy.categories.health.resultName, desc: copy.categories.health.desc },
+                '人間関係': { class: 'relationships', name: copy.categories.relationship.resultName, desc: copy.categories.relationship.resultDesc || copy.categories.relationship.desc },
+                '野心': { class: 'ambition', name: copy.categories.ambition.resultName, desc: copy.categories.ambition.desc },
+                '使命': { class: 'purpose', name: copy.categories.purpose.resultName, desc: copy.categories.purpose.desc },
+                '財務': { class: 'finance', name: copy.categories.finance.resultName, desc: copy.categories.finance.desc }
+            };
+            const [themeTitle, themeBody] = getPaidTheme(result.focus.key);
+
+            let html = `
+                <div class="monthly-theme-card">
+                    <h3>${currentLanguage === 'ja' ? '今月のテーマ：' : 'Monthly Theme: '}${themeTitle}</h3>
+                    <p>${themeBody}</p>
+                </div>
+            `;
+
+            Object.keys(result.percentages).forEach(cat => {
+                const info = categoryMap[cat];
+                const percentage = result.percentages[cat];
+                const subScores = result.subScores.filter(item => item.domainKey === cat);
+                html += `
+                    <div class="result-card ${info.class}">
+                        <h3>
+                            <span class="result-title-block">
+                                <span>${info.name}</span>
+                                <span class="result-area-desc">${info.desc}</span>
+                            </span>
+                            <span class="result-score">${percentage}%</span>
+                        </h3>
+                        <div class="result-bar">
+                            <div class="result-bar-fill" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="result-description">${getDescription(percentage)}</div>
+                        <div class="subscore-section">
+                            <h3>${currentLanguage === 'ja' ? '3つの視点' : 'Three lenses'}</h3>
+                            ${subScores.map(sub => `
+                                <div class="subscore-card">
+                                    <div class="subscore-head"><span>${sub.label}</span><span>${sub.percentage}%</span></div>
+                                    <div class="result-bar">
+                                        <div class="result-bar-fill" style="width: ${sub.percentage}%"></div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultCardsDiv.innerHTML = html;
+        }
+
         function getDescription(percentage) {
             return t().descriptions.find(([threshold]) => percentage >= threshold)[1];
+        }
+
+        const ASSESSMENT_PDF_CONTENT = {
+            ja: {
+                title: 'Life Alignment Monthly Check-in',
+                subtitle: '個人向け詳細版アセスメント',
+                intro: [
+                    '5つの領域から「今の状態」と「理想の状態」のギャップを見つめ、今月の小さな行動につなげるための月次セルフアセスメントです。',
+                    '目的は、自分を評価したり、タイプ分けしたりすることではありません。忙しさの中で見えにくくなった現在地を、定期的に確認するためのチェックインとして使ってください。'
+                ],
+                howTo: [
+                    '各質問に対して、AとBのどちらに近いかを1〜5のバーで回答します。',
+                    '5 = Aにかなり近い / 3 = どちらともいえない / 1 = Bにかなり近い',
+                    'Aは整っている状態、Bはギャップや負荷が出ている状態として設計しています。'
+                ],
+                scoreTitle: 'スコアの見方',
+                scoreBody: [
+                    '質問ごとのスコア = 回答値 ÷ 5 × 100',
+                    'サブスコア = 各サブ領域3問の平均',
+                    '領域スコア = 各領域3サブスコアの平均',
+                    '総合スコア = 5領域の平均',
+                    'ギャップが大きい場所は、今月少し意識を向けるヒントとして見てみてください。'
+                ],
+                labels: {
+                    definition: '定義',
+                    reflection: 'リフレクション',
+                    action: '小さなアクション例',
+                    current: 'A',
+                    ideal: 'B'
+                },
+                domains: [
+                    {
+                        name: '健康 / Health',
+                        definition: '身体的・メンタル的なウェルビーイング。体調、気分、生活リズム、回復力など、自分の毎日の土台となる状態を見る領域。',
+                        subdomains: [
+                            { name: '体調・エネルギー', questions: ['気分や体調が安定した日々を送れている', '朝起きたとき、ある程度エネルギーがある', '今の生活は、自分の心身に合っていると感じる'] },
+                            { name: '生活リズム・健康習慣', questions: ['自分に合った生活リズムがある', '自分の健康のためにしていることがある', '眠る時間や休む時間を大切にできている'] },
+                            { name: '回復・メンタル安定', questions: ['疲れたときに、休むことができている', '忙しい中でも、自分を整える時間がある', 'ストレスを感じたとき、自分なりの整え方がある'] }
+                        ],
+                        reflection: ['今月、自分の体や心はどんなサインを出していましたか？', '自分の健康のために、すでにできていることは何ですか？', '来月、少し整えるなら生活リズム・休息・運動・食事のどれがよさそうですか？'],
+                        actions: ['今日はいつもより15分早く寝る', '10分だけ外を歩く', '休む時間をカレンダーに入れる']
+                    },
+                    {
+                        name: '人間関係 / Relationships',
+                        definition: '家族、友人、パートナー、職場、コミュニティとのつながり。安心して関われる感覚、ちょうどよい距離感、必要なときに助けを求められる力を見る領域。',
+                        subdomains: [
+                            { name: '安心できるつながり', questions: ['安心して話せる人がいる', '人と会った後、あたたかい気持ちになることがある', '人との関係の中で、自分らしくいられる'] },
+                            { name: '境界線・距離感', questions: ['大切な人と、ちょうどよい距離感で関われている', '無理をせずにいられる関係がある', '人の期待に合わせすぎず、自分の気持ちも大切にできている'] },
+                            { name: '助けを求める力', questions: ['必要なときに、誰かの助けを求められている', '一人で抱え込まず、誰かと分かち合えている', '困ったときに相談できる相手や場所がある'] }
+                        ],
+                        reflection: ['今月、自分を支えてくれた関係はありましたか？', '近すぎる、遠すぎる、気を遣いすぎると感じる関係はありますか？', '本当は誰に、どんな助けを求めたいですか？'],
+                        actions: ['一人に近況を送る', '一つだけ頼みごとをする', '断りたいことを一つ断る']
+                    },
+                    {
+                        name: '目標 / Ambition',
+                        definition: '自己実現や、やりたいことに向かう感覚。目標の明確さ、前進感、成長している実感を見る領域。',
+                        subdomains: [
+                            { name: 'やりたいこと', questions: ['今、自分がやりたいことが少しずつ見えている', '今月、自分が大切にしたいことがある程度わかっている', '自分の将来を考えたとき、少し楽しみがある'] },
+                            { name: '目標への前進', questions: ['やりたいことに向けて、小さく行動できている', '今月、自分が少し前に進んだ感覚がある', '考えるだけで終わらず、何かを試せている'] },
+                            { name: '夢・自己実現', questions: ['自分の成長につながる時間を取れている', '人と比べすぎず、自分のペースを見られている', '今の努力が、自分の未来につながっている感覚がある'] }
+                        ],
+                        reflection: ['今月、自分が少しでも前に進んだと感じたことは何ですか？', '本当はやりたいけれど、後回しにしていることはありますか？', '来月、小さく試すなら何から始めますか？'],
+                        actions: ['気になることを10分だけ調べる', 'やりたいことを3つ書き出す', '今週できる一歩を一つ決める']
+                    },
+                    {
+                        name: '使命 / Purpose',
+                        definition: '自分が負っている役割、責任、義務と、それに対する納得感。仕事上の責任だけではなく、家族、ケア、生活、コミュニティの中で担っている役割も含む領域。',
+                        subdomains: [
+                            { name: '義務・責任', questions: ['今の自分が担っている役割を理解している', '家族や仕事への責任に、自分なりの納得感がある', 'やるべきことに追われるだけでなく、自分で選んでいる感覚がある'] },
+                            { name: '自分の意思', questions: ['今の生活や仕事は、自分が大切にしたい価値観と大きくズレていない', '迷ったとき、自分なりの判断軸を持てている', '人の期待だけではなく、自分の本音も見失わずにいられる'] },
+                            { name: '世の中への貢献', questions: ['今やっていることに、意味を感じる瞬間がある', '自分の役割が、誰かや何かの役に立っている感覚がある', '今月、自分の責任や役割と健やかに向き合えている'] }
+                        ],
+                        reflection: ['今月、自分が担っていた役割や責任にはどんなものがありましたか？', 'その中で、納得して引き受けているものと、重く感じているものは何ですか？', '自分だけで背負いすぎているものがあるとしたら、どこを少し軽くできますか？'],
+                        actions: ['今抱えている役割を書き出す', '本当に自分が引き受けたいものに丸をつける', '誰かに渡せるものを一つ選ぶ']
+                    },
+                    {
+                        name: 'お金 / Finances',
+                        definition: '経済的な安定、自由、安心感。収入や支出の把握だけでなく、お金に対する不安、選択肢、自分に必要なものへ使う許可も含む領域。',
+                        subdomains: [
+                            { name: '安定（現在の入りと出）', questions: ['今のお金の状態を、ある程度把握できている', '収入・支出・貯蓄のバランスを見直せている', 'お金のことを避けずに見ることができている'] },
+                            { name: '安心感（将来への備え）', questions: ['将来を考えると、最低限の安心感がある', '日々のお金の使い方に、大きな不安を感じすぎていない', 'お金の不安が、日常の判断を支配しすぎていない'] },
+                            { name: '自由（使い方とメンタリティ）', questions: ['自分に必要な学びや体験に、お金を使う許可がある', 'お金のためだけではなく、自分の価値観に合う選択も考えられている', '今月、お金との関係に少し安心感がある'] }
+                        ],
+                        reflection: ['今月、お金について見えていたこと・見ないようにしていたことはありますか？', 'お金の不安は、日々の選択にどのくらい影響していましたか？', '来月、安心感を増やすために一つ見直すなら何ですか？'],
+                        actions: ['今月の支出を一つ確認する', 'サブスクを一つ見直す', '不安な金額を一つだけ数字にする']
+                    }
+                ]
+            },
+            en: {
+                title: 'Life Alignment Monthly Check-in',
+                subtitle: 'Personal Detailed Assessment',
+                intro: [
+                    'A monthly self-assessment to see the gap between your current state and your ideal state across five life domains, then turn that awareness into one small action for the month.',
+                    'The goal is not to label you or judge your life. Use it as a regular check-in to notice where you are now, what feels aligned, and what may need attention next.'
+                ],
+                howTo: [
+                    'For each question, use the 1–5 slider to choose whether A or B feels closer.',
+                    '5 = very close to A / 3 = neutral / 1 = very close to B',
+                    'A describes a more aligned state; B describes a gap or strain that may be present.'
+                ],
+                scoreTitle: 'How to Read the Score',
+                scoreBody: [
+                    'Question score = answer value ÷ 5 × 100',
+                    'Sub-score = average of the three questions in each lens',
+                    'Domain score = average of the three lenses in each domain',
+                    'Overall score = average of the five domain scores',
+                    'A larger gap is not a failure. Treat it as a useful hint for where to place gentle attention this month.'
+                ],
+                labels: {
+                    definition: 'Definition',
+                    reflection: 'Reflection',
+                    action: 'Small Action Ideas',
+                    current: 'A',
+                    ideal: 'B'
+                },
+                domains: [
+                    {
+                        name: 'Health',
+                        definition: 'Physical and mental well-being: energy, mood, rhythm, recovery, and the basic state that supports your daily life.',
+                        subdomains: [
+                            { name: 'Energy and Physical State', questions: ['My mood and physical condition feel steady day to day', 'I wake up with some energy in the morning', 'My current lifestyle feels supportive for my body and mind'] },
+                            { name: 'Rhythm and Health Habits', questions: ['I have a daily rhythm that suits me', 'I do something regularly for my health', 'I value sleep and rest time'] },
+                            { name: 'Recovery and Emotional Steadiness', questions: ['I can rest when I am tired', 'I have time to reset even when I am busy', 'I have my own way to regulate stress'] }
+                        ],
+                        reflection: ['What signals did your body or mind give you this month?', 'What are you already doing for your health?', 'If you were to adjust one thing next month, would it be rhythm, rest, movement, or food?'],
+                        actions: ['Go to bed 15 minutes earlier', 'Walk outside for 10 minutes', 'Put rest time on your calendar']
+                    },
+                    {
+                        name: 'Relationships',
+                        definition: 'Connection with family, friends, partners, work, and community: supportive relationships, boundaries, and the ability to ask for help.',
+                        subdomains: [
+                            { name: 'Supportive Connection', questions: ['I have someone I can talk to safely', 'After spending time with people, I sometimes feel warm or supported', 'I can be myself in my relationships'] },
+                            { name: 'Boundaries and Distance', questions: ['I can keep a healthy distance with people I care about', 'There are relationships where I do not have to force myself', 'I can respect others’ expectations while still honoring my own feelings'] },
+                            { name: 'Asking for Help', questions: ['I can ask someone for help when I need it', 'I can share things instead of carrying everything alone', 'I have someone or somewhere I can turn to when I am stuck'] }
+                        ],
+                        reflection: ['Which relationships supported you this month?', 'Are there relationships that feel too close, too distant, or too effortful?', 'Who would you like to ask for what kind of help?'],
+                        actions: ['Send one person a short update', 'Ask for one small favor', 'Say no to one thing you do not want to carry']
+                    },
+                    {
+                        name: 'Ambition',
+                        definition: 'Your sense of self-realization and movement toward what you want: clarity, progress, growth, and future direction.',
+                        subdomains: [
+                            { name: 'Clarity of What You Want', questions: ['I can somewhat see what I want to do now', 'I have some sense of what matters to me this month', 'When I think about the future, there is something I can feel curious about'] },
+                            { name: 'Action and Progress', questions: ['I am taking small actions toward what I want', 'I feel that I moved forward a little this month', 'I have tried something instead of only thinking about it'] },
+                            { name: 'Growth and Self-realization', questions: ['I make time for something that supports my growth', 'I can look at my own pace without comparing too much', 'My current effort feels connected to my future'] }
+                        ],
+                        reflection: ['What made you feel even a little progress this month?', 'What do you want to do but keep postponing?', 'What would be one small experiment for next month?'],
+                        actions: ['Research something you are curious about for 10 minutes', 'Write down three things you want to try', 'Choose one step you can take this week']
+                    },
+                    {
+                        name: 'Purpose',
+                        definition: 'Your roles, responsibilities, and obligations, and how much they feel meaningful or chosen. This includes family, care, work, life responsibilities, and community roles.',
+                        subdomains: [
+                            { name: 'Acceptance of Roles and Responsibilities', questions: ['I understand the roles I am currently holding', 'I feel some acceptance around my responsibilities to family or work', 'I feel that I am choosing, not only being chased by what I must do'] },
+                            { name: 'Alignment with Values', questions: ['My life and work are not too far from what I value', 'When I feel unsure, I have some inner standard to return to', 'I can keep sight of my honest feelings, not only others’ expectations'] },
+                            { name: 'Contribution and Meaning', questions: ['There are moments when what I do feels meaningful', 'I feel that my role is useful to someone or something', 'This month, I could relate to my roles and responsibilities in a healthy way'] }
+                        ],
+                        reflection: ['What roles or responsibilities were you carrying this month?', 'Which ones felt meaningful, and which ones felt heavy?', 'If you are carrying too much alone, where could you make it a little lighter?'],
+                        actions: ['Write down the roles you are currently holding', 'Circle what you truly want to carry', 'Choose one thing that could be shared or handed over']
+                    },
+                    {
+                        name: 'Finances',
+                        definition: 'Financial stability, freedom, and ease: clarity around money, anxiety, options, and permission to spend on what supports you.',
+                        subdomains: [
+                            { name: 'Clarity and Management', questions: ['I have some grasp of my current money situation', 'I review the balance of income, spending, and savings', 'I can look at money instead of avoiding it'] },
+                            { name: 'Ease and Stability', questions: ['When I think about the future, I have a basic sense of security', 'My daily spending does not create too much anxiety', 'Money anxiety does not dominate my daily decisions'] },
+                            { name: 'Freedom of Choice', questions: ['I allow myself to spend on learning or experiences I need', 'I can consider choices aligned with my values, not only choices based on money', 'This month, my relationship with money felt somewhat calm'] }
+                        ],
+                        reflection: ['What did you look at, or avoid looking at, around money this month?', 'How much did money anxiety affect your choices?', 'What is one thing you could review to create more ease next month?'],
+                        actions: ['Check one expense from this month', 'Review one subscription', 'Put one uncertain amount into numbers']
+                    }
+                ]
+            }
+        };
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderPdfList(items) {
+            return `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+        }
+
+        const RICH_RESULT_GUIDE_JA = {
+            '体調・エネルギー': {
+                definition: '日々の体力、気分の安定、朝の起きやすさ、生活そのものが心身に合っている感覚を見る項目です。',
+                drivers: '睡眠不足、食事の乱れ、予定の詰め込み、運動不足、気温やホルモンバランス、長く続く緊張状態によって左右されやすい領域です。',
+                idealPrompt: '理想の自分は、朝起きたときにどのくらいのエネルギーがあり、1日の終わりにどのくらい余力が残っていそうですか？',
+                gapPrompt: '今の体調や気分の波は、いつ・どんな予定・どんな人間関係・どんな生活リズムのあとに大きくなりやすいですか？',
+                actions: ['寝る時間を15分だけ前倒しする', '予定を一つ減らす', '朝か昼に10分だけ外を歩く']
+            },
+            '生活リズム・健康習慣': {
+                definition: '自分に合った生活リズムや、健康のために続けている小さな習慣があるかを見る項目です。',
+                drivers: '仕事や家族の予定に合わせすぎること、夜のスマホ、食事時間の乱れ、休むことへの罪悪感で下がりやすくなります。',
+                idealPrompt: '理想の生活リズムは、何時に起きて、どこで休み、何をすると「自分に戻れる」感じがありますか？',
+                gapPrompt: '今のリズムが崩れる一番のきっかけは、時間不足・気力不足・環境・人の期待のどれに近いですか？',
+                actions: ['戻れる朝の手順を一つ決める', '夜にスマホを置く時間を決める', '健康のための行動を週1回だけ予定に入れる']
+            },
+            '回復・メンタル安定': {
+                definition: '疲れたときに休めるか、ストレスを感じたときに自分を整える方法があるかを見る項目です。',
+                drivers: '責任感の強さ、休むことへの抵抗、相談先の少なさ、頭の中で考え続ける癖によって大きく左右されます。',
+                idealPrompt: '理想の自分は、疲れたときにどんなサインで気づき、どうやって回復していそうですか？',
+                gapPrompt: '休めないとき、あなたの中にはどんな「休んではいけない理由」がありますか？',
+                actions: ['何もしない15分を作る', '疲れのサインを3つ書く', '今週やらないことを一つ決める']
+            },
+            '安心できるつながり': {
+                definition: '安心して話せる人、自分らしくいられる関係、会ったあとにあたたかさが残るつながりを見る項目です。',
+                drivers: '孤立感、気を遣いすぎる関係、本音を出せない環境、過去の経験による警戒心で左右されます。',
+                idealPrompt: '理想の人間関係では、誰といるときにどんな自分でいられそうですか？',
+                gapPrompt: '今、本音を出しにくい相手や場所では、何を守ろうとしている感じがありますか？',
+                actions: ['安心できる人に短く近況を送る', '会うと楽になる人を一人思い出す', '無理に明るくしなくていい場所を作る']
+            },
+            '境界線・距離感': {
+                definition: '人との距離を自分で調整できるか、相手に合わせすぎずに関われるかを見る項目です。',
+                drivers: '断ることへの罪悪感、嫌われたくなさ、家族や職場での役割固定、相手の感情を背負う癖で下がりやすい項目です。',
+                idealPrompt: '理想の距離感では、どの相手とどのくらい近く、どのくらい離れていられると楽ですか？',
+                gapPrompt: '距離を取りたいのに取れないとき、何が一番怖いですか？',
+                actions: ['返信を少し遅らせる', '一つだけ断る', '会う頻度や時間を少し短くする']
+            },
+            '助けを求める力': {
+                definition: '困ったときに一人で抱え込まず、誰かに相談したり頼ったりできるかを見る項目です。',
+                drivers: '迷惑をかけたくない気持ち、弱さを見せたくない気持ち、頼った経験の少なさ、相談先の不明確さで左右されます。',
+                idealPrompt: '理想の自分は、どんなタイミングで、誰に、どのくらい助けを求められそうですか？',
+                gapPrompt: '助けを求める前に、頭の中でどんな言葉が止めに入りますか？',
+                actions: ['一つだけ相談する', '「少し聞いてほしい」と送る', '頼めることと頼めないことを分ける']
+            },
+            'やりたいこと': {
+                definition: '今やりたいこと、気になること、今大切にしたいことが見えているかを見る項目です。',
+                drivers: '忙しさ、人との比較、失敗への不安、選択肢の多さ、本音を後回しにする時間が長いことで、やりたいことは見えにくくなります。',
+                idealPrompt: '理想の自分は、何をしているときに「これを大切にしたい」と感じていそうですか？',
+                gapPrompt: 'やりたいことを考えるとき、最初に出てくるブレーキは時間・お金・自信・人の目のどれですか？',
+                actions: ['気になることを10分調べる', 'やりたいことを3つだけ書く', '人に見せない前提で本音を書く']
+            },
+            '目標への前進': {
+                definition: 'やりたいことや目標に向けて、小さく動けているか、前に進んでいる感覚があるかを見る項目です。',
+                drivers: '完璧主義、準備不足感、失敗への不安、目標が大きすぎること、日々のタスク過多で下がりやすい項目です。',
+                idealPrompt: '理想の前進は、大きな成果ではなく、どんな小さな行動として現れていそうですか？',
+                gapPrompt: '動けないとき、足りないのは情報・時間・勇気・応援・締切のどれに近いですか？',
+                actions: ['10分だけ試す', '未完成で一度出す', '今週終わるサイズに小さくする']
+            },
+            '夢・自己実現': {
+                definition: '夢、将来像、自分の成長につながる時間を持てているかを見る項目です。',
+                drivers: '目の前の義務の多さ、比較、学びへの投資不足、自分のための時間を後回しにする癖、未来を考える余裕の少なさで左右されます。',
+                idealPrompt: '理想の自分は、何を学び、何を試し、どんな実感を得ていそうですか？',
+                gapPrompt: '自分のための時間を取ることに、どんな遠慮や罪悪感がありますか？',
+                actions: ['自分のための30分を予定に入れる', '学びたいことを一つ選ぶ', '今月の小さな成長を記録する']
+            },
+            '義務・責任': {
+                definition: '家族、仕事、生活上の義務や責任を理解し、自分なりに納得して引き受けられているかを見る項目です。',
+                drivers: '役割の多さ、期待の曖昧さ、自分だけが背負っている感覚、断れない責任、頼れる相手の少なさによって下がりやすい項目です。',
+                idealPrompt: '理想の自分は、どの責任を自分の意思で引き受け、どの責任を手放していそうですか？',
+                gapPrompt: '今の責任の中で、「本当は自分だけで背負わなくていいもの」はどれですか？',
+                actions: ['抱えている役割を書き出す', '自分が選びたい責任に丸をつける', '誰かに渡せるものを一つ選ぶ']
+            },
+            '自分の意思': {
+                definition: '人の期待だけではなく、自分の価値観や本音も含めて選べているかを見る項目です。',
+                drivers: '人の期待、収入や立場への不安、忙しさ、過去の成功パターン、自分の本音を確認する時間不足で左右されます。',
+                idealPrompt: '理想の自分は、何を大切にして判断していそうですか？その判断軸はどんな言葉になりますか？',
+                gapPrompt: '今の選択の中で、自分の価値観よりも人の期待を優先しているものはありますか？',
+                actions: ['大切にしたい価値観を3語で書く', '違和感のある予定を一つ見直す', '本当はどうしたいかを1行で書く']
+            },
+            '世の中への貢献': {
+                definition: '自分が世の中や誰かに対して、何をしたいのか、どんな形で役に立ちたいのかを見る項目です。',
+                drivers: '成果が見えにくい仕事、感謝されにくい役割、単調さ、疲労、社会との接点の少なさ、目的を振り返る時間の少なさで下がりやすくなります。',
+                idealPrompt: '理想の自分は、誰のどんな変化に役立っていると感じていそうですか？世の中に対して何をしたい感覚がありますか？',
+                gapPrompt: '今やっていることの意味が見えにくいのは、成果が見えないからですか、それとも価値観とズレているからですか？',
+                actions: ['誰の何に役立っているか書く', '感謝されたことを一つ思い出す', '意味を感じにくい作業の目的を確認する']
+            },
+            '安定（現在の入りと出）': {
+                definition: '今の収入、支出、固定費、日々のお金の流れをある程度把握できているかを見る項目です。',
+                drivers: '収入の安定、固定費、支出の見える化、家計管理のシンプルさ、数字を見る抵抗感によって左右されます。',
+                idealPrompt: '理想の自分は、今の入りと出について何をどのくらい把握していれば落ち着けそうですか？',
+                gapPrompt: '今の入りと出で、見えているもの・見ないようにしているものは何ですか？',
+                actions: ['今月の支出を一つ確認する', '固定費を一つだけ書き出す', '管理方法を一つ簡単にする']
+            },
+            '安心感（将来への備え）': {
+                definition: '貯蓄、備え、将来の見通しがあり、未来のお金を考えたときに最低限の安心感があるかを見る項目です。',
+                drivers: '貯蓄額、緊急時の備え、大きな支出予定、収入の見通し、比較や将来不安で左右されます。',
+                idealPrompt: '理想の安心感は、いくらあれば、またはどんな見通しがあれば感じられそうですか？',
+                gapPrompt: '今のお金の不安は、実際の不足・見通し不足・比較・情報不足のどれに近いですか？',
+                actions: ['来月の大きな支出を確認する', '最低限必要な金額を書く', '不安を数字に変える']
+            },
+            '自由（使い方とメンタリティ）': {
+                definition: 'お金をどう使うか、自分に必要なものに許可を出せるか、お金に振り回されすぎていないかを見る項目です。',
+                drivers: '罪悪感、将来不安、自己投資への抵抗、家族や周囲への遠慮、お金だけで決める癖、価値観に合う使い方で左右されます。',
+                idealPrompt: '理想の自分は、何に対して「これは自分に必要」と思ってお金を使えていそうですか？',
+                gapPrompt: 'お金を使うときに出てくる罪悪感は、誰の声やどんな価値観から来ていますか？',
+                actions: ['使ってよかったお金を一つ書く', '小さな自己投資枠を作る', 'お金以外の選択基準を一つ足す']
+            }
+        };
+
+        function getRichGuide(subdomainKey) {
+            return RICH_RESULT_GUIDE_JA[subdomainKey] || {
+                definition: 'この項目は、今の状態をより細かく見るための視点です。',
+                drivers: '日々の習慣、環境、人間関係、責任、感情の扱い方によって左右されます。',
+                idealPrompt: '理想の状態は、具体的にどんな行動や感覚として現れていそうですか？',
+                gapPrompt: '今の状態と理想の間には、どんな理由や背景がありそうですか？',
+                actions: ['今日できる小さな行動を一つ選ぶ', '一人で抱えず誰かに話す', '来月もう一度見直す']
+            };
+        }
+
+        function buildAssessmentPdfHtml() {
+            const content = ASSESSMENT_PDF_CONTENT[currentLanguage] || ASSESSMENT_PDF_CONTENT.ja;
+            const labels = content.labels;
+            const domainsHtml = content.domains.map((domain, domainIndex) => {
+                const subdomainsHtml = domain.subdomains.map((subdomain, subIndex) => {
+                    const paidQuestions = getPaidQuestions().filter(item => {
+                        const globalIndex = domainIndex * 9 + subIndex * 3;
+                        return getPaidQuestions().slice(globalIndex, globalIndex + 3).includes(item);
+                    });
+                    const questionsHtml = paidQuestions.map((questionItem, questionIndex) => {
+                        const number = domainIndex * 9 + subIndex * 3 + questionIndex + 1;
+                        return `
+                            <tr>
+                                <td class="q-number">${number}</td>
+                                <td>${escapeHtml(questionItem.question)}</td>
+                                <td>${escapeHtml(questionItem.optionA)}</td>
+                                <td>${escapeHtml(questionItem.optionB)}</td>
+                                <td class="score-cell"></td>
+                            </tr>
+                        `;
+                    }).join('');
+                    return `
+                        <h3>${escapeHtml(subdomain.name)}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Question</th>
+                                    <th>${escapeHtml(labels.current)}</th>
+                                    <th>${escapeHtml(labels.ideal)}</th>
+                                    <th>1-5</th>
+                                </tr>
+                            </thead>
+                            <tbody>${questionsHtml}</tbody>
+                        </table>
+                    `;
+                }).join('');
+
+                return `
+                    <section class="domain-section">
+                        <h2>${escapeHtml(domain.name)}</h2>
+                        <p><strong>${escapeHtml(labels.definition)}:</strong> ${escapeHtml(domain.definition)}</p>
+                        ${subdomainsHtml}
+                        <div class="reflection-grid">
+                            <div>
+                                <h3>${escapeHtml(labels.reflection)}</h3>
+                                ${renderPdfList(domain.reflection)}
+                            </div>
+                            <div>
+                                <h3>${escapeHtml(labels.action)}</h3>
+                                ${renderPdfList(domain.actions)}
+                            </div>
+                        </div>
+                    </section>
+                `;
+            }).join('');
+
+            return `
+                <!doctype html>
+                <html lang="${currentLanguage}">
+                <head>
+                    <meta charset="utf-8">
+                    <title>${escapeHtml(content.title)}</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+                    <style>
+                        * { box-sizing: border-box; }
+                        body {
+                            margin: 0;
+                            padding: 36px;
+                            color: #102E3A;
+                            background: #F2FBF9;
+                            font-family: "Noto Sans JP", "DM Sans", sans-serif;
+                            line-height: 1.75;
+                        }
+                        html[lang="en"] body { font-family: "DM Sans", "Noto Sans JP", sans-serif; }
+                        .sheet {
+                            max-width: 860px;
+                            margin: 0 auto;
+                            background: #fff;
+                            border: 1px solid #DCEAE8;
+                            border-radius: 22px;
+                            padding: 42px;
+                        }
+                        h1 {
+                            margin: 0;
+                            font-size: 34px;
+                            line-height: 1.2;
+                            letter-spacing: -0.02em;
+                        }
+                        .subtitle {
+                            margin: 8px 0 22px;
+                            color: #138E8A;
+                            font-size: 18px;
+                            font-weight: 700;
+                        }
+                        .intro {
+                            margin: 0 0 28px;
+                            color: #64747B;
+                        }
+                        .note-box {
+                            border: 1px solid #DCEAE8;
+                            border-radius: 16px;
+                            background: #F7FBFA;
+                            padding: 18px;
+                            margin: 22px 0;
+                        }
+                        h2 {
+                            margin: 34px 0 10px;
+                            padding-top: 20px;
+                            border-top: 1px solid #DCEAE8;
+                            font-size: 24px;
+                            line-height: 1.4;
+                        }
+                        h3 {
+                            margin: 22px 0 9px;
+                            font-size: 16px;
+                        }
+                        p { margin: 0 0 12px; }
+                        ul { margin: 8px 0 0; padding-left: 20px; }
+                        li { margin: 5px 0; }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin: 8px 0 16px;
+                            font-size: 13px;
+                        }
+                        th, td {
+                            border: 1px solid #DCEAE8;
+                            padding: 9px 10px;
+                            vertical-align: top;
+                        }
+                        th {
+                            background: #F7FBFA;
+                            color: #138E8A;
+                            text-align: left;
+                        }
+                        .q-number { width: 46px; text-align: center; color: #64747B; }
+                        .score-cell { width: 56px; height: 34px; }
+                        .reflection-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 16px;
+                            margin-top: 14px;
+                        }
+                        .reflection-grid > div {
+                            border: 1px solid #DCEAE8;
+                            border-radius: 14px;
+                            padding: 14px;
+                            background: #FFFFFF;
+                        }
+                        .print-actions {
+                            display: flex;
+                            justify-content: center;
+                            gap: 10px;
+                            margin-bottom: 18px;
+                        }
+                        .print-actions button {
+                            border: 0;
+                            border-radius: 999px;
+                            background: linear-gradient(180deg, #48CFC3 0%, #20AFA6 100%);
+                            color: #fff;
+                            padding: 12px 20px;
+                            font: inherit;
+                            font-weight: 700;
+                            cursor: pointer;
+                        }
+                        @media print {
+                            body { background: #fff; padding: 0; }
+                            .sheet { border: 0; border-radius: 0; padding: 22mm 18mm; max-width: none; }
+                            .print-actions { display: none; }
+                            .domain-section { break-inside: avoid; }
+                            h2 { break-after: avoid; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-actions">
+                        <button onclick="window.print()">${currentLanguage === 'ja' ? 'PDFとして保存' : 'Save as PDF'}</button>
+                    </div>
+                    <main class="sheet">
+                        <h1>${escapeHtml(content.title)}</h1>
+                        <div class="subtitle">${escapeHtml(content.subtitle)}</div>
+                        <div class="intro">${content.intro.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}</div>
+                        <div class="note-box">${renderPdfList(content.howTo)}</div>
+                        <h2>${escapeHtml(content.scoreTitle)}</h2>
+                        <div class="note-box">${renderPdfList(content.scoreBody)}</div>
+                        ${domainsHtml}
+                    </main>
+                    <script>
+                        window.addEventListener('load', () => setTimeout(() => window.print(), 350));
+                    <\/script>
+                </body>
+                </html>
+            `;
+        }
+
+        function getScoreNarrative(label, percentage, type = 'domain') {
+            if (percentage >= 80) {
+                return `${label}は、あなたを支える安定した土台になっている可能性があります。大きく変えるよりも、何がこの状態を支えているのかを言葉にして、これからも続けられる形にしていくとよさそうです。`;
+            }
+            if (percentage >= 60) {
+                return `${label}は、全体としては保てている一方で、少し見直すとさらに楽になりそうな余地があります。今の良さを残しながら、負荷が出ている場面や崩れやすい条件を一つ見つけてみてください。`;
+            }
+            if (percentage >= 40) {
+                return `${label}には、今の状態と理想の間にわかりやすいギャップが出ているかもしれません。これは悪い結果ではなく、どこを整えると変化が出やすいかを教えてくれるサインとして見てみてください。`;
+            }
+            return `${label}は、かなり負荷が出やすい領域かもしれません。すぐに改善しようとするより、まずは何がこの状態を作っているのかを丁寧に見て、助けを借りることも選択肢に入れてみてください。`;
+        }
+
+        function getDomainHint(domainKey, focusSubScores) {
+            const focusNames = focusSubScores.map(item => item.label).join('・');
+            const hints = {
+                '健康': `健康全体では、まず「体力がない」とまとめず、${focusNames}のどこに負荷が出ているかを見るのが大切です。生活リズム、回復、体調のうち一つだけを選び、今週できる最小の調整に落としてみてください。`,
+                '人間関係': `人間関係全体では、相手を変えるよりも、${focusNames}に関わる自分の選択肢を増やすことが助けになります。近づく、離れる、頼る、断るのどれが今月必要かを見てみてください。`,
+                '野心': `目標全体では、大きな目標を決める前に、${focusNames}のどこが止まっているかを見ます。今月は成果ではなく、10分で試せる小さな前進を一つ作ることを優先してみてください。`,
+                '使命': `使命全体では、人生の目的を無理に決めるよりも、${focusNames}に出ている重さを具体化することが先です。家族・仕事・生活上の責任を分けて、自分が本当に引き受けたいものを確認してみてください。`,
+                '財務': `お金全体では、金額だけではなく、${focusNames}が安心感にどう影響しているかを見ます。大きな計画より、まず一つの数字、一つの支出、一つの選択肢を見える状態にしてみてください。`
+            };
+            return hints[domainKey] || 'この領域では、スコアが低いサブ項目から一つだけ選び、今週できる小さな行動に落としてみてください。';
+        }
+
+        function buildAssessmentResultPdfHtml(result) {
+            const copy = t();
+            const [themeTitle, themeBody] = getPaidTheme(result.focus.key);
+            const reportDate = new Intl.DateTimeFormat('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            }).format(new Date());
+            const categoryMap = {
+                '健康': { name: copy.categories.health.resultName, desc: copy.categories.health.desc },
+                '人間関係': { name: copy.categories.relationship.resultName, desc: copy.categories.relationship.resultDesc || copy.categories.relationship.desc },
+                '野心': { name: copy.categories.ambition.resultName, desc: copy.categories.ambition.desc },
+                '使命': { name: copy.categories.purpose.resultName, desc: copy.categories.purpose.desc },
+                '財務': { name: copy.categories.finance.resultName, desc: copy.categories.finance.desc }
+            };
+            const domainDefinitions = ASSESSMENT_PDF_CONTENT.ja.domains;
+            const domainKeys = ['健康', '人間関係', '野心', '使命', '財務'];
+            const domainsHtml = domainKeys.map((domainKey, index) => {
+                const info = categoryMap[domainKey];
+                const definition = domainDefinitions[index];
+                const subScores = result.subScores.filter(item => item.domainKey === domainKey);
+                const sortedSubScores = [...subScores].sort((a, b) => a.percentage - b.percentage);
+                const focusGuides = sortedSubScores.slice(0, 2).map(item => getRichGuide(item.key));
+                const domainQuestions = focusGuides.flatMap(guide => [guide.idealPrompt, guide.gapPrompt]).slice(0, 4);
+                const domainActions = [...new Set(focusGuides.flatMap(guide => guide.actions))].slice(0, 4);
+                return `
+                    <section class="pdf-section domain-block">
+                        <div class="domain-head">
+                            <div>
+                                <h2>${escapeHtml(info.name)}</h2>
+                            </div>
+                            <div class="domain-score">${result.percentages[domainKey]}%</div>
+                        </div>
+                        <div class="bar"><span style="width:${result.percentages[domainKey]}%"></span></div>
+                        <p class="domain-definition"><b>この領域では、${escapeHtml(definition.definition.replace(/。$/, ''))}を見ます。</b></p>
+                        <p class="domain-message">${escapeHtml(getScoreNarrative(info.name, result.percentages[domainKey]))}</p>
+                        <div class="sub-list">
+                            ${subScores.map(sub => {
+                                const guide = getRichGuide(sub.key);
+                                return `
+                                    <article class="sub-detail">
+                                        <div class="sub-title">
+                                            <strong>${escapeHtml(sub.label)}</strong>
+                                            <span>${sub.percentage}%</span>
+                                        </div>
+                                        <div class="bar sub-bar"><span style="width:${sub.percentage}%"></span></div>
+                                        <p class="sub-definition"><b>${escapeHtml(guide.definition)}</b> ${escapeHtml(getScoreNarrative(sub.label, sub.percentage, 'sub'))}</p>
+                                        <p class="sub-driver"><b>満足度を左右しやすいもの：</b>${escapeHtml(guide.drivers)}</p>
+                                    </article>
+                                `;
+                            }).join('')}
+                        </div>
+                        <div class="prompt-box domain-prompt">
+                            <p><b>考えてみたい問い：</b></p>
+                            ${renderPdfList(domainQuestions)}
+                            <p><b>具体的なアクションのアイディア：</b></p>
+                            ${renderPdfList(domainActions)}
+                        </div>
+                        <div class="domain-hint">
+                            <h3>${escapeHtml(info.name)}へのヒント</h3>
+                            <p>${escapeHtml(getDomainHint(domainKey, sortedSubScores.slice(0, 2)))}</p>
+                        </div>
+                    </section>
+                `;
+            }).join('');
+
+            return `
+                <!doctype html>
+                <html lang="ja">
+                <head>
+                    <meta charset="utf-8">
+                    <title>Life Alignment Monthly Report</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+                    <style>
+                        * { box-sizing: border-box; }
+                        body {
+                            margin: 0;
+                            padding: 28px;
+                            background: #F2FBF9;
+                            color: #102E3A;
+                            font-family: "Inter", "Noto Sans JP", sans-serif;
+                            line-height: 1.72;
+                        }
+                        .print-actions {
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 18px;
+                        }
+                        .print-actions button {
+                            border: 0;
+                            border-radius: 999px;
+                            background: linear-gradient(180deg, #48CFC3 0%, #20AFA6 100%);
+                            color: #fff;
+                            padding: 12px 20px;
+                            font: inherit;
+                            font-weight: 800;
+                            cursor: pointer;
+                        }
+                        .sheet {
+                            max-width: 900px;
+                            margin: 0 auto;
+                            background: #fff;
+                            border: 1px solid #DCEAE8;
+                            border-radius: 22px;
+                            padding: 40px;
+                        }
+                        .brand {
+                            color: #138E8A;
+                            font-size: 12px;
+                            font-weight: 800;
+                            letter-spacing: .08em;
+                        }
+                        h1 {
+                            margin: 8px 0 10px;
+                            font-size: 34px;
+                            line-height: 1.25;
+                            letter-spacing: -.02em;
+                        }
+                        .report-top {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 18px;
+                            align-items: flex-start;
+                        }
+                        .report-date {
+                            color: #64747B;
+                            font-size: 12px;
+                            font-weight: 700;
+                            white-space: nowrap;
+                        }
+                        .lead {
+                            max-width: 650px;
+                            margin: 0 0 24px;
+                            color: #64747B;
+                            font-size: 14px;
+                        }
+                        .summary {
+                            display: grid;
+                            grid-template-columns: 140px 1fr;
+                            gap: 24px;
+                            align-items: center;
+                            padding: 22px;
+                            border: 1px solid #DCEAE8;
+                            border-radius: 18px;
+                            background: linear-gradient(180deg, #fff, #F7FBFA);
+                            margin-bottom: 18px;
+                        }
+                        .ring {
+                            width: 128px;
+                            aspect-ratio: 1;
+                            border-radius: 50%;
+                            display: grid;
+                            place-items: center;
+                            background: conic-gradient(#22B8AE 0 ${result.overall}%, #DDF7F2 ${result.overall}% 100%);
+                        }
+                        .ring::before {
+                            content: "${result.overall}%";
+                            width: 96px;
+                            aspect-ratio: 1;
+                            border-radius: inherit;
+                            display: grid;
+                            place-items: center;
+                            background: #fff;
+                            font-size: 28px;
+                            font-weight: 800;
+                        }
+                        .summary h2, .theme h2 {
+                            margin: 0 0 8px;
+                            font-size: 20px;
+                        }
+                        .summary p, .theme p, .domain-definition, .domain-message, .sub-detail p, .domain-hint p {
+                            margin: 0;
+                            color: #64747B;
+                            font-size: 13px;
+                        }
+                        .theme {
+                            padding: 18px;
+                            border: 1px solid #DCEAE8;
+                            border-radius: 18px;
+                            background: #F7FBFA;
+                            margin-bottom: 20px;
+                        }
+                        .pdf-section {
+                            padding-top: 20px;
+                            margin-top: 20px;
+                            border-top: 1px solid #DCEAE8;
+                        }
+                        .domain-head {
+                            display: grid;
+                            grid-template-columns: 1fr auto;
+                            gap: 18px;
+                            align-items: start;
+                        }
+                        .domain-head h2 {
+                            margin: 0 0 6px;
+                            font-size: 22px;
+                        }
+                        .domain-score {
+                            color: #138E8A;
+                            font-size: 24px;
+                            font-weight: 800;
+                        }
+                        .domain-definition {
+                            margin-bottom: 8px;
+                            color: #102E3A;
+                        }
+                        .domain-message {
+                            margin-bottom: 18px;
+                        }
+                        .bar {
+                            height: 8px;
+                            border-radius: 999px;
+                            background: #DDF7F2;
+                            overflow: hidden;
+                            margin: 12px 0 16px;
+                        }
+                        .bar span {
+                            display: block;
+                            height: 100%;
+                            border-radius: inherit;
+                            background: #22B8AE;
+                        }
+                        .sub-list {
+                            display: grid;
+                            gap: 12px;
+                        }
+                        .sub-detail {
+                            border: 1px solid #DCEAE8;
+                            border-radius: 14px;
+                            background: #fff;
+                            padding: 16px;
+                            break-inside: avoid;
+                        }
+                        .sub-title {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 10px;
+                            align-items: baseline;
+                            margin-bottom: 8px;
+                            font-size: 13px;
+                        }
+                        .sub-title span {
+                            color: #138E8A;
+                            font-weight: 800;
+                        }
+                        .sub-bar {
+                            height: 6px;
+                            margin: 8px 0 10px;
+                        }
+                        .sub-bar span {
+                            background: #61D5C5;
+                            opacity: .82;
+                        }
+                        .sub-detail p + p {
+                            margin-top: 8px;
+                        }
+                        .sub-definition {
+                            color: #102E3A;
+                        }
+                        .sub-driver {
+                            margin-top: 10px;
+                        }
+                        .prompt-box {
+                            border: 1px solid #DCEAE8;
+                            border-radius: 12px;
+                            background: #F7FBFA;
+                            padding: 12px;
+                            margin-top: 12px;
+                        }
+                        .prompt-box p {
+                            margin: 0 0 6px;
+                            color: #102E3A;
+                        }
+                        .prompt-box ul {
+                            margin: 0 0 10px;
+                            padding-left: 18px;
+                            color: #64747B;
+                            font-size: 13px;
+                        }
+                        .prompt-box ul:last-child {
+                            margin-bottom: 0;
+                        }
+                        .domain-hint {
+                            margin-top: 14px;
+                            padding: 16px;
+                            border: 1px solid #DCEAE8;
+                            border-radius: 14px;
+                            background: #F7FBFA;
+                            break-inside: avoid;
+                        }
+                        .domain-hint h3 {
+                            margin: 0 0 8px;
+                            font-size: 16px;
+                        }
+                        .closing {
+                            margin-top: 34px;
+                            padding: 22px;
+                            border-radius: 18px;
+                            background: linear-gradient(180deg, #F7FBFA 0%, #EEF8F6 100%);
+                            border: 0;
+                            box-shadow: inset 0 0 0 1px rgba(19, 142, 138, .12);
+                            break-inside: avoid;
+                        }
+                        .closing h2 {
+                            margin: 0 0 10px;
+                            font-size: 18px;
+                            color: #138E8A;
+                        }
+                        .closing ul {
+                            margin: 0;
+                            padding-left: 18px;
+                            color: #64747B;
+                            font-size: 13px;
+                        }
+                        @media print {
+                            body { padding: 0; background: #fff; }
+                            .print-actions { display: none; }
+                            .sheet { border: 0; border-radius: 0; max-width: none; padding: 16mm; }
+                            .domain-block { break-inside: avoid; page-break-inside: avoid; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-actions"><button onclick="window.print()">PDFとして保存</button></div>
+                    <main class="sheet">
+                        <div class="report-top">
+                            <div>
+                                <div class="brand">LIFE ALIGNMENT</div>
+                                <h1>ライフアライメント診断結果</h1>
+                            </div>
+                            <div class="report-date">${escapeHtml(reportDate)}</div>
+                        </div>
+                        <p class="lead">このレポートは、あなたを評価するためのものではありません。今月の状態を見つめ、理想の状態がどんなものかを言語化し、現実との差分を埋めるための小さな行動を選ぶためのチェックインです。</p>
+                        <section class="summary">
+                            <div class="ring"></div>
+                            <div>
+                                <h2>${escapeHtml(getOverallTitle(result.overall))}</h2>
+                                <p>${escapeHtml(getOverallDescription(result.overall))}</p>
+                            </div>
+                        </section>
+                        <section class="theme">
+                            <h2>今月のテーマ：${escapeHtml(themeTitle)}</h2>
+                            <p>${escapeHtml(themeBody)}</p>
+                        </section>
+                        ${domainsHtml}
+                        <section class="closing">
+                            <h2>全体を通して</h2>
+                            <p>今回の結果では、整っている領域と、少し見直すと変化が出やすい領域の両方が見えています。スコアが高い領域は、あなたがすでに持っている支えや習慣を教えてくれます。スコアが低い領域は、足りないものを責めるためではなく、今の生活のどこに負荷やズレがあるのかを見つけるための入口です。理想の状態がまだはっきりしない場合は、「どんな1日なら少し楽か」「どんな行動が増えると自分らしいか」から考えてみてください。現実との差分を埋めるためには、大きな決断よりも、10分以内で始められる小さな行動を一つ選ぶことが助けになります。</p>
+                        </section>
+                    </main>
+                    <script>
+                        window.addEventListener('load', () => setTimeout(() => window.print(), 350));
+                    <\/script>
+                </body>
+                </html>
+            `;
+        }
+
+        function downloadAssessmentPdf() {
+            trackEvent('assessment_pdf_download_click', { language: currentLanguage });
+            const pdfWindow = window.open('', '_blank');
+            if (!pdfWindow) return;
+            pdfWindow.document.open();
+            pdfWindow.document.write(latestPaidResult ? buildAssessmentResultPdfHtml(latestPaidResult) : buildAssessmentPdfHtml());
+            pdfWindow.document.close();
         }
 
         const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0E4ngvbWz-K7jbN5yLtVYLZpS1kKnKTxbXQfM_EGi5-iMa6xuZVBAEV5F73ACnZgx/exec';
