@@ -1168,6 +1168,56 @@
             line-height: 1.45;
         }
 
+        .paid-access-card {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .paid-access-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0 0 16px;
+        }
+
+        .paid-access-actions {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .paid-code-form {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+        }
+
+        .paid-code-form input {
+            min-width: 0;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface-soft);
+            color: var(--ink);
+            font: inherit;
+            font-size: 14px;
+            padding: 12px 16px;
+            outline: none;
+        }
+
+        .paid-code-form input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 184, 174, 0.12);
+        }
+
+        .paid-access-status {
+            min-height: 20px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
         .time-card {
             text-align: center;
         }
@@ -1578,6 +1628,10 @@
                 width: fit-content;
                 justify-self: center;
             }
+
+            .paid-code-form {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1616,13 +1670,13 @@
             <div class="hero-copy">
                 <div class="hero-pill">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 13V9"/><path d="M12 13l3 2"/><path d="M9 3h6"/></svg>
-                    <span id="heroPillText">自分のバランスを1 分で可視化</span>
+                    <span id="heroPillText">45問で自分の現在地を深く見る</span>
                 </div>
-                <h1 id="heroTitle"><span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？</h1>
-                <p id="heroLead">5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。</p>
+                <h1 id="heroTitle"><span class="title-accent">ライフアライメント</span><br>詳細診断</h1>
+                <p id="heroLead">5つの領域を15の視点に分けて、今の状態をより具体的に見ていく有料版アセスメントです。</p>
             </div>
             <div class="hero-action">
-                <button class="button" id="heroStartButton" onclick="startTest()">診断をはじめる</button>
+                <button class="button" id="heroStartButton" onclick="showPaidAccessGate()">コードを入力してはじめる</button>
                 <p class="hero-note" id="heroNote">入力内容は保存されません</p>
             </div>
         </div>
@@ -1631,15 +1685,15 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">質問 1 / 15</div>
+            <div class="progress-text" id="progressText">質問 1 / 45</div>
         </div>
 
         <div class="content">
             <!-- Start Screen -->
             <div class="start-screen" id="startScreen">
-                <p id="startLead">5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。</p>
+                <p id="startLead">noteの有料記事を購入後、表示されるコードを入力すると詳細診断を開始できます。</p>
 
-                <div class="completion-time" id="completionTime">たった1 分で完了！</div>
+                <div class="completion-time" id="completionTime">45問の詳細チェック</div>
 
                 <div class="info-box category-card">
                     <h3 id="categoryHeading">診断内容</h3>
@@ -1683,25 +1737,38 @@
                 </div>
 
                 <div class="info-box time-card">
-                    <h3 id="timeHeading">所要時間</h3>
+                    <h3 id="timeHeading">詳細版の内容</h3>
                     <div class="time-ring">
                         <div class="time-ring-content">
                             <span class="time-ring-icon">
                                 <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round;"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
                             </span>
-                            <div class="time-ring-main" id="timeMain">約<span>1</span><span class="time-unit">分</span></div>
-                            <div class="time-ring-sub" id="timeSub">全15問（各領域3問ずつ）</div>
+                            <div class="time-ring-main" id="timeMain">45<span class="time-unit">問</span></div>
+                            <div class="time-ring-sub" id="timeSub">全45問（15の視点）</div>
                         </div>
                     </div>
                     <div class="time-list">
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList1">直感で答えるだけのかんたん設計</span></div>
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList2">選択式で迷わず回答できます</span></div>
-                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList3">途中保存なしでサクッと完了</span></div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList1">5領域を15の視点に分解</span></div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList2">A/Bバーで直感的に回答</span></div>
+                        <div><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span id="timeList3">結果PDFとして保存できます</span></div>
                     </div>
-                    <button class="button" id="timeStartButton" onclick="startTest()">診断をはじめる</button>
+                    <button class="button" id="timeStartButton" onclick="showPaidAccessGate()">コードを入力してはじめる</button>
                 </div>
 
-                <button class="button" id="startButton" onclick="startTest()">診断してみる</button>
+                <div class="info-box paid-access-card" id="paidAccessCard">
+                    <h3 id="paidAccessHeading">有料版コード</h3>
+                    <p id="paidAccessLead">noteの有料記事を購入すると表示されるコードを入力してください。コード確認後、45問の詳細診断がはじまります。</p>
+                    <div class="paid-access-actions">
+                        <a class="button-outline button-fill" id="paidNoteLink" href="https://note.com/kelly_note" target="_blank" rel="noopener">noteで購入する</a>
+                        <form class="paid-code-form" onsubmit="unlockPaidAssessment(event)">
+                            <input id="paidAccessCode" type="text" autocomplete="one-time-code" placeholder="コードを入力" required>
+                            <button type="submit" class="button-outline" id="paidUnlockButton">開始</button>
+                        </form>
+                        <div class="paid-access-status" id="paidAccessStatus" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <button class="button" id="startButton" onclick="showPaidAccessGate()">コードを入力してはじめる</button>
             </div>
 
             <!-- Question Screen -->
@@ -1773,22 +1840,22 @@
     <script>
         const I18N = {
             ja: {
-                pageTitle: 'ライフアライメント診断 | Life Alignment Assessment',
-                heroPillText: '自分のバランスを1 分で可視化',
-                heroTitle: '<span class="title-accent">「今」</span>と<span class="title-accent">「理想」</span>の<br>ギャップは<br>どれくらい？',
-                heroLead: '5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。',
-                heroStartButton: '診断をはじめる',
+                pageTitle: 'ライフアライメント詳細診断 | Life Alignment Assessment',
+                heroPillText: '45問で自分の現在地を深く見る',
+                heroTitle: '<span class="title-accent">ライフアライメント</span><br>詳細診断',
+                heroLead: '5つの領域を15の視点に分けて、今の状態をより具体的に見ていく有料版アセスメントです。',
+                heroStartButton: 'コードを入力してはじめる',
                 heroNote: '入力内容は保存されません',
-                startLead: '5つの領域から、今の自分のバランスを見るかんたんなセルフチェックです。',
-                completionTime: 'たった1 分で完了！',
+                startLead: 'noteの有料記事を購入後、表示されるコードを入力すると詳細診断を開始できます。',
+                completionTime: '45問の詳細チェック',
                 categoryHeading: '診断内容',
-                timeHeading: '所要時間',
-                timeMain: '約<span>1</span><span class="time-unit">分</span>',
-                timeSub: '全15問（各領域3問ずつ）',
-                timeList1: '直感で答えるだけのかんたん設計',
-                timeList2: '選択式で迷わず回答できます',
-                timeList3: '途中保存なしでサクッと完了',
-                timeStartButton: '診断をはじめる',
+                timeHeading: '詳細版の内容',
+                timeMain: '45<span class="time-unit">問</span>',
+                timeSub: '全15視点（各3問）',
+                timeList1: '5領域を15の視点に分解',
+                timeList2: 'A/Bバーで直感的に回答',
+                timeList3: '結果PDFとして保存できます',
+                timeStartButton: 'コードを入力してはじめる',
                 paidHeading: '個人向け詳細版',
                 paidLead: '毎月、自分の現在地を見直すための45問アセスメント。5つの領域を15の視点に分けて、A/Bのバー回答から今月の小さな行動につなげます。',
                 paidFeature1Value: '45問',
@@ -1798,7 +1865,7 @@
                 paidFeature3Value: '¥1,000',
                 paidFeature3Label: 'note/PDF想定',
                 paidStartButton: '詳細版をはじめる',
-                startButton: '診断してみる',
+                startButton: 'コードを入力してはじめる',
                 nextButton: '次へ',
                 progress: (current, total) => `質問 ${current} / ${total}`,
                 sliderLabel: 'あなたの今に最も近いものを選んでください',
@@ -1855,22 +1922,22 @@
                 ]
             },
             en: {
-                pageTitle: 'Life Alignment Assessment',
-                heroPillText: 'See your life balance in 1 minute',
-                heroTitle: 'How aligned are<br>your <span class="title-accent">now</span> and<br>your <span class="title-accent">ideal</span>?',
-                heroLead: 'A quick self-check across five life domains.',
-                heroStartButton: 'Start now',
+                pageTitle: 'Life Alignment Detailed Assessment',
+                heroPillText: 'A deeper 45-question check-in',
+                heroTitle: '<span class="title-accent">Life Alignment</span><br>Detailed Assessment',
+                heroLead: 'A paid assessment that breaks five life domains into 15 lenses and turns your current state into clearer reflection prompts.',
+                heroStartButton: 'Enter code to start',
                 heroNote: 'Your answers are not saved',
-                startLead: 'A quick self-check across five life domains.',
-                completionTime: 'Done in just 1 minute',
+                startLead: 'Purchase the paid note article, then enter the code shown in the article to start the detailed assessment.',
+                completionTime: '45-question detailed check',
                 categoryHeading: '5 Domains of Life',
-                timeHeading: 'Time Needed',
-                timeMain: '1 minute',
-                timeSub: '15 questions, 3 per domain',
-                timeList1: 'Designed for quick, intuitive answers',
-                timeList2: 'Simple choices, no overthinking needed',
-                timeList3: 'Finish in one sitting, no saved drafts',
-                timeStartButton: 'Start now',
+                timeHeading: 'What You Get',
+                timeMain: '45<span class="time-unit"> Qs</span>',
+                timeSub: '15 lenses, 3 questions each',
+                timeList1: 'Five domains broken into 15 lenses',
+                timeList2: 'Simple A/B slider answers',
+                timeList3: 'Save your results as a PDF',
+                timeStartButton: 'Enter code to start',
                 paidHeading: 'Personal Detailed Version',
                 paidLead: 'A 45-question monthly assessment using simple A/B slider answers across five life domains and 15 lenses.',
                 paidFeature1Value: '45 Qs',
@@ -1880,7 +1947,7 @@
                 paidFeature3Value: '¥1,000',
                 paidFeature3Label: 'note/PDF idea',
                 paidStartButton: 'Start detailed version',
-                startButton: 'Start now',
+                startButton: 'Enter code to start',
                 nextButton: 'Next',
                 progress: (current, total) => `Question ${current} / ${total}`,
                 sliderLabel: 'Choose what feels closest to your current state',
@@ -2091,6 +2158,28 @@
             return browserLanguages.some(lang => lang.toLowerCase().startsWith('ja')) ? 'ja' : 'en';
         }
 
+        const PAID_ACCESS_CODE = 'ALIGNMENT2026';
+        const NOTE_PURCHASE_URL = 'https://note.com/kelly_note';
+
+        const PAID_ACCESS_COPY = {
+            ja: {
+                heading: '有料版コード',
+                lead: 'noteの有料記事を購入すると表示されるコードを入力してください。コード確認後、45問の詳細診断がはじまります。',
+                noteLink: 'noteで購入する',
+                placeholder: 'コードを入力',
+                unlock: '開始',
+                invalid: 'コードが違うようです。noteの記事内に表示されたコードを確認してください。'
+            },
+            en: {
+                heading: 'Paid Access Code',
+                lead: 'Enter the code shown in the paid note article. Once confirmed, the 45-question detailed assessment will begin.',
+                noteLink: 'Purchase on note',
+                placeholder: 'Enter code',
+                unlock: 'Start',
+                invalid: 'That code does not seem to match. Please check the code shown in the note article.'
+            }
+        };
+
         let currentLanguage = detectInitialLanguage();
         let shuffledQuestionIds = shuffleArray(QUESTION_BANK.ja.map(question => question.id));
         let assessmentMode = 'free';
@@ -2161,6 +2250,15 @@
             setText('timeList2', copy.timeList2);
             setText('timeList3', copy.timeList3);
             setText('timeStartButton', copy.timeStartButton);
+            const paidAccessCopy = PAID_ACCESS_COPY[currentLanguage] || PAID_ACCESS_COPY.ja;
+            setText('paidAccessHeading', paidAccessCopy.heading);
+            setText('paidAccessLead', paidAccessCopy.lead);
+            setText('paidNoteLink', paidAccessCopy.noteLink);
+            setText('paidUnlockButton', paidAccessCopy.unlock);
+            const paidCodeInput = document.getElementById('paidAccessCode');
+            if (paidCodeInput) paidCodeInput.placeholder = paidAccessCopy.placeholder;
+            const paidNoteLink = document.getElementById('paidNoteLink');
+            if (paidNoteLink) paidNoteLink.href = NOTE_PURCHASE_URL;
             setText('paidHeading', copy.paidHeading);
             setText('paidLead', copy.paidLead);
             setText('paidFeature1Value', copy.paidFeature1Value);
@@ -2220,6 +2318,33 @@
             document.getElementById('mainHeader').style.display = 'none';
             trackEvent('diagnosis_start');
             showQuestion();
+        }
+
+        function showPaidAccessGate() {
+            const accessCard = document.getElementById('paidAccessCard');
+            if (accessCard) {
+                accessCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const input = document.getElementById('paidAccessCode');
+                setTimeout(() => input && input.focus(), 350);
+            }
+            trackEvent('paid_access_gate_view', { language: currentLanguage });
+        }
+
+        function unlockPaidAssessment(event) {
+            event.preventDefault();
+            const input = document.getElementById('paidAccessCode');
+            const status = document.getElementById('paidAccessStatus');
+            const value = (input && input.value ? input.value : '').trim();
+
+            if (value.toUpperCase() !== PAID_ACCESS_CODE) {
+                if (status) status.textContent = (PAID_ACCESS_COPY[currentLanguage] || PAID_ACCESS_COPY.ja).invalid;
+                trackEvent('paid_access_code_invalid', { language: currentLanguage });
+                return;
+            }
+
+            if (status) status.textContent = '';
+            trackEvent('paid_access_code_valid', { language: currentLanguage });
+            startPaidAssessment();
         }
 
         function startPaidAssessment() {

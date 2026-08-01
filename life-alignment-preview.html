@@ -1631,7 +1631,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">質問 1 / 20</div>
+            <div class="progress-text" id="progressText">質問 1 / 15</div>
         </div>
 
         <div class="content">
@@ -1690,7 +1690,7 @@
                                 <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round;"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
                             </span>
                             <div class="time-ring-main" id="timeMain">約<span>1</span><span class="time-unit">分</span></div>
-                            <div class="time-ring-sub" id="timeSub">全20問（各領域4問ずつ）</div>
+                            <div class="time-ring-sub" id="timeSub">全15問（各領域3問ずつ）</div>
                         </div>
                     </div>
                     <div class="time-list">
@@ -1784,7 +1784,7 @@
                 categoryHeading: '診断内容',
                 timeHeading: '所要時間',
                 timeMain: '約<span>1</span><span class="time-unit">分</span>',
-                timeSub: '全20問（各領域4問ずつ）',
+                timeSub: '全15問（各領域3問ずつ）',
                 timeList1: '直感で答えるだけのかんたん設計',
                 timeList2: '選択式で迷わず回答できます',
                 timeList3: '途中保存なしでサクッと完了',
@@ -1866,7 +1866,7 @@
                 categoryHeading: '5 Domains of Life',
                 timeHeading: 'Time Needed',
                 timeMain: '1 minute',
-                timeSub: '20 questions, 4 per domain',
+                timeSub: '15 questions, 3 per domain',
                 timeList1: 'Designed for quick, intuitive answers',
                 timeList2: 'Simple choices, no overthinking needed',
                 timeList3: 'Finish in one sitting, no saved drafts',
@@ -1941,46 +1941,36 @@
         const QUESTION_BANK = {
             ja: [
                 {id: 'health-1', category: '健康', question: '朝、目覚ましが鳴ったら', optionA: 'スッキリ起きられる', optionB: 'あと5分...が止まらない'},
-                {id: 'health-2', category: '健康', question: '駅の階段、どうしている', optionA: '階段で行く派', optionB: 'エスカレーター一択'},
                 {id: 'health-3', category: '健康', question: '体力的に', optionA: 'まだまだいける', optionB: 'すぐバテる'},
                 {id: 'health-4', category: '健康', question: '健康面、理想と比べると', optionA: 'かなり近い', optionB: '結構ギャップがある'},
                 {id: 'relationship-1', category: '人間関係', question: '家に帰る時', optionA: '楽しみ', optionB: 'ちょっと憂鬱'},
                 {id: 'relationship-2', category: '人間関係', question: '困った時、相談できる人', optionA: 'すぐ顔が浮かぶ', optionB: '思いつかない'},
                 {id: 'relationship-3', category: '人間関係', question: '人と会った後', optionA: '楽しい気分', optionB: 'どっと疲れる'},
-                {id: 'relationship-4', category: '人間関係', question: '人間関係のトラブル', optionA: 'ほぼない', optionB: 'けっこうある'},
                 {id: 'ambition-1', category: '野心', question: '今年の目標', optionA: '達成できそう', optionB: 'まだまだ'},
                 {id: 'ambition-2', category: '野心', question: '最近、達成感味わった？', optionA: 'つい最近', optionB: '思い出せない'},
-                {id: 'ambition-3', category: '野心', question: '理想のキャリア', optionA: '近づいている', optionB: 'まだ遠い'},
                 {id: 'ambition-4', category: '野心', question: '将来を考えると', optionA: 'ワクワクする', optionB: '不安になる'},
-                {id: 'purpose-1', category: '使命', question: '朝起きる理由', optionA: 'ある', optionB: 'ない'},
                 {id: 'purpose-2', category: '使命', question: '自分の仕事', optionA: '誰かの役に立っている', optionB: '意味あるのか不明'},
                 {id: 'purpose-3', category: '使命', question: '人生の目的', optionA: '自分なりに明確', optionB: '見つかっていない'},
                 {id: 'purpose-4', category: '使命', question: '仕事と価値観', optionA: '合っている', optionB: 'ズレている'},
                 {id: 'finance-1', category: '財務', question: '給料日前', optionA: '余裕がある', optionB: 'カツカツ'},
                 {id: 'finance-2', category: '財務', question: 'お金の心配', optionA: 'していない', optionB: 'いつもしている'},
-                {id: 'finance-3', category: '財務', question: '欲しいもの', optionA: '迷わず買える', optionB: '我慢する'},
                 {id: 'finance-4', category: '財務', question: 'お金のストレス', optionA: 'ほぼない', optionB: 'かなりある'}
             ],
             en: [
                 {id: 'health-1', category: '健康', question: 'Most mornings, I wake up feeling', optionA: 'Clear and ready', optionB: 'Heavy or still tired'},
-                {id: 'health-2', category: '健康', question: 'When I have a choice to move my body', optionA: 'I usually take it', optionB: 'I usually avoid it'},
                 {id: 'health-3', category: '健康', question: 'My energy through the day feels', optionA: 'Steady enough', optionB: 'Easily drained'},
                 {id: 'health-4', category: '健康', question: 'Compared with the health I want', optionA: 'I feel close', optionB: 'I feel a gap'},
                 {id: 'relationship-1', category: '人間関係', question: 'The people closest to me usually feel', optionA: 'Nourishing', optionB: 'Complicated'},
                 {id: 'relationship-2', category: '人間関係', question: 'When I need support', optionA: 'I know who to ask', optionB: 'I tend to handle it alone'},
                 {id: 'relationship-3', category: '人間関係', question: 'After spending time with people', optionA: 'I feel lighter', optionB: 'I feel drained'},
-                {id: 'relationship-4', category: '人間関係', question: 'In my relationships lately', optionA: 'Things feel mostly calm', optionB: 'There is recurring friction'},
                 {id: 'ambition-1', category: '野心', question: 'My current goals feel', optionA: 'Active and reachable', optionB: 'Distant or vague'},
                 {id: 'ambition-2', category: '野心', question: 'A recent win or sense of progress feels', optionA: 'Easy to name', optionB: 'Hard to remember'},
-                {id: 'ambition-3', category: '野心', question: 'My career or personal path feels', optionA: 'Like it is moving forward', optionB: 'Like it is on hold'},
                 {id: 'ambition-4', category: '野心', question: 'When I imagine my future', optionA: 'I feel curious or excited', optionB: 'I feel tense or unsure'},
-                {id: 'purpose-1', category: '使命', question: 'What I am responsible for feels', optionA: 'Clear enough', optionB: 'Unclear or scattered'},
                 {id: 'purpose-2', category: '使命', question: 'The work I do day to day feels', optionA: 'Useful to someone', optionB: 'Hard to connect to meaning'},
                 {id: 'purpose-3', category: '使命', question: 'My sense of direction in life feels', optionA: 'Clear in my own way', optionB: 'Still taking shape'},
                 {id: 'purpose-4', category: '使命', question: 'My daily choices and values feel', optionA: 'Mostly aligned', optionB: 'Somewhat out of sync'},
                 {id: 'finance-1', category: '財務', question: 'At the end of the month, money feels', optionA: 'Manageable', optionB: 'Tight'},
                 {id: 'finance-2', category: '財務', question: 'Money is something I think about', optionA: 'With relative calm', optionB: 'With frequent worry'},
-                {id: 'finance-3', category: '財務', question: 'When I want or need something', optionA: 'I feel some choice', optionB: 'I mostly hold back'},
                 {id: 'finance-4', category: '財務', question: 'My financial life currently feels', optionA: 'Mostly stable', optionB: 'Stressful'}
             ]
         };
