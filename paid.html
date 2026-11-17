@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
-<title>Life Alignment 診断 詳細版 | Detailed Assessment</title>
+<title>ライフアライメント診断 詳細版</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />
@@ -161,22 +161,145 @@ footer.site.en{color:var(--navy-ink);}
 .slider-caps{padding:0 34px; font-size:10px;}
 .domain-score{font-size:25px;}
 }
+
+/* ---------- LP: measures / flow ---------- */
+.measures-list .domain-card:last-child{margin-bottom:0;}
+.elem-line.en-line{font-family:"Archivo","Noto Sans JP",sans-serif; font-size:12px; letter-spacing:.02em; margin-top:2px;}
 </style>
 </head>
 <body>
 
 <header class="band">
 <div class="brand-mark en">L<span class="slash">/</span>A</div>
-<div class="brand-sub">Life Alignment — Detailed Assessment</div>
-<h1>ライフアライメント診断 詳細版<span class="en">THE DETAILED ASSESSMENT — 45 QUESTIONS, 15 ELEMENTS</span></h1>
+<div class="brand-sub">Life Alignment</div>
+<h1>ライフアライメント診断 詳細版</h1>
 <p class="lead">5つの領域と、その中にある15の要素を測る詳細版です。簡易版（15問）では見えない「どの要素に現在地があるか」まで並べて見ます。<span class="soft">スコアは良い・悪いの判定ではなく、今の状態を写す数字です。</span></p>
 <div class="band-stats">
-<span><b>5</b> つの領域</span>
-<span><b>15</b> の要素</span>
 <span>全 <b>45</b> 問・約5分</span>
+<span><b>5</b> 領域 × <b>3</b> 要素（15要素）</span>
 <span>結果はその場で表示</span>
 </div>
 </header>
+
+<!-- what it measures -->
+<section class="block paper-sec" id="measuresView">
+<div class="sec-head">
+<span class="sec-no en">MEASURES</span>
+<h2>何を測るか<span class="en">WHAT IT MEASURES</span></h2>
+<p>5つの領域を、それぞれ3つの要素に分けて測ります。各要素が「何を見ているか」を並べます。</p>
+</div>
+<div class="measures-list">
+<article class="domain-card">
+<div class="domain-head"><span class="no en">01</span><h3>健康<span class="en">HEALTH</span></h3><span class="taste en">Physical</span></div>
+<p class="domain-def">身体的・メンタル的なウェルビーイング。体調、気分、生活リズム、回復力など、毎日の土台となる状態を見る領域。</p>
+<div class="elem">
+<div class="elem-head"><h4>体調・エネルギー<span class="en">Physical Vitality &amp; Stamina</span></h4></div>
+<p class="elem-line">日々の体力、気分の安定、朝の起きやすさ、今の生活が自分の心身に合っている感覚を見る。</p>
+<p class="elem-line en-line">Measures: your daily energy and steadiness — how you wake, how long your stamina lasts, and whether your current life fits your body and mind.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>生活リズム・健康習慣<span class="en">Rhythm &amp; Daily Habits</span></h4></div>
+<p class="elem-line">自分に合った生活リズムがあるか、健康のために続けている小さな習慣があるかを見る。</p>
+<p class="elem-line en-line">Measures: the rhythm underneath your days — sleep, rest, and the small health habits you actually keep.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>回復・メンタル安定<span class="en">Mental Steadiness &amp; Recovery</span></h4></div>
+<p class="elem-line">疲れたときに休めるか、ストレスを感じたときに自分を整える方法があるかを見る。</p>
+<p class="elem-line en-line">Measures: your mental steadiness under load — whether you can rest when tired and return yourself to balance when stressed.</p>
+</div>
+</article>
+<article class="domain-card">
+<div class="domain-head"><span class="no en">02</span><h3>人間関係<span class="en">RELATIONSHIPS</span></h3><span class="taste en">Familial &amp; Social</span></div>
+<p class="domain-def">家族、友人、パートナー、職場、コミュニティとのつながり。安心して関われる感覚、ちょうどよい距離感、必要なときに助けを求められる力を見る領域。</p>
+<div class="elem">
+<div class="elem-head"><h4>安心できるつながり<span class="en">Love, Intimacy &amp; Trust</span></h4></div>
+<p class="elem-line">安心して話せる人、自分らしくいられる関係、会ったあとにあたたかさが残るつながりを見る。</p>
+<p class="elem-line en-line">Measures: closeness you can trust — people you can talk to honestly, be yourself with, and leave feeling warmer.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>境界線・距離感<span class="en">Boundaries &amp; Chosen Distance</span></h4></div>
+<p class="elem-line">人との距離を自分で調整できるか、相手に合わせすぎずに関われるかを見る。</p>
+<p class="elem-line en-line">Measures: whether the distance is yours to choose — engaging without over-adapting, and protecting your own space.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>助けを求める力<span class="en">Asking for &amp; Receiving Support</span></h4></div>
+<p class="elem-line">困ったときに一人で抱え込まず、誰かに相談したり頼ったりできるかを見る。</p>
+<p class="elem-line en-line">Measures: your ability to ask — reaching for support early instead of carrying everything alone.</p>
+</div>
+</article>
+<article class="domain-card">
+<div class="domain-head"><span class="no en">03</span><h3>目標<span class="en">GOALS</span></h3><span class="taste en">Vocational &amp; Mental</span></div>
+<p class="domain-def">自己実現や、やりたいことに向かう感覚。目標の明確さ、前進感、成長している実感を見る領域。</p>
+<div class="elem">
+<div class="elem-head"><h4>やりたいこと<span class="en">Clarity of Direction</span></h4></div>
+<p class="elem-line">今やりたいこと、気になること、今大切にしたいことが見えているかを見る。</p>
+<p class="elem-line en-line">Measures: whether what you want is in focus — the aims and interests that currently matter to you.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>目標への前進<span class="en">Achievement &amp; Progress</span></h4></div>
+<p class="elem-line">やりたいことや目標に向けて小さく動けているか、前に進んでいる感覚があるかを見る。</p>
+<p class="elem-line en-line">Measures: movement — small actions taken, progress you can feel, and recent achievement.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>夢・自己実現<span class="en">Growth &amp; Self-Realization</span></h4></div>
+<p class="elem-line">夢、将来像、自分の成長につながる時間を持てているかを見る。</p>
+<p class="elem-line en-line">Measures: growth toward the person you intend to become — dreams, a future picture, and time invested in becoming.</p>
+</div>
+</article>
+<article class="domain-card">
+<div class="domain-head"><span class="no en">04</span><h3>使命<span class="en">MISSION</span></h3><span class="taste en">Spiritual</span></div>
+<p class="domain-def">自分が負っている役割、責任、義務と、それに対する納得感。仕事上の責任だけでなく、家族、ケア、生活、コミュニティの中で担っている役割も含む領域。</p>
+<div class="elem">
+<div class="elem-head"><h4>義務・責任<span class="en">Roles &amp; Responsibilities, Chosen</span></h4></div>
+<p class="elem-line">家族、仕事、生活上の義務や責任を理解し、自分なりに納得して引き受けられているかを見る。</p>
+<p class="elem-line en-line">Measures: whether your responsibilities are understood and accepted as your own — not simply imposed.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>自分の意思<span class="en">Living by Your Own Values</span></h4></div>
+<p class="elem-line">人の期待だけではなく、自分の価値観や本音も含めて選べているかを見る。</p>
+<p class="elem-line en-line">Measures: authorship of your choices — decisions made from your values and honest intent, not only others' expectations.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>世の中への貢献<span class="en">Contribution &amp; Meaning</span></h4></div>
+<p class="elem-line">自分が世の中や誰かに対して、何をしたいのか、どんな形で役に立ちたいのかを見る。</p>
+<p class="elem-line en-line">Measures: contribution — the difference you want to make, and whether your days are connected to it.</p>
+</div>
+</article>
+<article class="domain-card">
+<div class="domain-head"><span class="no en">05</span><h3>お金<span class="en">MONEY</span></h3><span class="taste en">Financial</span></div>
+<p class="domain-def">経済的な安定、自由、安心感。収入や支出の把握だけでなく、お金に対する不安、選択肢、自分に必要なものへ使う許可も含む領域。</p>
+<div class="elem">
+<div class="elem-head"><h4>安定（現在の入りと出）<span class="en">Clarity &amp; Control of the Present</span></h4></div>
+<p class="elem-line">今の収入、支出、固定費、日々のお金の流れをある程度把握できているかを見る。</p>
+<p class="elem-line en-line">Measures: command of the present — income, spending, fixed costs, and the daily flow of money, known well enough to steer.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>安心感（将来への備え）<span class="en">Security &amp; Provision for the Future</span></h4></div>
+<p class="elem-line">貯蓄、備え、将来の見通しがあり、未来のお金を考えたときに最低限の安心感があるかを見る。</p>
+<p class="elem-line en-line">Measures: provision — savings and a visible path ahead, so the future feels held rather than feared.</p>
+</div>
+<div class="elem">
+<div class="elem-head"><h4>自由（使い方とメンタリティ）<span class="en">Freedom &amp; Permission in Using Money</span></h4></div>
+<p class="elem-line">お金をどう使うか、自分に必要なものに許可を出せるか、お金に振り回されすぎていないかを見る。</p>
+<p class="elem-line en-line">Measures: freedom — money as a tool you direct, including permission to spend on what you genuinely need.</p>
+</div>
+</article>
+</div>
+</section>
+
+<!-- how it works -->
+<section class="block off-sec" id="flowView">
+<div class="sec-head">
+<span class="sec-no en">FLOW</span>
+<h2>進め方<span class="en">HOW IT WORKS</span></h2>
+<p>コードの入力から結果まで、このページの中で完結します。</p>
+</div>
+<ul class="intro-list">
+<li><span class="n en">01</span><span>アクセスコードを入力する。詳細版は購入者向けの診断です。購入時に案内されたアクセスコードで開きます。</span></li>
+<li><span class="n en">02</span><span>全45問にA／Bで答える。各問にAとB、2つの状態が出ます。そのあいだの5段階から、今の自分に最も近いものを選んでください。問いは5つの領域から順不同で出て、領域名や要素名は表示されません。</span></li>
+<li><span class="n en">03</span><span>五角形と要素別の結果を見る。5つの領域の五角形に加えて、15の要素それぞれのスコアと「何を見ているか」をその場で表示します。結果はコピー／テキストファイルで保存できます。</span></li>
+</ul>
+</section>
 
 <!-- gate -->
 <section class="block paper-sec" id="gateView">
